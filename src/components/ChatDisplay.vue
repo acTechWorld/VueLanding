@@ -1,11 +1,12 @@
 <template>
-  <div class="rounded w-full p-4" :style="chatStyle">
+  <div class="rounded w-full p-4" :style="chatStyle" data-test="chatDisplay">
     <div
       v-if="props.loading"
       class="ml-4 animate-[loadingDots_1s_infinite_linear] before:animate-[loadingDotsBefore_1s_infinite_linear] after:animate-[loadingDotsAfter_1s_infinite_linear] rounded-[5px] h-[8px] w-[8px] before:h-[8px] before:w-[8px] before:rounded-[5px] before:-left-4 before:content-[''] before:top-0 before:absolute after:absolute after:content-[''] after:top-0 after:h-[8px] after:w-[8px] after:rounded-[5px] after:left-4 bg-[var(--bg-color-loading-dots)] before:bg-[var(--bg-color-loading-dots)] after:bg-[var(--bg-color-loading-dots)]"
       :style="loadingDotsStyle"
+      data-test="chatDisplayLoader"
     ></div>
-    <p v-else>{{ displayedText }}</p>
+    <p v-else data-test="chatDisplayText">{{ displayedText }}</p>
   </div>
 </template>
 
