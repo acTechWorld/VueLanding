@@ -1,16 +1,19 @@
 <template>
-  <div class="flex">
+  <div class="flex" data-test="chatBoxInput">
     <textarea
       ref="textarea"
       v-model="textareaValue"
       :placeholder="props.placeholder"
       class="rounded pl-4 pr-10 py-2 focus:outline-[var(--chat-box-input-border-color)] w-full overflow-y-auto"
       :style="chatStyle"
+      data-test="chatBoxInputTextarea"
     ></textarea>
     <FontAwesomeIcon
-      :icon="props.submitButtonIcon"
+      v-if="props.icon"
+      :icon="props.icon"
       :style="sendButtonStyle"
       class="-ml-[30px] cursor-pointer self-end mb-2"
+      data-test="chatBoxInputSendButton"
       @click="sendMessage"
     />
   </div>
@@ -24,7 +27,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 const props = withDefaults(
   defineProps<{
     placeholder?: string
-    submitButtonIcon?: IconName
+    icon?: IconName
     bgColor?: `#${string}`
     color?: `#${string}`
   }>(),
@@ -32,7 +35,7 @@ const props = withDefaults(
     placeholder: undefined,
     bgColor: '#4b5563',
     color: '#fff',
-    submitButtonIcon: 'paper-plane'
+    icon: undefined
   }
 )
 
