@@ -28,6 +28,14 @@ export default {
           '50%': { transform: 'scale(1, 0.67)' },
           '75%': { transform: 'scale(1, 1.5)' },
           '100%': { transform: 'scale(1, 1)' }
+        },
+        translateTopSlideAppear: {
+          '0%': { transform: 'translateY(2rem)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 }
+        },
+        translateBottomSlideDisappear: {
+          '0%': { transform: 'translateY(0)', opacity: 1 },
+          '100%': { transform: 'translateY(2rem)', opacity: 0 }
         }
       }
     }
