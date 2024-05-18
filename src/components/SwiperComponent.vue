@@ -1,15 +1,18 @@
 <template>
   <div class="flex justify-center items-center">
-    <div class="w-10 flex justify-center cursor-pointer group" @click="prevSlide">
+    <div
+      class="w-10 flex justify-center cursor-pointer group items-center self-stretch"
+      @click="prevSlide"
+    >
       <FontAwesomeIcon
         v-if="displayLeftArrow"
         icon="arrow-left"
         class="text-[#98a2b3] group-hover:text-[#4b5563] group-hover:-translate-x-5 transition-all duration-300"
       />
     </div>
-    <div class="swiper w-full" :class="{ 'overflow-hidden': props.offChildrenHidden }">
+    <div class="swiper w-full overflow-hidden">
       <div
-        class="slides flex [&>*]:mx-2 [&>*]:w-full overflow-y-hidden pb-[2rem]"
+        class="slides flex [&>*]:mx-2 [&>*]:w-full overflow-y-hidden pb-[2rem] select-none"
         :style="slidesStyle"
         :class="[slidesClass]"
       >
@@ -25,7 +28,10 @@
         ></div>
       </div>
     </div>
-    <div class="w-10 flex justify-center cursor-pointer group" @click="nextSlide">
+    <div
+      class="w-10 flex justify-center cursor-pointer group items-center self-stretch"
+      @click="nextSlide"
+    >
       <FontAwesomeIcon
         v-if="displayRightArrow"
         icon="arrow-right"
@@ -47,14 +53,10 @@ const totalSlides = ref(0)
 const props = withDefaults(
   defineProps<{
     animationType?: AnimationType
-    offChildrenHidden?: boolean
-    draggable?: boolean
     infinite?: boolean
   }>(),
   {
-    offChildrenHidden: true,
     animationType: 'slide',
-    draggable: true,
     infinite: true
   }
 )
@@ -115,7 +117,7 @@ const displayLeftArrow = computed(() => props.infinite || currentSlideIndex.valu
 /** Methods */
 const handleResize = () => {
   slideWidth.value = document.querySelector('.swiper')
-    ? document.querySelector('.swiper').offsetWidth
+    ? (document.querySelector('.swiper') as HTMLElement).offsetWidth
     : 0
 }
 
