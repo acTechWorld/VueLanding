@@ -5,7 +5,11 @@ export default {
   component: ChatDisplay,
   argTypes: {
     color: { control: 'color' },
-    bgColor: { control: 'color' }
+    bgColor: { control: 'color' },
+    themeColor: {
+      options: [null, 'primary', 'secondary', 'tertiary'],
+      control: { type: 'radio' }
+    }
   }
 }
 

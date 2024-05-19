@@ -21,21 +21,24 @@
 
 <script setup lang="ts">
 import { ref, computed, type Ref } from 'vue'
-import { hexToRgb } from '@/utils/utils'
+import { getBgColor, getTxtColor, hexToRgb } from '@/utils/utils'
 import type { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { ThemeColor } from '@/utils/types';
 const props = withDefaults(
   defineProps<{
     placeholder?: string
     icon?: IconName
     bgColor?: `#${string}`
     color?: `#${string}`
+    themeColor?: ThemeColor
   }>(),
   {
     placeholder: undefined,
-    bgColor: '#4b5563',
-    color: '#fff',
-    icon: undefined
+    bgColor: undefined,
+    color: undefined,
+    icon: undefined,
+    themeColor: undefined
   }
 )
 
@@ -44,10 +47,11 @@ const textareaValue = ref('')
 const emits = defineEmits(['sendMessage'])
 
 const chatStyle = computed(() => {
-  const rgbBgColor = hexToRgb(props.bgColor)
+  const usedBgColor = getBgColor(props.bgColor, props.themeColor)
+  const rgbBgColor = hexToRgb(usedBgColor)
   return {
-    color: props.color,
-    backgroundColor: props.bgColor,
+    color: getTxtColor(props.color, props.themeColor),
+    backgroundColor: getBgColor(props.bgColor, props.themeColor),
     '--chat-box-input-border-color': rgbBgColor ? `rgba(${rgbBgColor}, .5)` : 'none',
     height: `${textarea.value && textareaValue.value ? textarea.value.scrollHeight : 40}px`
   }

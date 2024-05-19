@@ -2,7 +2,14 @@ import ProgressBar from './ProgressBar.vue'
 
 export default {
   title: 'Components/Progress Bar',
-  component: ProgressBar
+  component: ProgressBar,
+  argTypes: {
+    bgColor: { control: 'color' },
+    themeColor: {
+      options: [null, 'primary', 'secondary', 'tertiary'],
+      control: { type: 'radio' }
+    }
+  }
 }
 
 const Template = (args) => ({

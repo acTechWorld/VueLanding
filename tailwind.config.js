@@ -2,6 +2,14 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
+    colors: {
+      'bg-primary': '#3D52A0',
+      'bg-secondary': '#7091E6',
+      'bg-tertiary': '#EDE8F5',
+      'txt-primary': '#fff',
+      'txt-secondary': '#fff',
+      'txt-tertiary': '#fff'
+    },
     extend: {
       keyframes: {
         loadingSlide: {

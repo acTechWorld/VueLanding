@@ -11,6 +11,8 @@
 </template>
 
 <script setup lang="ts">
+import type { ThemeColor } from '@/utils/types'
+import { getTxtColor, getBgColor } from '@/utils/utils'
 import { computed, ref } from 'vue'
 const props = withDefaults(
   defineProps<{
@@ -19,13 +21,15 @@ const props = withDefaults(
     textAnimated?: boolean
     bgColor?: `#${string}`
     color?: `#${string}`
+    themeColor?: ThemeColor
   }>(),
   {
     text: '',
     loading: false,
     textAnimated: true,
-    bgColor: '#4b5563',
-    color: '#fff'
+    bgColor: undefined,
+    color: undefined,
+    themeColor: undefined
   }
 )
 const countdownLetters = ref(0)
@@ -38,11 +42,13 @@ const intervalDisplayLetters = setInterval(() => {
 const displayedText = computed(() =>
   props.textAnimated ? props.text.slice(0, countdownLetters.value) : props.text
 )
+const color = computed(() => getTxtColor(props.color, props.themeColor))
+
 const chatStyle = computed(() => ({
-  color: props.color,
-  backgroundColor: props.bgColor
+  color: color.value,
+  backgroundColor: getBgColor(props.bgColor, props.themeColor)
 }))
 const loadingDotsStyle = computed(() => ({
-  '--bg-color-loading-dots': props.color
+  '--bg-color-loading-dots': color.value
 }))
 </script>

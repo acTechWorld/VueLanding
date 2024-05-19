@@ -8,7 +8,7 @@
       v-for="(data, key) in props.datas"
       :key="`proof_${key}`"
       :style="style"
-      class="px-20 py-5 text-center gap-8 flex flex-col"
+      class="px-20 py-5 text-center gap-8 flex flex-col rounded-lg"
       data-test="social-proof-item"
     >
       <div v-if="data.testimony" data-test="social-testimony" class="text-4xl font-semibold">
@@ -47,7 +47,8 @@
 import { computed } from 'vue'
 import SwiperComponent from '@/components/SwiperComponent.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { AnimationType } from '@/utils/types'
+import type { AnimationType, ThemeColor } from '@/utils/types'
+import { getTxtColor, getBgColor } from '@/utils/utils'
 
 type SocialProof = {
   testimony?: string
@@ -62,22 +63,24 @@ const props = withDefaults(
     datas: SocialProof[]
     bgColor?: `#${string}`
     color?: `#${string}`
+    themeColor?: ThemeColor
     animationType?: AnimationType
     infinite?: boolean
   }>(),
   {
     type: 'banner',
     datas: () => [],
-    bgColor: '#4b5563',
-    color: '#fff',
+    bgColor: undefined,
+    color: undefined,
+    themeColor: undefined,
     animationType: 'appear',
     infinite: true
   }
 )
 /** COMPUTED */
 const style = computed(() => ({
-  color: props.color,
-  backgroundColor: props.bgColor
+  color: getTxtColor(props.color, props.themeColor),
+  backgroundColor: getBgColor(props.bgColor, props.themeColor)
 }))
 const calculateStarsIcon = (nbStars: number) => {
   const plainStars = nbStars <= 5 ? nbStars : 5
@@ -92,3 +95,4 @@ const calculateStarsIcon = (nbStars: number) => {
   return icons
 }
 </script>
+import { getTxtColor, getBgColor } from '@/utils/utils';
