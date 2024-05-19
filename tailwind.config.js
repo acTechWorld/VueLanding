@@ -5,7 +5,7 @@ export default {
     colors: {
       'bg-primary': '#3D52A0',
       'bg-secondary': '#7091E6',
-      'bg-tertiary': '#EDE8F5',
+      'bg-tertiary': '#964734',
       'txt-primary': '#fff',
       'txt-secondary': '#fff',
       'txt-tertiary': '#fff'
