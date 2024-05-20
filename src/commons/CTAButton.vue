@@ -1,7 +1,7 @@
 <template>
   <div
     :style="ctaButtonStyle"
-    class="px-4 py-2 rounded-lg cursor-pointer w-fit hover:bg-[linear-gradient(rgb(0_0_0/20%)_0_0);]"
+    class="px-4 py-2 rounded-lg cursor-pointer w-fit hover:bg-[linear-gradient(rgb(0_0_0/20%)_0_0);] text-center"
     @click="handleClick"
   >
     {{ props.label }}

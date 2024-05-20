@@ -10,6 +10,7 @@ export default {
       'txt-secondary': '#fff',
       'txt-tertiary': '#fff'
     },
+   
     extend: {
       keyframes: {
         loadingSlide: {

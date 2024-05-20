@@ -4,17 +4,32 @@ import tailwindConfig from '../../tailwind.config.js'
 
 const fullConfig = resolveConfig(tailwindConfig)
 
-export const hexToRgb = (hex: string) => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-  if (result) {
-    const bigint = parseInt(hex.slice(1), 16)
-    const r = (bigint >> 16) & 255
-    const g = (bigint >> 8) & 255
-    const b = bigint & 255
+export const hexToRgb = (hex: string): string | null => {
+  // Remove the leading '#' if present
+  const cleanHex = hex.replace(/^#/, '')
 
-    return r + ',' + g + ',' + b
+  // Check for shorthand (3-digit) format and convert it to full (6-digit) format
+  const expandedHex =
+    cleanHex.length === 3
+      ? cleanHex
+          .split('')
+          .map((char) => char + char)
+          .join('')
+      : cleanHex
+
+  // Validate the input (it should be 6 digits after potential expansion)
+  const isValidHex = /^[a-f\d]{6}$/i.test(expandedHex)
+  if (!isValidHex) {
+    return null
   }
-  return null
+
+  // Parse the hex color
+  const bigint = parseInt(expandedHex, 16)
+  const r = (bigint >> 16) & 255
+  const g = (bigint >> 8) & 255
+  const b = bigint & 255
+
+  return `${r},${g},${b}`
 }
 
 export const getBgColor = (bgColor?: `#${string}`, themeColor?: ThemeColor) => {

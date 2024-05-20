@@ -9,7 +9,7 @@
     </div>
     <div v-if="props.subTitle" data-test="cTASection-subTitle">{{ props.subTitle }}</div>
     <div
-      v-if="props.ctaButtons?.length > 0"
+      v-if="props.ctaButtons && props.ctaButtons.length > 0"
       class="flex items-center justify-center gap-3 sm:flex-row flex-col"
       data-test="cTASection-ctaButtons"
     >
@@ -28,19 +28,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { getTxtColor, getBgColor } from '@/utils/utils'
-import type { ThemeColor } from '@/utils/types'
+import type { ThemeColor, CTAButtonType } from '@/utils/types'
 import CTAButton from '@/commons/CTAButton.vue'
 const props = withDefaults(
   defineProps<{
     title?: string
     subTitle?: string
-    ctaButtons?: {
-      name: string
-      label: string
-      bgColor?: `#${string}`
-      color?: `#${string}`
-      themeColor?: ThemeColor
-    }[]
+    ctaButtons?: CTAButtonType[]
     bgColor?: `#${string}`
     color?: `#${string}`
     themeColor?: ThemeColor
