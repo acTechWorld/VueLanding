@@ -49,7 +49,7 @@ const props = withDefaults(
   }
 )
 
-const emits = defineEmits(['clickCTAButton'])
+const emits = defineEmits(['clickCtaButton'])
 /** COMPUTED */
 const ctaSectionStyle = computed(() => ({
   color: getTxtColor(props.color, props.themeColor),
@@ -57,5 +57,5 @@ const ctaSectionStyle = computed(() => ({
 }))
 
 /** METHODS */
-const handleClickCTA = (buttonName: string) => emits('clickCTAButton', buttonName)
+const handleClickCTA = (buttonName: string) => emits('clickCtaButton', buttonName)
 </script>

@@ -58,6 +58,6 @@ describe('when component is mounted', () => {
 
   test('click CTA Button => should emit "clickCTAButton" ', async () => {
     wrapper.findAll('[data-test="cTASection-ctaButton"]')[0].trigger('click')
-    expect(wrapper.emitted()['clickCTAButton'][0][0]).toEqual(props.ctaButtons[0].name)
+    expect(wrapper.emitted()['clickCtaButton'][0][0]).toEqual(props.ctaButtons[0].name)
   })
 })

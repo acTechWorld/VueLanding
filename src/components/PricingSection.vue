@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div data-test="pricingSection">
     <CTASection
       v-if="hasCTASection"
       v-bind="props.topSection"
       :class="{
         'sm:pb-20': hasPricings
       }"
+      data-test="pricingSection-ctaSection"
+      @click-cta-button="handleClickTopSectionCTAButton"
     />
     <div
       v-if="hasPricings"
@@ -18,15 +20,23 @@
         class="sm:w-[300px] p-5 text-center cursor-pointer shadow-lg rounded-lg border"
         :style="pricingStyle(pricing)"
         :class="{ 'sm:-mt-14': hasCTASection }"
+        data-test="pricingSection-pricing"
+        @click="handleClickPricing(pricing)"
       >
         <div class="mb-4 flex flex-col gap-3">
-          <div v-if="pricing.type" class="border rounded-full w-fit px-3 self-center mb-2">
+          <div
+            v-if="pricing.type"
+            class="border rounded-full w-fit px-3 self-center mb-2"
+            data-test="pricingSection-pricing-type"
+          >
             {{ pricing.type }}
           </div>
-          <div class="text-4xl font-semibold">
+          <div class="text-4xl font-semibold" data-test="pricingSection-pricing-amount">
             {{ getPricing(pricing.amount, pricing.currency, pricing.frequency) }}
           </div>
-          <div v-if="pricing.description">{{ pricing.description }}</div>
+          <div v-if="pricing.description" data-test="pricingSection-pricing-description">
+            {{ pricing.description }}
+          </div>
           <div
             v-if="pricing.ctaButtons && pricing.ctaButtons.length > 0"
             class="flex flex-col gap-2"
@@ -36,6 +46,8 @@
               :key="`pricing_${idx}_ctaButton_${idxCtaButton}`"
               v-bind="ctaButton"
               class="w-full"
+              data-test="pricingSection-pricing-ctaButton"
+              @click="(buttonName) => handleClickPricingCTAButton(pricing, buttonName)"
             />
           </div>
         </div>
@@ -47,6 +59,7 @@
             v-for="(feature, idxFeature) in pricing.features"
             :key="`pricing_${idx}_feature_${idxFeature}`"
             class="flex gap-2 items-center"
+            data-test="pricingSection-pricing-feature"
           >
             <FontAwesomeIcon icon="check" />
             {{ feature }}
@@ -86,6 +99,8 @@ const props = withDefaults(
   }
 )
 
+const emits = defineEmits(['clickTopSectionCtaButton', 'clickPricingCtaButton', 'clickPricing'])
+
 /** COMUTED */
 const hasCTASection = computed(
   () =>
@@ -113,4 +128,11 @@ const pricingStyle = (pricing: Pricing) => {
     borderColor: `rgba(${hexToRgb(color)}, .5)`
   }
 }
+const handleClickTopSectionCTAButton = (buttonName: string) =>
+  emits('clickTopSectionCtaButton', buttonName)
+
+const handleClickPricingCTAButton = (pricing: Pricing, buttonName: string) =>
+  emits('clickPricingCtaButton', { pricing: pricing, buttonName: buttonName })
+
+const handleClickPricing = (pricing: Pricing) => emits('clickPricing', pricing)
 </script>
