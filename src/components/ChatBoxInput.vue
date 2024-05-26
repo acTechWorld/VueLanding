@@ -24,7 +24,7 @@ import { ref, computed, type Ref } from 'vue'
 import { getBgColor, getTxtColor, hexToRgb } from '@/utils/utils'
 import type { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { ThemeColor } from '@/utils/types';
+import type { ThemeColor } from '@/utils/types'
 const props = withDefaults(
   defineProps<{
     placeholder?: string

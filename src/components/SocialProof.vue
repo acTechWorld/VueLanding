@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import SwiperComponent from '@/components/SwiperComponent.vue'
+import SwiperComponent from '@/commons/SwiperComponent.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import type { AnimationType, ThemeColor } from '@/utils/types'
 import { getTxtColor, getBgColor } from '@/utils/utils'
