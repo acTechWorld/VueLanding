@@ -14,7 +14,7 @@
         v-for="(faqQuestion, idx) in props.bottomSection.faqQuestions"
         :key="`faqQuestion_${idx}`"
         class="border-b py-4"
-        :style="bottomStyle"
+        :style="bottomSectionStyle"
         data-test="pricingSection-faqAccordion"
       >
         <template #header>
@@ -69,7 +69,7 @@ const hasCTASection = computed(
     (props.topSection.title || props.topSection.subTitle || props.topSection.ctaButtons)
 )
 
-const bottomStyle = computed(() => ({
+const bottomSectionStyle = computed(() => ({
   color: props.bottomSection?.color || 'unset',
   borderColor: props.bottomSection?.color
     ? `rgba(${hexToRgb(props.bottomSection?.color)}, .3)`

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-test="metricSection">
     <div
       v-if="props.topSection?.title || props.topSection?.subTitle"
       class="px-10 py-5 sm:py-10 text-center gap-5 flex flex-col mb-5"
@@ -8,11 +8,11 @@
       <div
         v-if="props.topSection?.title"
         class="text-4xl font-semibold"
-        data-test="cTASection-title"
+        data-test="metricSection-title"
       >
         {{ props.topSection.title }}
       </div>
-      <div v-if="props.topSection?.subTitle" data-test="cTASection-subTitle">
+      <div v-if="props.topSection?.subTitle" data-test="metricSection-subTitle">
         {{ props.topSection.subTitle }}
       </div>
     </div>
@@ -25,9 +25,12 @@
         v-for="(metric, idx) in props.bottomSection.metrics"
         :key="`metric_${idx}`"
         class="flex flex-col gap-3 sm:border-l-2 pl-4 items-center sm:items-start"
+        data-test="metric"
       >
-        <div v-if="metric.value" class="text-4xl font-semibold">{{ metric.value }}</div>
-        <div v-if="metric.object">{{ metric.object }}</div>
+        <div v-if="metric.value" class="text-4xl font-semibold" data-test="metric-value">
+          {{ metric.value }}
+        </div>
+        <div v-if="metric.object" data-test="metric-object">{{ metric.object }}</div>
         <CTAButton
           v-if="metric.ctaButton?.name && metric.ctaButton.label"
           v-bind="metric.ctaButton"
