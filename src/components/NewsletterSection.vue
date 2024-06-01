@@ -2,7 +2,7 @@
   <div class="newsletterSection md:flex" :style="sectionStyle">
     <div
       :class="{ 'md:w-1/2 md:gap-5 lg:gap-10 md:py-10 md:text-left': props.img }"
-      class="newsletterSection_left flex flex-col gap-10 justify-center px-12 py-20 text-center w-full"
+      class="newsletterSection_first flex flex-col gap-10 justify-center px-12 py-20 text-center w-full"
     >
       <div v-if="props.title" class="newsletterSection_title text-4xl font-semibold">
         {{ props.title }}
@@ -22,7 +22,7 @@
         />
       </div>
     </div>
-    <div v-if="props.img" class="newsletterSection_right w-full md:w-1/2">
+    <div v-if="props.img" class="newsletterSection_second w-full md:w-1/2">
       <img :src="props.img" class="newsletterSection_img h-full object-cover" />
     </div>
   </div>
