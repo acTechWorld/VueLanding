@@ -38,28 +38,28 @@ describe('MetricSection component', () => {
 
   test('component should be mounted', () => {
     expect(MetricsSection).toBeTruthy()
-    expect(wrapper.find('[data-test="metricSection"]').exists()).toBeTruthy()
+    expect(wrapper.find('.metricSection').exists()).toBeTruthy()
   })
 
   test('renders top section title and subtitle', () => {
-    expect(wrapper.find('[data-test="metricSection-title"]').text()).toBe(topSection.title)
-    expect(wrapper.find('[data-test="metricSection-subTitle"]').text()).toBe(topSection.subTitle)
+    expect(wrapper.find('.metricSection_title').text()).toBe(topSection.title)
+    expect(wrapper.find('.metricSection_subTitle').text()).toBe(topSection.subTitle)
   })
 
   test('renders the correct number of metrics', () => {
-    const metrics = wrapper.findAll('[data-test="metric"]')
+    const metrics = wrapper.findAll('.metricSection_metric')
     expect(metrics.length).toBe(bottomSection.metrics.length)
   })
 
   test('renders the correct metric content', () => {
     bottomSection.metrics.forEach((metric, idx) => {
-      const metricWrapper = wrapper.findAll('[data-test="metric"]')[idx]
+      const metricWrapper = wrapper.findAll('.metricSection_metric')[idx]
 
       if (metric.value) {
-        expect(metricWrapper.find('[data-test="metric-value"]').text()).toBe(metric.value)
+        expect(metricWrapper.find('.metricSection_metricValue').text()).toBe(metric.value)
       }
       if (metric.object) {
-        expect(metricWrapper.find('[data-test="metric-object"]').text()).toBe(metric.object)
+        expect(metricWrapper.find('.metricSection_metricObject').text()).toBe(metric.object)
       }
       if (metric.ctaButton?.name && metric.ctaButton?.label) {
         expect(metricWrapper.findComponent(CTAButton).props('label')).toBe(metric.ctaButton.label)

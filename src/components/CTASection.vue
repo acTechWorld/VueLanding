@@ -1,24 +1,21 @@
 <template>
   <div
     :style="ctaSectionStyle"
-    class="px-10 py-5 sm:py-10 text-center gap-5 flex flex-col"
-    data-test="cTASection"
+    class="cTASection px-10 py-5 sm:py-10 text-center gap-5 flex flex-col"
   >
-    <div v-if="props.title" class="text-4xl font-semibold" data-test="cTASection-title">
+    <div v-if="props.title" class="cTASection_title text-4xl font-semibold">
       {{ props.title }}
     </div>
-    <div v-if="props.subTitle" data-test="cTASection-subTitle">{{ props.subTitle }}</div>
+    <div v-if="props.subTitle" class="cTASection_subTitle">{{ props.subTitle }}</div>
     <div
       v-if="props.ctaButtons && props.ctaButtons.length > 0"
-      class="flex items-center justify-center gap-3 sm:flex-row flex-col"
-      data-test="cTASection-ctaButtons"
+      class="cTASection_ctaButtons flex items-center justify-center gap-3 sm:flex-row flex-col"
     >
       <CTAButton
         v-for="(ctaButton, idx) in props.ctaButtons"
         :key="`ctaButton_${idx}`"
         v-bind="ctaButton"
-        class="sm:w-auto w-full"
-        data-test="cTASection-ctaButton"
+        class="cTASection_ctaButton sm:w-auto w-full"
         @click="handleClickCTA"
       />
     </div>

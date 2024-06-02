@@ -1,31 +1,29 @@
 <template>
-  <div data-test="faqSection">
+  <div class="faqSection">
     <CTASection
       v-if="hasCTASection"
       v-bind="props.topSection"
-      data-test="faqSection-ctaSection"
+      class="faqSection_ctaSection"
       @click-cta-button="handleClickTopSectionCTAButton"
     />
     <div
       v-if="props.bottomSection?.faqQuestions && props.bottomSection.faqQuestions.length > 0"
-      class="max-w-[800px] mx-auto text-left"
+      class="faqSection_accordionContainer max-w-[800px] mx-auto text-left"
     >
       <AccordionComponent
         v-for="(faqQuestion, idx) in props.bottomSection.faqQuestions"
         :key="`faqQuestion_${idx}`"
-        class="border-b py-4"
+        class="faqSection_accordion border-b py-4"
         :style="bottomSectionStyle"
-        data-test="pricingSection-faqAccordion"
       >
         <template #header>
           <p
             v-safe-html="faqQuestion.question"
-            class="text-lg font-semibold"
-            data-test="pricingSection-faqQuestion"
+            class="faqSection_accordionQuestion text-lg font-semibold"
           ></p>
         </template>
         <template #content>
-          <p v-safe-html="faqQuestion.answer" data-test="pricingSection-faqAnswer"></p>
+          <p v-safe-html="faqQuestion.answer" class="faqSection_accordionAnswer"></p>
         </template>
       </AccordionComponent>
     </div>

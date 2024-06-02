@@ -52,7 +52,7 @@ describe('FaqSection component', () => {
 
   test('component should be mounted', () => {
     expect(FaqSection).toBeTruthy()
-    expect(wrapper.find('[data-test="faqSection"]').exists()).toBeTruthy()
+    expect(wrapper.find('.faqSection').exists()).toBeTruthy()
   })
 
   test('CTA section should be rendered if it has content', () => {
@@ -65,15 +65,15 @@ describe('FaqSection component', () => {
   })
 
   test('Accordion header should display the FAQ question', () => {
-    const accordionHeaders = wrapper.findAll('[data-test="pricingSection-faqQuestion"]')
+    const accordionHeaders = wrapper.findAll('.faqSection_accordionQuestion')
     bottomSection.faqQuestions.forEach((faqQuestion, idx) => {
       expect(accordionHeaders[idx].text()).toContain(faqQuestion.question)
     })
   })
 
   test('Accordion content should display the FAQ answer when clicked header', async () => {
-    const accordionContents = wrapper.findAll('[data-test="pricingSection-faqAccordion"]')
-    const accordionHeaders = wrapper.findAll('[data-test="pricingSection-faqQuestion"]')
+    const accordionContents = wrapper.findAll('.faqSection_accordion')
+    const accordionHeaders = wrapper.findAll('.faqSection_accordionQuestion')
     bottomSection.faqQuestions.forEach(async (faqQuestion, idx) => {
       expect(accordionContents[idx].text()).not.toContain(faqQuestion.answer)
       await accordionHeaders[idx].trigger('click')
@@ -82,9 +82,7 @@ describe('FaqSection component', () => {
   })
 
   test('emits clickTopSectionCtaButton event when CTA button is clicked', async () => {
-    await wrapper
-      .findComponent('[data-test="faqSection-ctaSection"]')
-      .vm.$emit('clickCtaButton', 'Button1')
+    await wrapper.findComponent('.faqSection_ctaSection').vm.$emit('clickCtaButton', 'Button1')
     expect(wrapper.emitted().clickTopSectionCtaButton[0]).toEqual(['Button1'])
   })
 })

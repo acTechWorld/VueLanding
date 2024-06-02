@@ -2,40 +2,37 @@
   <SwiperComponent
     :animation-type="props.animationType"
     :infinite="props.infinite"
-    data-test="socialProof"
+    class="socialProof"
   >
     <div
       v-for="(data, key) in props.datas"
       :key="`proof_${key}`"
       :style="style"
-      class="px-20 py-5 text-center gap-8 flex flex-col rounded-lg"
-      data-test="social-proof-item"
+      class="socialProof_item px-20 py-5 text-center gap-8 flex flex-col rounded-lg"
     >
-      <div v-if="data.testimony" data-test="social-testimony" class="text-4xl font-semibold">
+      <div v-if="data.testimony" class="socialProof_testimony text-4xl font-semibold">
         {{ data.testimony }}
       </div>
       <div
         v-if="data.name || data.title || data.imgProfile || data.stars"
-        class="items-center flex flex-col"
-        data-test="bottom-infos"
+        class="socialProof_bottom items-center flex flex-col"
       >
         <img
           v-if="data.imgProfile"
           :src="data.imgProfile"
           alt="Profile Image"
-          class="w-16 h-16 rounded-full mb-2 object-cover"
-          data-test="social-imgProfile"
+          class="socialProof_imgProfile w-16 h-16 rounded-full mb-2 object-cover"
         />
-        <p v-if="data.name" class="text-lg font-semibold" data-test="social-name">
+        <p v-if="data.name" class="text-lg font-semibold socialProof_name">
           {{ data.name }}
         </p>
-        <p v-if="data.title" data-test="social-title">{{ data.title }}</p>
-        <div v-if="data.stars" class="mt-2">
+        <p v-if="data.title" class="socialProof_title">{{ data.title }}</p>
+        <div v-if="data.stars" class="socialProof_stars mt-2">
           <FontAwesomeIcon
             v-for="(icon, idx) in calculateStarsIcon(data.stars)"
             :key="`proof_${key}_star_${idx}`"
             :icon="icon"
-            data-test="social-star"
+            class="socialProof_star"
           />
         </div>
       </div>

@@ -69,24 +69,22 @@ describe('when component is mounted', () => {
 
   test('component should be mounted', () => {
     expect(PricingSection).toBeTruthy()
-    expect(wrapper.find('[data-test="pricingSection"]').exists()).toBeTruthy()
+    expect(wrapper.find('.pricingSection').exists()).toBeTruthy()
   })
 
   test('emits clickTopSectionCtaButton event when CTA button is clicked', async () => {
-    await wrapper
-      .findComponent('[data-test="pricingSection-ctaSection"]')
-      .vm.$emit('clickCtaButton', 'Button1')
+    await wrapper.findComponent('.pricingSection_ctaSection').vm.$emit('clickCtaButton', 'Button1')
     expect(wrapper.emitted().clickTopSectionCtaButton[0]).toEqual(['Button1'])
   })
 
   test('emits clickPricing event when pricing card is clicked', async () => {
-    const pricingCards = wrapper.findAll('[data-test="pricingSection-pricing"]')
+    const pricingCards = wrapper.findAll('.pricingSection_pricing')
     await pricingCards[0].trigger('click')
     expect(wrapper.emitted().clickPricing[0]).toEqual([bottomSection.pricings[0]])
   })
 
   test('emits clickPricingCtaButton event when pricing CTA button is clicked', async () => {
-    const ctaButton = wrapper.findComponent('[data-test="pricingSection-pricing-ctaButton"')
+    const ctaButton = wrapper.findComponent('.pricingSection_pricingCtaButton')
     await ctaButton.vm.$emit('click', 'Sign Up')
     expect(wrapper.emitted().clickPricingCtaButton[0]).toEqual([
       { pricing: bottomSection.pricings[0], buttonName: 'Sign Up' }
@@ -95,33 +93,29 @@ describe('when component is mounted', () => {
 
   test('renders the correct pricing content', () => {
     bottomSection.pricings.forEach((pricing, idx) => {
-      const card = wrapper.findAll('[data-test="pricingSection-pricing"]')[idx]
+      const card = wrapper.findAll('.pricingSection_pricing')[idx]
 
       // Check pricing type
       if (pricing.type) {
-        expect(card.find('[data-test="pricingSection-pricing-type"]').text()).toBe(pricing.type)
+        expect(card.find('.pricingSection_pricingType').text()).toBe(pricing.type)
       } else {
-        expect(card.find('[data-test="pricingSection-pricing-type"]').exists()).toBe(false)
+        expect(card.find('.pricingSection_pricingType').exists()).toBe(false)
       }
 
       // Check pricing amount
-      expect(card.find('[data-test="pricingSection-pricing-amount"]').text()).toBe(
+      expect(card.find('.pricingSection_pricingAmount').text()).toBe(
         `${pricing.amount}${pricing.currency || '$'}/${pricing.frequency || 'year'}`
       )
 
       // Check pricing description
       if (pricing.description) {
-        expect(card.find('[data-test="pricingSection-pricing-description"]').text()).toBe(
-          pricing.description
-        )
+        expect(card.find('.pricingSection_pricingDescription').text()).toBe(pricing.description)
       } else {
-        expect(card.find('[data-test="pricingSection-pricing-description"]').exists()).toBe(false)
+        expect(card.find('.pricingSection_pricingDescription').exists()).toBe(false)
       }
 
       pricing.features.forEach((feature, featureIdx) => {
-        expect(
-          card.findAll('[data-test="pricingSection-pricing-feature"]')[featureIdx].text()
-        ).toBe(feature)
+        expect(card.findAll('.pricingSection_pricingFeature')[featureIdx].text()).toBe(feature)
       })
     })
   })

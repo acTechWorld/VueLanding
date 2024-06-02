@@ -1,42 +1,37 @@
 <template>
-  <div data-test="metricSection">
+  <div class="metricSection">
     <div
       v-if="props.topSection?.title || props.topSection?.subTitle"
-      class="px-10 py-5 sm:py-10 text-center gap-5 flex flex-col mb-5"
+      class="metricSection_first px-10 py-5 sm:py-10 text-center gap-5 flex flex-col mb-5"
       :style="topSectionStyle"
     >
-      <div
-        v-if="props.topSection?.title"
-        class="text-4xl font-semibold"
-        data-test="metricSection-title"
-      >
+      <div v-if="props.topSection?.title" class="metricSection_title text-4xl font-semibold">
         {{ props.topSection.title }}
       </div>
-      <div v-if="props.topSection?.subTitle" data-test="metricSection-subTitle">
+      <div v-if="props.topSection?.subTitle" class="metricSection_subTitle">
         {{ props.topSection.subTitle }}
       </div>
     </div>
     <div
       v-if="props.bottomSection?.metrics && props.bottomSection.metrics.length > 0"
-      class="flex justify-center sm:justify-around gap-10 sm:gap-5 max-w-[1000px] mx-auto p-10 rounded-lg flex-col sm:flex-row flex-wrap"
+      class="metricSection_second flex justify-center sm:justify-around gap-10 sm:gap-5 max-w-[1000px] mx-auto p-10 rounded-lg flex-col sm:flex-row flex-wrap"
       :style="bottomSectionStyle"
     >
       <div
         v-for="(metric, idx) in props.bottomSection.metrics"
         :key="`metric_${idx}`"
-        class="flex flex-col gap-3 sm:border-l-2 pl-4 items-center sm:items-start"
-        data-test="metric"
+        class="metricSection_metric flex flex-col gap-3 sm:border-l-2 pl-4 items-center sm:items-start"
       >
-        <div v-if="metric.value" class="text-4xl font-semibold" data-test="metric-value">
+        <div v-if="metric.value" class="metricSection_metricValue text-4xl font-semibold">
           {{ metric.value }}
         </div>
-        <div v-if="metric.object" data-test="metric-object">{{ metric.object }}</div>
+        <div v-if="metric.object" class="metricSection_metricObject">{{ metric.object }}</div>
         <CTAButton
           v-if="metric.ctaButton?.name && metric.ctaButton.label"
           v-bind="metric.ctaButton"
           icon="arrow-right"
           type="transparent"
-          class="font-semibold"
+          class="metricSection_metricCtaButton font-semibold"
           @click="handleClickMetric"
         />
       </div>

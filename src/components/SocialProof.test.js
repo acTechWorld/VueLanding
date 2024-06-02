@@ -37,54 +37,52 @@ describe('when component is mounted', () => {
 
   test('component should be mounted', () => {
     expect(SocialProof).toBeTruthy()
-    expect(wrapper.find('[data-test="socialProof"]').exists()).toBeTruthy()
+    expect(wrapper.find('.socialProof').exists()).toBeTruthy()
   })
 
   test('number of proof displayed should be correct', () => {
-    expect(wrapper.findAll('[data-test="social-proof-item"]').length).toEqual(props.datas.length)
+    expect(wrapper.findAll('.socialProof_item').length).toEqual(props.datas.length)
   })
 
   test('testimony should be displayed correctly', async () => {
-    expect(wrapper.findAll('[data-test="social-testimony"]')[0].text()).toEqual(
-      props.datas[0].testimony
-    )
+    expect(wrapper.findAll('.socialProof_testimony')[0].text()).toEqual(props.datas[0].testimony)
     await wrapper.setProps({
       datas: [{ title: 'test' }]
     })
-    expect(wrapper.findAll('[data-test="social-testimony"]')[0]?.exists()).toBeFalsy()
+    expect(wrapper.findAll('.socialProof_testimony')[0]?.exists()).toBeFalsy()
     await wrapper.setProps({
       datas: props.datas
     })
   })
 
   test('name should be displayed correctly', async () => {
-    expect(wrapper.findAll('[data-test="social-name"]')[0].text()).toEqual(props.datas[0].name)
+    expect(wrapper.findAll('.socialProof_name')[0].text()).toEqual(props.datas[0].name)
     await wrapper.setProps({
       datas: [{ title: 'test' }]
     })
-    expect(wrapper.findAll('[data-test="social-name"]')[0]?.exists()).toBeFalsy()
+    expect(wrapper.findAll('.socialProof_name')[0]?.exists()).toBeFalsy()
     await wrapper.setProps({
       datas: props.datas
     })
   })
 
   test('title should be displayed correctly', async () => {
-    expect(wrapper.findAll('[data-test="social-title"]')[0].text()).toEqual(props.datas[0].title)
+    expect(wrapper.findAll('.socialProof_title')[0].text()).toEqual(props.datas[0].title)
     await wrapper.setProps({
       datas: [{ name: 'test' }]
     })
-    expect(wrapper.findAll('[data-test="social-title"]')[0]?.exists()).toBeFalsy()
+    expect(wrapper.findAll('.socialProof_title')[0]?.exists()).toBeFalsy()
     await wrapper.setProps({
       datas: props.datas
     })
   })
 
   test('img should be displayed correctly', async () => {
-    expect(wrapper.findAll('[data-test="social-imgProfile"]')[0].exists()).toBeTruthy()
+    expect(wrapper.findAll('.socialProof_imgProfile')[0].exists()).toBeTruthy()
     await wrapper.setProps({
       datas: [{ name: 'test', imgProfile: undefined }]
     })
-    expect(wrapper.findAll('[data-test="social-imgProfile"]')[0]?.exists()).toBeFalsy()
+    expect(wrapper.findAll('.socialProof_imgProfile')[0]?.exists()).toBeFalsy()
     await wrapper.setProps({
       datas: props.datas
     })
@@ -94,7 +92,7 @@ describe('when component is mounted', () => {
     await wrapper.setProps({
       datas: [{ testimony: 'test' }]
     })
-    expect(wrapper.findAll('[data-test="bottom-infos"]')[0]?.exists()).toBeFalsy()
+    expect(wrapper.findAll('.socialProof_bottom')[0]?.exists()).toBeFalsy()
     await wrapper.setProps({
       datas: props.datas
     })
@@ -102,8 +100,8 @@ describe('when component is mounted', () => {
 
   test('stars should be displayed correctly', async () => {
     const icons = wrapper
-      .findAll('[data-test="social-proof-item"]')[0]
-      .findAll('[data-test="social-star"]')
+      .findAll('.socialProof_item')[0]
+      .findAll('.socialProof_star')
       .map((el) => ({
         name: el.attributes()['data-icon'],
         prefix: el.attributes()['data-prefix']
@@ -118,10 +116,7 @@ describe('when component is mounted', () => {
       datas: [{ testimony: 'test' }]
     })
     expect(
-      wrapper
-        .findAll('[data-test="social-proof-item"]')[0]
-        .findAll('[data-test="social-star"]')[0]
-        ?.exists()
+      wrapper.findAll('.socialProof_item')[0].findAll('.socialProof_star')[0]?.exists()
     ).toBeFalsy()
     await wrapper.setProps({
       datas: props.datas

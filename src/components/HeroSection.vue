@@ -19,14 +19,15 @@
       <div v-if="props.subTitle" class="heroSection_subTitle text-lg">{{ props.subTitle }}</div>
       <div
         v-if="props.ctaButtons && props.ctaButtons?.length > 0"
-        class="flex gap-4 justify-center"
+        class="heroSection_ctaButtons flex gap-4 justify-center"
         :class="{ 'md:justify-start': isHalfSized }"
       >
         <CTAButton
           v-for="(ctaButton, idx) in props.ctaButtons"
           :key="`ctaButton_${idx}`"
           v-bind="ctaButton"
-          @click-cta-button="handleClickCTA"
+          class="heroSection_ctaButton"
+          @click="handleClickCTA"
         />
       </div>
     </div>
@@ -45,14 +46,14 @@
         v-else-if="props.video"
         ref="videoContainer"
         :class="{ 'md:h-full': isHalfSized }"
-        class="group"
+        class="group heroSection_videoContainer"
       >
         <video ref="videoElement" class="heroSection_video object-cover h-full" muted>
           <source :src="props.video" type="video/mp4" />
         </video>
         <div
           v-if="overlayVideoPlayer"
-          class="absolute cursor-pointer top-1/2 left-1/2 hidden group-hover:flex"
+          class="heroSection_videoPlayBtn absolute cursor-pointer top-1/2 left-1/2 hidden group-hover:flex"
           @click="handleClickPlayButton"
         >
           <FontAwesomeIcon icon="fa-solid fa-play" size="4x" />

@@ -25,39 +25,37 @@ describe('when component is mounted', () => {
 
   test('component should be mounted', () => {
     expect(CTASection).toBeTruthy()
-    expect(wrapper.find('[data-test="cTASection"]').exists()).toBeTruthy()
+    expect(wrapper.find('.cTASection').exists()).toBeTruthy()
   })
 
   test('title should be displayed correctly', async () => {
-    expect(wrapper.find('[data-test="cTASection-title"]').text()).toEqual(props.title)
+    expect(wrapper.find('.cTASection_title').text()).toEqual(props.title)
     await wrapper.setProps({
       title: undefined
     })
-    expect(wrapper.find('[data-test="cTASection-title"]').exists()).toBeFalsy()
+    expect(wrapper.find('.cTASection_title').exists()).toBeFalsy()
     await wrapper.setProps(props)
   })
   test('subTitle should be displayed correctly', async () => {
-    expect(wrapper.find('[data-test="cTASection-subTitle"]').text()).toEqual(props.subTitle)
+    expect(wrapper.find('.cTASection_subTitle').text()).toEqual(props.subTitle)
     await wrapper.setProps({
       subTitle: undefined
     })
-    expect(wrapper.find('[data-test="cTASection-subTitle"]').exists()).toBeFalsy()
+    expect(wrapper.find('.cTASection_subTitle').exists()).toBeFalsy()
     await wrapper.setProps(props)
   })
 
   test('ctaButtons should be displayed correctly', async () => {
-    expect(wrapper.findAll('[data-test="cTASection-ctaButton"]').length).toEqual(
-      props.ctaButtons.length
-    )
+    expect(wrapper.findAll('.cTASection_ctaButton').length).toEqual(props.ctaButtons.length)
     await wrapper.setProps({
       ctaButtons: []
     })
-    expect(wrapper.find('[data-test="cTASection-ctaButtons"]').exists()).toBeFalsy()
+    expect(wrapper.find('.cTASection_ctaButtons').exists()).toBeFalsy()
     await wrapper.setProps(props)
   })
 
   test('click CTA Button => should emit "clickCTAButton" ', async () => {
-    wrapper.findAll('[data-test="cTASection-ctaButton"]')[0].trigger('click')
+    wrapper.findAll('.cTASection_ctaButton')[0].trigger('click')
     expect(wrapper.emitted()['clickCtaButton'][0][0]).toEqual(props.ctaButtons[0].name)
   })
 })
