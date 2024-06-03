@@ -22,3 +22,5 @@ export type Pricing = {
   color?: `#${string}`
   themeColor?: ThemeColor
 }
+
+export type SocialLinkType = 'facebook' | 'twitter' | 'linkedin' | 'github' | 'instagram'

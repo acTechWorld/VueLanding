@@ -114,7 +114,7 @@ const displayRightArrow = computed(
 )
 const displayLeftArrow = computed(() => props.infinite || currentSlideIndex.value > 0)
 
-/** Methods */
+/** METHODS */
 const handleResize = () => {
   slideWidth.value = document.querySelector('.swiper')
     ? (document.querySelector('.swiper') as HTMLElement).offsetWidth
