@@ -29,7 +29,8 @@ Default.args = {
       Social: ['Twitter', 'LinkedIn', 'Facebook', 'Github', 'AngelList', 'Dribbble']
     },
     text: 'Design amazing digital experiences that create more happy in the word',
-    companyName: 'My landing page'
+    companyName: 'My landing page',
+    color: '#475467'
   },
   bottomSection: {
     copyrights: '2077 My landing page. All rights reserved',
@@ -50,6 +51,7 @@ Default.args = {
         type: 'facebook',
         url: 'https://facebook.com'
       }
-    ]
+    ],
+    color: '#667085'
   }
 }
