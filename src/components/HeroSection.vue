@@ -79,7 +79,7 @@ import VideoComponent from '@/commons/VideoComponent.vue'
 import type { CTAButtonType, ThemeColor } from '@/utils/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { computed, onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -113,22 +113,7 @@ const props = withDefaults(
 )
 
 const displayPlayer = ref(false)
-const videoContainer: Ref<HTMLDivElement | null> = ref(null)
-const videoElement: Ref<HTMLVideoElement | null> = ref(null)
-let observer: IntersectionObserver
 const emits = defineEmits(['clickCtaButton'])
-
-onMounted(() => {
-  if (props.autoplayVideoOnScroll) {
-    initIntersectionObserver()
-  }
-})
-
-onBeforeUnmount(() => {
-  if (observer) {
-    observer.disconnect()
-  }
-})
 
 /** COMPUTED */
 const hasMediaContent = computed(() => props.img || props.video)
@@ -143,33 +128,9 @@ const sectionStyle = computed(() => ({
 }))
 
 /** METHODS */
-const initIntersectionObserver = () => {
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5
-  }
-  if (!observer) {
-    observer = new IntersectionObserver(handleIntersection, options)
-    if (videoContainer.value) {
-      observer.observe(videoContainer.value)
-    }
-  }
-}
-
-const handleIntersection = (entries: any) => {
-  entries.forEach((entry: any) => {
-    if (entry.isIntersecting) {
-      videoElement.value?.play()
-    } else {
-      videoElement.value?.pause()
-    }
-  })
-}
 
 const handleClickCTA = (buttonName: string) => emits('clickCtaButton', buttonName)
 const handleClickPlayButton = () => {
-  videoElement.value?.load()
   displayPlayer.value = true
 }
 </script>

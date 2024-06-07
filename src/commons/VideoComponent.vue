@@ -6,7 +6,7 @@
     <div
       v-if="props.playButton"
       class="absolute cursor-pointer top-1/2 left-1/2 hidden group-hover:flex"
-      @click="$emit('clickPlayButton')"
+      @click="handleClickPlayButton"
     >
       <FontAwesomeIcon icon="fa-solid fa-play" size="4x" />
     </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
 
 let observer: IntersectionObserver
@@ -33,7 +33,7 @@ const props = withDefaults(
 )
 const videoContainer: Ref<HTMLDivElement | null> = ref(null)
 const videoElement: Ref<HTMLVideoElement | null> = ref(null)
-defineEmits(['clickPlayButton'])
+const emits = defineEmits(['clickPlayButton'])
 
 onMounted(() => {
   if (props.autoplayVideoOnScroll) {
@@ -70,5 +70,10 @@ const handleIntersection = (entries: any) => {
       videoElement.value?.pause()
     }
   })
+}
+
+const handleClickPlayButton = () => {
+  videoElement.value?.load()
+  emits('clickPlayButton')
 }
 </script>
