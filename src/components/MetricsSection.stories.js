@@ -15,7 +15,7 @@ export const Primary = Template.bind({})
 Primary.args = {
   topSection: {
     title: 'Build something great',
-    subTitle: 'Everything you need to build modern UI and great products',
+    subtitle: 'Everything you need to build modern UI and great products',
     bgColor: '#fff',
     color: '#000'
   },

@@ -5,7 +5,7 @@ import CTASection from './CTASection.vue'
 describe('when component is mounted', () => {
   const props = {
     title: 'Start your free trial',
-    subTitle: 'Join over 4000 statups already growing up with us',
+    subtitle: 'Join over 4000 statups already growing up with us',
     ctaButtons: [
       {
         name: 'learnMore',
@@ -36,10 +36,10 @@ describe('when component is mounted', () => {
     expect(wrapper.find('.cTASection_title').exists()).toBeFalsy()
     await wrapper.setProps(props)
   })
-  test('subTitle should be displayed correctly', async () => {
-    expect(wrapper.find('.cTASection_subTitle').text()).toEqual(props.subTitle)
+  test('subtitle should be displayed correctly', async () => {
+    expect(wrapper.find('.cTASection_subTitle').text()).toEqual(props.subtitle)
     await wrapper.setProps({
-      subTitle: undefined
+      subtitle: undefined
     })
     expect(wrapper.find('.cTASection_subTitle').exists()).toBeFalsy()
     await wrapper.setProps(props)

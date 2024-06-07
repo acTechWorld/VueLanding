@@ -1,15 +1,15 @@
 <template>
   <div class="metricSection">
     <div
-      v-if="props.topSection?.title || props.topSection?.subTitle"
+      v-if="props.topSection?.title || props.topSection?.subtitle"
       class="metricSection_first px-10 py-5 sm:py-10 text-center gap-5 flex flex-col mb-5"
       :style="topSectionStyle"
     >
       <div v-if="props.topSection?.title" class="metricSection_title text-4xl font-semibold">
         {{ props.topSection.title }}
       </div>
-      <div v-if="props.topSection?.subTitle" class="metricSection_subTitle">
-        {{ props.topSection.subTitle }}
+      <div v-if="props.topSection?.subtitle" class="metricSection_subTitle">
+        {{ props.topSection.subtitle }}
       </div>
     </div>
     <div
@@ -49,7 +49,7 @@ const props = withDefaults(
   defineProps<{
     topSection?: {
       title?: string
-      subTitle?: string
+      subtitle?: string
       bgColor?: `#${string}`
       color?: `#${string}`
       themeColor?: ThemeColor

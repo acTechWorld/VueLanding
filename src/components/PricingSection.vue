@@ -77,7 +77,7 @@ const props = withDefaults(
   defineProps<{
     topSection?: {
       title?: string
-      subTitle?: string
+      subtitle?: string
       ctaButtons?: CTAButtonType[]
       bgColor?: `#${string}`
       color?: `#${string}`
@@ -101,7 +101,7 @@ const emits = defineEmits(['clickTopSectionCtaButton', 'clickPricingCtaButton', 
 const hasCTASection = computed(
   () =>
     props.topSection &&
-    (props.topSection.title || props.topSection.subTitle || props.topSection.ctaButtons)
+    (props.topSection.title || props.topSection.subtitle || props.topSection.ctaButtons)
 )
 
 const hasPricings = computed(

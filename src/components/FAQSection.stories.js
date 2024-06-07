@@ -15,7 +15,7 @@ export const Default = Template.bind({})
 Default.args = {
   topSection: {
     title: 'Simple, transparent pricing',
-    subTitle: 'We believe our product should be accessible to all companies, no matter the size',
+    subtitle: 'We believe our product should be accessible to all companies, no matter the size',
     ctaButtons: [
       {
         name: 'learnMore',

@@ -43,7 +43,7 @@ describe('HeroSection.vue', () => {
       props: {
         type: 'default',
         title: 'Hero Section Title',
-        subTitle: 'Hero Section Subtitle',
+        subtitle: 'Hero Section Subtitle',
         img: 'https://via.placeholder.com/150',
         video: 'https://www.w3schools.com/html/mov_bbb.mp4',
         ctaButtons: [
@@ -75,13 +75,13 @@ describe('HeroSection.vue', () => {
 
   test('renders title and subtitle correctly', () => {
     const title = wrapper.find('.heroSection_title')
-    const subTitle = wrapper.find('.heroSection_subTitle')
+    const subtitle = wrapper.find('.heroSection_subTitle')
 
     expect(title.exists()).toBe(true)
     expect(title.text()).toBe('Hero Section Title')
 
-    expect(subTitle.exists()).toBe(true)
-    expect(subTitle.text()).toBe('Hero Section Subtitle')
+    expect(subtitle.exists()).toBe(true)
+    expect(subtitle.text()).toBe('Hero Section Subtitle')
   })
 
   test('renders CTA buttons correctly', () => {

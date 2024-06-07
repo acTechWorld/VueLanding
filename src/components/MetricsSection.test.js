@@ -10,7 +10,7 @@ library.add(faArrowRight)
 // Mock data
 const topSection = {
   title: 'Top Section Title',
-  subTitle: 'Top Section Subtitle',
+  subtitle: 'Top Section Subtitle',
   bgColor: '#FFFFFF',
   color: '#000000',
   themeColor: 'light'
@@ -43,7 +43,7 @@ describe('MetricSection component', () => {
 
   test('renders top section title and subtitle', () => {
     expect(wrapper.find('.metricSection_title').text()).toBe(topSection.title)
-    expect(wrapper.find('.metricSection_subTitle').text()).toBe(topSection.subTitle)
+    expect(wrapper.find('.metricSection_subTitle').text()).toBe(topSection.subtitle)
   })
 
   test('renders the correct number of metrics', () => {

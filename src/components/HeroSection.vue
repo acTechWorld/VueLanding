@@ -16,7 +16,7 @@
       <div v-if="props.title" class="heroSection_title text-5xl font-semibold">
         {{ props.title }}
       </div>
-      <div v-if="props.subTitle" class="heroSection_subTitle text-lg">{{ props.subTitle }}</div>
+      <div v-if="props.subtitle" class="heroSection_subTitle text-lg">{{ props.subtitle }}</div>
       <div
         v-if="props.ctaButtons && props.ctaButtons?.length > 0"
         class="heroSection_ctaButtons flex gap-4 justify-center"
@@ -42,23 +42,14 @@
         class="heroSection_img object-cover w-full"
         :class="{ 'md:h-full': isHalfSized }"
       />
-      <div
+      <VideoComponent
         v-else-if="props.video"
-        ref="videoContainer"
         :class="{ 'md:h-full': isHalfSized }"
-        class="group heroSection_videoContainer"
-      >
-        <video ref="videoElement" class="heroSection_video object-cover h-full" muted>
-          <source :src="props.video" type="video/mp4" />
-        </video>
-        <div
-          v-if="overlayVideoPlayer"
-          class="heroSection_videoPlayBtn absolute cursor-pointer top-1/2 left-1/2 hidden group-hover:flex"
-          @click="handleClickPlayButton"
-        >
-          <FontAwesomeIcon icon="fa-solid fa-play" size="4x" />
-        </div>
-      </div>
+        :video="props.video"
+        :play-button="props.overlayVideoPlayer"
+        class="heroSection_video"
+        @click-play-button="handleClickPlayButton"
+      />
     </div>
     <div
       v-if="displayPlayer"
@@ -84,6 +75,7 @@
 
 <script setup lang="ts">
 import CTAButton from '@/commons/CTAButton.vue'
+import VideoComponent from '@/commons/VideoComponent.vue'
 import type { CTAButtonType, ThemeColor } from '@/utils/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -93,7 +85,7 @@ const props = withDefaults(
   defineProps<{
     type?: 'default' | 'vertical'
     title?: string
-    subTitle?: string
+    subtitle?: string
     img?: string
     video?: string
     placeholderInput?: string
@@ -107,7 +99,7 @@ const props = withDefaults(
   {
     type: 'default',
     title: undefined,
-    subTitle: undefined,
+    subtitle: undefined,
     img: undefined,
     video: undefined,
     placeholderInput: undefined,

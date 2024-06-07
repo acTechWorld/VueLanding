@@ -22,7 +22,7 @@ const Template = (args) => ({
 export const Default = Template.bind({})
 Default.args = {
   title: 'Start your free trial',
-  subTitle: 'Join over 4000 statups already growing up with us',
+  subtitle: 'Join over 4000 statups already growing up with us',
   ctaButtons: [
     {
       name: 'learnMore',

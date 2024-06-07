@@ -11,7 +11,7 @@ library.add(faChevronUp)
 describe('FaqSection component', () => {
   const topSection = {
     title: 'Top Section Title',
-    subTitle: 'Top Section Subtitle',
+    subtitle: 'Top Section Subtitle',
     ctaButtons: [
       { name: 'Button1', label: 'Button1' },
       { name: 'Button2', label: 'Button2' }

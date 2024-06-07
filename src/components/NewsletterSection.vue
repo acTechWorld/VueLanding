@@ -7,7 +7,7 @@
       <div v-if="props.title" class="newsletterSection_title text-4xl font-semibold">
         {{ props.title }}
       </div>
-      <div v-if="props.subTitle" class="newsletterSection_subTitle">{{ props.subTitle }}</div>
+      <div v-if="props.subtitle" class="newsletterSection_subTitle">{{ props.subtitle }}</div>
       <div class="newsletterSection_emailCtn gap-2" :class="{ 'md:flex md:flex-wrap': props.img }">
         <input
           v-model="email"
@@ -36,7 +36,7 @@ import { ref, computed } from 'vue'
 const props = withDefaults(
   defineProps<{
     title?: string
-    subTitle?: string
+    subtitle?: string
     img?: string
     placeholderInput?: string
     ctaButton?: CTAButtonType
@@ -46,7 +46,7 @@ const props = withDefaults(
   }>(),
   {
     title: undefined,
-    subTitle: undefined,
+    subtitle: undefined,
     img: undefined,
     placeholderInput: undefined,
     ctaButton: () => ({
