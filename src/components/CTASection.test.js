@@ -37,11 +37,11 @@ describe('when component is mounted', () => {
     await wrapper.setProps(props)
   })
   test('subtitle should be displayed correctly', async () => {
-    expect(wrapper.find('.cTASection_subTitle').text()).toEqual(props.subtitle)
+    expect(wrapper.find('.cTASection_subtitle').text()).toEqual(props.subtitle)
     await wrapper.setProps({
       subtitle: undefined
     })
-    expect(wrapper.find('.cTASection_subTitle').exists()).toBeFalsy()
+    expect(wrapper.find('.cTASection_subtitle').exists()).toBeFalsy()
     await wrapper.setProps(props)
   })
 

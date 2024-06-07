@@ -6,7 +6,7 @@
     <div v-if="props.title" class="cTASection_title text-4xl font-semibold">
       {{ props.title }}
     </div>
-    <div v-if="props.subtitle" class="cTASection_subTitle">{{ props.subtitle }}</div>
+    <div v-if="props.subtitle" class="cTASection_subtitle">{{ props.subtitle }}</div>
     <div
       v-if="props.ctaButtons && props.ctaButtons.length > 0"
       class="cTASection_ctaButtons flex items-center justify-center gap-3 sm:flex-row flex-col"

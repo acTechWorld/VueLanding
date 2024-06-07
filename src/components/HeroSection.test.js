@@ -3,10 +3,9 @@ import { describe, expect, test, beforeAll, afterAll, vi } from 'vitest'
 import HeroSection from './HeroSection.vue'
 import CTAButton from '@/commons/CTAButton.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 
-library.add(faPlay, faCircleXmark)
+library.add(faCircleXmark)
 // Mock IntersectionObserver
 global.IntersectionObserver = class {
   constructor(callback) {
@@ -26,6 +25,13 @@ global.IntersectionObserver = class {
   }
 }
 
+// Mock components
+const MockVideoComponent = {
+  name: 'VideoComponent',
+  props: ['video'],
+  template: '<div><slot /></div>'
+}
+
 // Mock play and pause methods
 const playMock = vi.fn()
 const pauseMock = vi.fn()
@@ -35,6 +41,8 @@ HTMLVideoElement.prototype.play = playMock
 HTMLVideoElement.prototype.pause = pauseMock
 HTMLVideoElement.prototype.load = loadMock
 
+const videoLink = 'https://www.w3schools.com/html/mov_bbb.mp4'
+const imgLink = 'https://via.placeholder.com/150'
 describe('HeroSection.vue', () => {
   let wrapper
 
@@ -44,8 +52,8 @@ describe('HeroSection.vue', () => {
         type: 'default',
         title: 'Hero Section Title',
         subtitle: 'Hero Section Subtitle',
-        img: 'https://via.placeholder.com/150',
-        video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        img: imgLink,
+        video: videoLink,
         ctaButtons: [
           { name: 'Button1', label: 'Button1' },
           { name: 'Button2', label: 'Button2' }
@@ -59,6 +67,9 @@ describe('HeroSection.vue', () => {
       global: {
         components: {
           CTAButton
+        },
+        stubs: {
+          VideoComponent: MockVideoComponent
         }
       }
     })
@@ -75,7 +86,7 @@ describe('HeroSection.vue', () => {
 
   test('renders title and subtitle correctly', () => {
     const title = wrapper.find('.heroSection_title')
-    const subtitle = wrapper.find('.heroSection_subTitle')
+    const subtitle = wrapper.find('.heroSection_subtitle')
 
     expect(title.exists()).toBe(true)
     expect(title.text()).toBe('Hero Section Title')
@@ -98,17 +109,14 @@ describe('HeroSection.vue', () => {
     const img = wrapper.find('.heroSection_img')
 
     expect(img.exists()).toBe(true)
-    expect(img.attributes().src).toBe('https://via.placeholder.com/150')
+    expect(img.attributes().src).toBe(imgLink)
   })
 
   test('renders video correctly', async () => {
-    expect(wrapper.find('.heroSection_video').exists()).toBe(false)
+    expect(wrapper.findComponent(MockVideoComponent).exists()).toBe(false)
     await wrapper.setProps({ img: undefined })
-
-    expect(wrapper.find('.heroSection_video').exists()).toBe(true)
-    expect(wrapper.find('.heroSection_video').find('source').attributes().src).toBe(
-      'https://www.w3schools.com/html/mov_bbb.mp4'
-    )
+    expect(wrapper.findComponent(MockVideoComponent).exists()).toBe(true)
+    expect(wrapper.findComponent(MockVideoComponent).props('video')).toBe(videoLink)
   })
 
   test('emits clickCtaButton event when CTA button is clicked', async () => {
@@ -119,8 +127,7 @@ describe('HeroSection.vue', () => {
   })
 
   test('displays video player when play button is clicked', async () => {
-    const playButton = wrapper.find('.heroSection_videoPlayBtn')
-    await playButton.trigger('click')
+    await wrapper.findComponent(MockVideoComponent).vm.$emit('click-play-button')
 
     expect(wrapper.vm.displayPlayer).toBe(true)
     const videoPlayer = wrapper.find('.heroSection_videoPlayer')

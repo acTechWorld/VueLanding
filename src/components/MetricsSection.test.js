@@ -43,7 +43,7 @@ describe('MetricSection component', () => {
 
   test('renders top section title and subtitle', () => {
     expect(wrapper.find('.metricSection_title').text()).toBe(topSection.title)
-    expect(wrapper.find('.metricSection_subTitle').text()).toBe(topSection.subtitle)
+    expect(wrapper.find('.metricSection_subtitle').text()).toBe(topSection.subtitle)
   })
 
   test('renders the correct number of metrics', () => {

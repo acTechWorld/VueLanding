@@ -1,11 +1,11 @@
 <template>
   <div ref="videoContainer" class="group">
-    <video ref="videoElement" class="object-cover h-full" :muted="props.muted">
+    <video ref="videoElement" class="video object-cover h-full" :muted="props.muted">
       <source :src="props.video" type="video/mp4" />
     </video>
     <div
       v-if="props.playButton"
-      class="absolute cursor-pointer top-1/2 left-1/2 hidden group-hover:flex"
+      class="videoPlayBtn absolute cursor-pointer top-1/2 left-1/2 hidden group-hover:flex"
       @click="handleClickPlayButton"
     >
       <FontAwesomeIcon icon="fa-solid fa-play" size="4x" />

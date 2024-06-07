@@ -29,7 +29,7 @@ describe('NewsletterSection component', () => {
 
   test('renders title and subtitle', () => {
     expect(wrapper.find('.newsletterSection_title').text()).toBe(props.title)
-    expect(wrapper.find('.newsletterSection_subTitle').text()).toBe(props.subtitle)
+    expect(wrapper.find('.newsletterSection_subtitle').text()).toBe(props.subtitle)
   })
 
   test('renders input with correct placeholder', () => {

@@ -8,7 +8,7 @@
       <div v-if="props.topSection?.title" class="metricSection_title text-4xl font-semibold">
         {{ props.topSection.title }}
       </div>
-      <div v-if="props.topSection?.subtitle" class="metricSection_subTitle">
+      <div v-if="props.topSection?.subtitle" class="metricSection_subtitle">
         {{ props.topSection.subtitle }}
       </div>
     </div>

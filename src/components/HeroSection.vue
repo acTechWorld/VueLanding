@@ -16,7 +16,7 @@
       <div v-if="props.title" class="heroSection_title text-5xl font-semibold">
         {{ props.title }}
       </div>
-      <div v-if="props.subtitle" class="heroSection_subTitle text-lg">{{ props.subtitle }}</div>
+      <div v-if="props.subtitle" class="heroSection_subtitle text-lg">{{ props.subtitle }}</div>
       <div
         v-if="props.ctaButtons && props.ctaButtons?.length > 0"
         class="heroSection_ctaButtons flex gap-4 justify-center"
