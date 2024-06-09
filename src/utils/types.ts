@@ -23,4 +23,15 @@ export type Pricing = {
   themeColor?: ThemeColor
 }
 
-export type SocialLinkType = 'facebook' | 'twitter' | 'linkedin' | 'github' | 'instagram'
+export type SocialLinkType =
+  | 'facebook'
+  | 'twitter'
+  | 'linkedin'
+  | 'github'
+  | 'instagram'
+  | 'google'
+  | 'whatsapp'
+  | 'tiktok'
+  | 'pinterest'
+  | 'youtube'
+  | 'reddit'

@@ -1,63 +1,83 @@
 <template>
-  <div>
-    <div v-if="hasTopSection" class="flex gap-5 py-10 px-5 border-b">
+  <div class="footerSection">
+    <div
+      v-if="hasTopSection"
+      class="footerSection_first flex flex-col md:flex-row gap-[50px] md:gap-10 py-10 px-5 border-b text-left"
+      :style="topSectionStyle"
+    >
       <div
         v-if="hasTopFirstSection"
-        class="w-1/3 flex flex-col gap-5"
-        :class="[hasTopSecondSection ? 'w-1/3' : 'w-full']"
+        class="footerSection_top_first flex flex-col gap-5 w-full"
+        :class="{ 'md:w-1/3': hasTopSecondSection }"
       >
-        <div v-if="hasCompanyInfos">
-          <img v-if="props.topSection?.companyLogo" :src="props.topSection.companyLogo" />
-          <div v-if="props.topSection?.companyName" class="font-semibold text-2xl">
+        <div v-if="hasCompanyInfos" class="footerSection_companyInfos">
+          <img
+            v-if="props.topSection?.companyLogo"
+            class="footerSection_companyLogos"
+            :src="props.topSection.companyLogo"
+          />
+          <div
+            v-if="props.topSection?.companyName"
+            class="footerSection_companyName font-semibold text-2xl"
+          >
             {{ props.topSection.companyName }}
           </div>
         </div>
-        <div v-if="props.topSection?.text">{{ props.topSection.text }}</div>
+        <div v-if="props.topSection?.text" class="footerSection_text">
+          {{ props.topSection.text }}
+        </div>
       </div>
       <div
         v-if="hasTopSecondSection"
-        class="grid gap-8"
+        class="footerSection_top_second grid gap-8 grid-cols-[repeat(2,1fr)] sm:grid-cols-[repeat(3,1fr)] w-full"
         :class="[
           hasTopFirstSection
-            ? 'grid-cols-[repeat(4,1fr)] w-2/3'
-            : 'grid-cols-[repeat(6,1fr)] w-full'
+            ? 'lg:grid-cols-[repeat(4,1fr)] md:w-2/3'
+            : 'md:grid-cols-[repeat(4,1fr)] lg:grid-cols-[repeat(6,1fr)]'
         ]"
       >
         <div
           v-for="category in pagesCategories"
           :key="`pages_${category}`"
-          class="flex flex-col gap-3 text-sm"
+          class="footerSection_pagesCategory flex flex-col gap-3 text-sm"
         >
-          <div class="mb-1 cursor-pointer">{{ category }}</div>
+          <div class="footerSection_category flex mb-1">{{ category }}</div>
           <div
             v-for="page in props.topSection?.pages?.[category]"
             :key="`pages_${category}_${page}`"
-            class="font-semibold cursor-pointer"
+            class="footerSection_page font-semibold cursor-pointer hover:font-bold hover:translate-x-1 transition-all duration-300"
+            @click="handleClickPage(page)"
           >
             {{ page }}
           </div>
         </div>
       </div>
     </div>
-    <div v-if="hasBottomSection" class="py-10 px-5 flex justify-between">
-      <div v-if="props.bottomSection?.copyrights" class="text-sm">
+    <div
+      v-if="hasBottomSection"
+      class="footerSection_second py-10 px-5 flex flex-col-reverse sm:flex-row justify-between gap-5"
+      :style="bottomSectionStyle"
+    >
+      <div v-if="props.bottomSection?.copyrights" class="footerSection_copyrights text-sm">
         {{ props.bottomSection.copyrights }}
       </div>
-      <div v-if="hasSocialLinks" class="gap-3 flex">
-        <FontAwesomeIcon
+      <div v-if="hasSocialLinks" class="footerSection_socialLinks gap-3 flex flex-wrap">
+        <a
           v-for="socialLink in props.bottomSection?.socialLinks"
           :key="`socialLink_${socialLink}`"
-          :icon="getSocialLinkIcon(socialLink.type)"
-          size="xl"
-          @click="goToSocialLink(socialLink.url)"
-        />
+          :href="socialLink.url"
+          class="footerSection_socialLink"
+        >
+          <FontAwesomeIcon :icon="getSocialLinkIcon(socialLink.type)" size="xl" />
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SocialLinkType } from '@/utils/types'
+import type { SocialLinkType, ThemeColor } from '@/utils/types'
+import { getBgColor, getTxtColor } from '@/utils/utils'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { computed } from 'vue'
 
@@ -68,6 +88,9 @@ const props = withDefaults(
       companyLogo?: string
       companyName?: string
       text?: string
+      bgColor?: `#${string}`
+      color?: `#${string}`
+      themeColor?: ThemeColor
     }
     bottomSection?: {
       socialLinks?: {
@@ -75,6 +98,9 @@ const props = withDefaults(
         url: string
       }[]
       copyrights?: string
+      bgColor?: `#${string}`
+      color?: `#${string}`
+      themeColor?: ThemeColor
     }
   }>(),
   {
@@ -82,6 +108,8 @@ const props = withDefaults(
     bottomSection: undefined
   }
 )
+
+const emits = defineEmits(['clickPage'])
 
 /** COMPUTED */
 const hasTopSection = computed(() => hasTopFirstSection.value || hasTopSecondSection)
@@ -111,12 +139,22 @@ const pagesCategories = computed(() =>
   props.topSection?.pages ? Object.keys(props.topSection.pages) : []
 )
 
+const topSectionStyle = computed(() => ({
+  color: getTxtColor(props.topSection?.color, props.topSection?.themeColor),
+  backgroundColor: getBgColor(props.topSection?.bgColor, props.topSection?.themeColor)
+}))
+
+const bottomSectionStyle = computed(() => ({
+  color: getTxtColor(props.bottomSection?.color, props.bottomSection?.themeColor),
+  backgroundColor: getBgColor(props.bottomSection?.bgColor, props.bottomSection?.themeColor)
+}))
+
 /** METHODS */
-const getSocialLinkIcon = (socialLinkType: string) => {
-  return 'fa-brands fa-github'
+const getSocialLinkIcon = (socialLinkType: SocialLinkType) => {
+  return `fa-brands fa-${socialLinkType}`
 }
 
-const goToSocialLink = (socialLinkUrl: string) => {
-  window.location.href = socialLinkUrl
+const handleClickPage = (page: string) => {
+  emits('clickPage', page)
 }
 </script>
