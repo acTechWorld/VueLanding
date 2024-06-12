@@ -56,7 +56,6 @@ type SocialProof = {
 }
 const props = withDefaults(
   defineProps<{
-    type?: string
     datas: SocialProof[]
     bgColor?: `#${string}`
     color?: `#${string}`
@@ -65,7 +64,6 @@ const props = withDefaults(
     infinite?: boolean
   }>(),
   {
-    type: 'banner',
     datas: () => [],
     bgColor: undefined,
     color: undefined,

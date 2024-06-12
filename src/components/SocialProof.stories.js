@@ -4,11 +4,43 @@ export default {
   title: 'Components/Social Proof',
   component: SocialProof,
   argTypes: {
-    color: { control: 'color' },
-    bgColor: { control: 'color' },
+    datas: {
+      control: {
+        type: 'object'
+      },
+      description: `List of social proof data
+        
+      - datas type details:
+        
+      { 
+        testimony?: string; 
+        name?: string; 
+        title?: string; 
+        imgProfile?: string; 
+        stars?: number 
+      }[]`
+    },
+    bgColor: {
+      control: 'color',
+      description: 'Background color of the component | type hexadecimal'
+    },
+    color: {
+      control: 'color',
+      description: 'Text color of the component | type hexadecimal'
+    },
     themeColor: {
       options: [null, 'primary', 'secondary', 'tertiary'],
-      control: { type: 'radio' }
+      control: { type: 'radio' },
+      description: 'Theme color of the component'
+    },
+    animationType: {
+      options: ['off', 'slide', 'appear'],
+      control: { type: 'radio' },
+      description: 'Animation type for the Swiper component'
+    },
+    infinite: {
+      control: 'boolean',
+      description: 'Enable/Disable infinite scrolling'
     }
   }
 }
@@ -21,7 +53,6 @@ const Template = (args) => ({
 
 export const Banner = Template.bind({})
 Banner.args = {
-  type: 'banner',
   datas: [
     {
       testimony:
@@ -49,5 +80,8 @@ Banner.args = {
       imgProfile:
         'https://img.freepik.com/photos-gratuite/portrait-homme-riant_23-2148859448.jpg?size=338&ext=jpg&ga=GA1.1.2116175301.1713916800&semt=ais'
     }
-  ]
+  ],
+  themeColor: 'primary',
+  animationType: 'appear',
+  infinite: true
 }

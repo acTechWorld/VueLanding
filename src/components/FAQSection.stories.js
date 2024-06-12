@@ -4,7 +4,42 @@ import { fn } from '@storybook/test'
 export default {
   title: 'Components/FAQ Section',
   component: FAQSection,
-  args: { onClickTopSectionCtaButton: fn() }
+  args: { onClickTopSectionCtaButton: fn() },
+  argTypes: {
+    topSection: {
+      control: 'object',
+      description: `The configuration for the top section of the FAQ section.
+      
+      topSection type details:
+
+      {
+        title?: string,
+        subtitle?: string,
+        ctaButtons?: {
+          name: string
+          label: string
+          bgColor?: \`#\${string}\`
+          color?: \`#\${string}\`
+          themeColor?: 'primary' | 'secondary' | 'tertiary'
+        }[],
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }
+      `
+    },
+    bottomSection: {
+      control: 'object',
+      description: `The configuration for the bottom section of the FAQ section.
+
+      bottomSection type details:
+
+      {
+        color?: \`#\${string}\`
+        faqQuestions?: { question: string; answer: string }[],
+      }`
+    }
+  }
 }
 
 const Template = (args) => ({

@@ -5,11 +5,41 @@ export default {
   title: 'Components/CTA Section',
   component: CTASection,
   argTypes: {
-    color: { control: 'color' },
-    bgColor: { control: 'color' },
+    title: {
+      control: 'text',
+      description: 'The title of the CTA section.'
+    },
+    subtitle: {
+      control: 'text',
+      description: 'The subtitle of the CTA section.'
+    },
+    ctaButtons: {
+      control: 'object',
+      description: `An array of objects representing the CTA buttons to be displayed.
+      
+      ctaButtons type description:
+
+      {
+        label: string,
+        type?: string,
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }[]
+      `
+    },
+    bgColor: {
+      control: 'color',
+      description: 'Background color of the CTA section | type hexadecimal'
+    },
+    color: {
+      control: 'color',
+      description: 'Text color of the CTA section | type hexadecimal'
+    },
     themeColor: {
       options: [null, 'primary', 'secondary', 'tertiary'],
-      control: { type: 'radio' }
+      control: { type: 'radio' },
+      description: 'Theme color of the CTA section.'
     }
   },
   args: { onClickCtaButton: fn() }

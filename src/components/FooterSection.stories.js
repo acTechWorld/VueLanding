@@ -4,7 +4,44 @@ import { fn } from '@storybook/test'
 export default {
   title: 'Components/Footer Section',
   component: FooterSection,
-  args: { onClickPage: fn() }
+  args: { onClickPage: fn() },
+  argTypes: {
+    topSection: {
+      control: 'object',
+      description: `Configuration for the top section of the footer
+      
+      topSection type description:
+
+      {
+        pages?: { [category: string]: string[] }
+        companyLogo?: string
+        companyName?: string
+        text?: string
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }
+      `
+    },
+    bottomSection: {
+      control: 'object',
+      description: `Configuration for the bottom section of the Footer
+      
+      bottomSection type description:
+      
+      {
+        socialLinks?: {
+          type: "google" | "reddit" | "tiktok" | "linkedin" | "instagram" | "facebook" | "whatsapp" | "github" | "youtube" | "twitter" | "pinterest"
+          url: string
+        }[]
+        copyrights?: string
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }
+      `
+    }
+  }
 }
 
 const Template = (args) => ({

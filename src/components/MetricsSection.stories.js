@@ -4,7 +4,51 @@ import { fn } from '@storybook/test'
 export default {
   title: 'Components/Metrics Section',
   component: MetricsSection,
-  args: { onClickMetric: fn() }
+  args: { onClickMetric: fn() },
+  argTypes: {
+    topSection: {
+      control: {
+        type: 'object'
+      },
+      description: `Top section configuration
+
+      - topSection type details:
+
+      {
+        title?: string
+        subtitle?: string
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }`
+    },
+    bottomSection: {
+      control: {
+        type: 'object'
+      },
+      description: `Bottom section configuration
+
+      - bottomSection type details:
+
+      {
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+        metrics?: {
+          value?: string
+          object?: string
+          ctaButton?: {
+            name: string
+            label: string
+            bgColor?: \`#\${string}\`
+            color?: \`#\${string}\`
+            themeColor?: 'primary' | 'secondary' | 'tertiary'
+          }
+        }[]
+      }
+      `
+    }
+  }
 }
 
 const Template = (args) => ({

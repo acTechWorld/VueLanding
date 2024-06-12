@@ -8,6 +8,64 @@ export default {
     onClickTopSectionCtaButton: fn(),
     onClickPricingCtaButton: fn(),
     onClickPricing: fn()
+  },
+  argTypes: {
+    topSection: {
+      control: {
+        type: 'object'
+      },
+      description: `Top section configuration
+
+      - topSection type details:
+
+      {
+        title?: string
+        subtitle?: string
+        ctaButtons?: {
+          name: string
+          label: string
+          bgColor?: \`#\${string}\`
+          color?: \`#\${string}\`
+          themeColor?: themeColor?: 'primary' | 'secondary' | 'tertiary'
+        }[]
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }
+      `
+    },
+    bottomSection: {
+      control: {
+        type: 'object'
+      },
+      description: `Bottom section configuration
+
+      - bottomSection type details:
+
+      {
+        bgColor?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+        pricings?: {
+          type?: string;
+          amount: number;
+          currency?: string;
+          frequency?: string;
+          description?: string;
+          ctaButtons?: {
+            name: string
+            label: string
+            bgColor?: \`#\${string}\`
+            color?: \`#\${string}\`
+            themeColor?: 'primary' | 'secondary' | 'tertiary'
+          }[];
+          features?: string[];
+          bgColor?: \`#\${string}\`;
+          color?: \`#\${string}\`;
+          themeColor?: 'primary' | 'secondary' | 'tertiary';
+        }[]
+      }
+      `
+    }
   }
 }
 

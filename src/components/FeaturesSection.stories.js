@@ -2,7 +2,48 @@ import FeaturesSection from './FeaturesSection.vue'
 
 export default {
   title: 'Components/Features Section',
-  component: FeaturesSection
+  component: FeaturesSection,
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'The title of the features section.'
+    },
+    subtitle: {
+      control: 'text',
+      description: 'The subtitle of the features section.'
+    },
+    features: {
+      control: 'object',
+      description: `An array of objects representing individual features to be displayed.
+      
+      features type details:
+      
+      {
+        label?: string,
+        description?: string,
+        featurePoints?: string[],
+        img?: string,
+        video?: string,
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }[]
+      `
+    },
+    bgColor: {
+      control: 'color',
+      description: 'Background color of the features section | type hexadecimal'
+    },
+    color: {
+      control: 'color',
+      description: 'Text color of the features section | type hexadecimal'
+    },
+    themeColor: {
+      options: [null, 'primary', 'secondary', 'tertiary'],
+      control: { type: 'radio' },
+      description: 'Theme color of the features section.'
+    }
+  }
 }
 
 const Template = (args) => ({
