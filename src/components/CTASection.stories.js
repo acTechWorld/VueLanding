@@ -1,4 +1,5 @@
 import CTASection from './CTASection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/CTA Section',
@@ -10,13 +11,14 @@ export default {
       options: [null, 'primary', 'secondary', 'tertiary'],
       control: { type: 'radio' }
     }
-  }
+  },
+  args: { onClickCtaButton: fn() }
 }
 
 const Template = (args) => ({
   components: { CTASection },
   setup: () => ({ args }),
-  template: '<CTASection v-bind="args"/>'
+  template: '<CTASection v-bind="args" />'
 })
 
 export const Default = Template.bind({})
