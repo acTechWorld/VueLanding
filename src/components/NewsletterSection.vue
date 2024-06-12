@@ -60,7 +60,7 @@ const props = withDefaults(
 )
 
 const email = ref()
-const emits = defineEmits(["submit"])
+const emits = defineEmits(['submit'])
 
 /** COMPUTED */
 const sectionStyle = computed(() => ({

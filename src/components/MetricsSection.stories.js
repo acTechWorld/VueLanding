@@ -1,8 +1,10 @@
 import MetricsSection from './MetricsSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/Metrics Section',
-  component: MetricsSection
+  component: MetricsSection,
+  args: { onClickMetric: fn() }
 }
 
 const Template = (args) => ({

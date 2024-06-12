@@ -92,4 +92,3 @@ const calculateStarsIcon = (nbStars: number) => {
   return icons
 }
 </script>
-import { getTxtColor, getBgColor } from '@/utils/utils';

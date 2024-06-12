@@ -1,8 +1,10 @@
 import HeroSection from './HeroSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/Hero Section',
   component: HeroSection,
+  args: { onClickCtaButton: fn() },
   argTypes: {
     color: { control: 'color' },
     bgColor: { control: 'color' },

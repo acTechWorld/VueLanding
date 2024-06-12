@@ -1,8 +1,10 @@
 import FAQSection from './FAQSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/FAQ Section',
-  component: FAQSection
+  component: FAQSection,
+  args: { onClickTopSectionCtaButton: fn() }
 }
 
 const Template = (args) => ({

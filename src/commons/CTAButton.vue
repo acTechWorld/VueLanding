@@ -6,7 +6,7 @@
       'rounded-lg px-4 py-2 hover:bg-[linear-gradient(rgb(0_0_0/20%)_0_0);] text-center':
         !isTransparent
     }"
-    @click="handleClick"
+    @click.stop="handleClick"
   >
     {{ props.label }}
     <FontAwesomeIcon

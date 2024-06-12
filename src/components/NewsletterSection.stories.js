@@ -1,8 +1,10 @@
 import NewsletterSection from './NewsletterSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/Newsletter Section',
-  component: NewsletterSection
+  component: NewsletterSection,
+  args: { onSubmit: fn() }
 }
 
 const Template = (args) => ({

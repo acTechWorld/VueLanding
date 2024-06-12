@@ -1,8 +1,10 @@
 import FooterSection from './FooterSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/Footer Section',
-  component: FooterSection
+  component: FooterSection,
+  args: { onClickPage: fn() }
 }
 
 const Template = (args) => ({

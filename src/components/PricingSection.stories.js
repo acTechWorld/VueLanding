@@ -1,8 +1,14 @@
 import PricingSection from './PricingSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/Pricing Section',
-  component: PricingSection
+  component: PricingSection,
+  args: {
+    onClickTopSectionCtaButton: fn(),
+    onClickPricingCtaButton: fn(),
+    onClickPricing: fn()
+  }
 }
 
 const Template = (args) => ({

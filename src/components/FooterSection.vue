@@ -46,7 +46,7 @@
             v-for="page in props.topSection?.pages?.[category]"
             :key="`pages_${category}_${page}`"
             class="footerSection_page font-semibold cursor-pointer hover:font-bold hover:translate-x-1 transition-all duration-300"
-            @click="handleClickPage(page)"
+            @click="handleClickPage(category, page)"
           >
             {{ page }}
           </div>
@@ -154,7 +154,7 @@ const getSocialLinkIcon = (socialLinkType: SocialLinkType) => {
   return `fa-brands fa-${socialLinkType}`
 }
 
-const handleClickPage = (page: string) => {
-  emits('clickPage', page)
+const handleClickPage = (category: string, page: string) => {
+  emits('clickPage', { category: category, page: page })
 }
 </script>

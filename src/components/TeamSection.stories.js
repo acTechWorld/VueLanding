@@ -1,8 +1,10 @@
 import TeamSection from './TeamSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/Team Section',
-  component: TeamSection
+  component: TeamSection,
+  args: { onClickMember: fn() }
 }
 
 const Template = (args) => ({
