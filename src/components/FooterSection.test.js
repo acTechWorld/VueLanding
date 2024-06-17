@@ -54,7 +54,7 @@ describe('FooterSection.vue', () => {
 
   it('emits clickPage event when a page is clicked', async () => {
     await wrapper.find('.footerSection_page').trigger('click')
-    expect(wrapper.emitted()['clickPage'][0][0]).toEqual('Page1')
+    expect(wrapper.emitted()['clickPage'][0][0].page).toEqual('Page1')
   })
 
   it('renders bottom section with social links', () => {
@@ -69,7 +69,6 @@ describe('FooterSection.vue', () => {
   })
 
   it('applies custom styles from props', () => {
-
     expect(wrapper.find('.footerSection_first').attributes('style')).toContain(
       'background-color: rgb(255, 0, 0);'
     )

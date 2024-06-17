@@ -71,7 +71,7 @@ Default.args = {
       {
         question: 'Why do I need a UI kit?',
         answer:
-          'Good question! We used to ask this all the time. <br><br> You don’t realize the power of a high-quality UI kit until you start using one. A good UI kit saves you time and money usually spent on meticulously building the same components over and over again. It can 10-100x your workflow.'
+          'Good question! We used to ask this all the time. <br><br> You don’t realize the power of a high-quality UI kit until you start using one. A good UI kit saves you time and money usually spent on meticulously building the same components over and over again. It can 10-100x your workflow.<br><br>Good question! We used to ask this all the time. <br><br> You don’t realize the power of a high-quality UI kit until you start using one. A good UI kit saves you time and money usually spent on meticulously building the same components over and over again. It can 10-100x your workflow.'
       },
       {
         question: 'What is the difference between the three versions?',

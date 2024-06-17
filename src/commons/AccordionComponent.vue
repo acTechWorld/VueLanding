@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex gap-2 items-center py-4 cursor-pointer group" @click="toggle = !toggle">
+    <div class="flex gap-2 items-center py-4 cursor-pointer group" @click="handleToggle">
       <slot name="header"></slot>
       <FontAwesomeIcon
         :icon="props.icon"
@@ -8,21 +8,18 @@
         :class="{ 'rotate-180': toggle }"
       />
     </div>
-    <Transition
-      enter-active-class="transition-opacity duration-300 ease"
-      leave-active-class="transition-opacity duration-300 ease"
-      enter-from-class="opacity-0"
-      leave-to-class="opacity-0"
+    <div
+      ref="container"
+      class="overflow-hidden transition-all ease-[ease] duration-500"
+      :style="{ maxHeight: `${maxHeight}px` }"
     >
-      <div v-if="toggle">
-        <slot name="content"></slot>
-      </div>
-    </Transition>
+      <slot name="content"></slot>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 import type { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 const props = withDefaults(
@@ -34,4 +31,15 @@ const props = withDefaults(
   }
 )
 const toggle = ref(false)
+const maxHeight = ref(0)
+const container: Ref<HTMLDivElement | null> = ref(null)
+
+const handleToggle = () => {
+  toggle.value = !toggle.value
+  if (toggle.value && container.value?.children && container.value?.children.length > 0) {
+    maxHeight.value = container.value?.children[0].clientHeight
+  } else {
+    maxHeight.value = 0
+  }
+}
 </script>

@@ -75,7 +75,6 @@ describe('FaqSection component', () => {
     const accordionContents = wrapper.findAll('.faqSection_accordion')
     const accordionHeaders = wrapper.findAll('.faqSection_accordionQuestion')
     bottomSection.faqQuestions.forEach(async (faqQuestion, idx) => {
-      expect(accordionContents[idx].text()).not.toContain(faqQuestion.answer)
       await accordionHeaders[idx].trigger('click')
       expect(accordionContents[idx].text()).toContain(faqQuestion.answer)
     })
