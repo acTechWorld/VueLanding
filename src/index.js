@@ -1,5 +1,23 @@
-import ChatDisplay from '@/components/ChatDisplay.vue'
-import ChatBoxInput from '@/components/ChatBoxInput.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
+import CTASection from '@/components/CTASection.vue'
+import FAQSection from '@/components/FAQSection.vue'
+import FeaturesSection from '@/components/FeaturesSection.vue'
+import FooterSection from '@/components/FooterSection.vue'
+import HeroSection from '@/components/HeroSection.vue'
+import MetricsSection from '@/components/MetricsSection.vue'
+import NewsletterSection from '@/components/NewsletterSection.vue'
+import PricingSection from '@/components/PricingSection.vue'
+import SocialProof from '@/components/SocialProof.vue'
+import TeamSection from '@/components/TeamSection.vue'
 
-export { ChatDisplay, ChatBoxInput, ProgressBar }
+export {
+  CTASection,
+  FAQSection,
+  FeaturesSection,
+  FooterSection,
+  HeroSection,
+  MetricsSection,
+  NewsletterSection,
+  PricingSection,
+  SocialProof,
+  TeamSection
+}
