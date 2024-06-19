@@ -1,26 +1,24 @@
-import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import path from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': path.resolve(__dirname, 'src') // Alias '@' to your src directory
     }
   },
   build: {
     lib: {
-      entry: 'src/index.js',
-      name: 'MyComponentLibrary'
+      entry: path.resolve(__dirname, 'index.js'), // Adjust path to index.js if needed
+      name: 'MyLibrary',
+      fileName: (format) => `vue-landing.${format}.js`
     },
     rollupOptions: {
-      // Make sure to externalize Vue to prevent it from being bundled
+      // Ensure external dependencies are not bundled into your library
       external: ['vue'],
       output: {
-        // Provide global variables to use externally
         globals: {
           vue: 'Vue'
         }
