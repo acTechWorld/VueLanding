@@ -1,14 +1,16 @@
 {
   "name": "@oncekiller/vue-landing",
-  "version": "0.0.2-beta.9",
+  "version": "0.0.2-beta.18",
   "private": false,
   "type": "module",
   "main": "./dist/vue-landing.umd.js",
   "module": "./dist/vue-landing.es.js",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/vue-landing.es.js",
-      "require": "./dist/vue-landing.umd.js"
+      "require": "./dist/vue-landing.umd.js",
+      "types": "./index.d.ts"
     }
   },
   "repository": {
@@ -75,6 +77,8 @@
   "files": [
     "dist",
     "README.md",
-    "index.js"
+    "index.js",
+    "index.d.ts",
+    "src/types/types.ts"
   ]
 }

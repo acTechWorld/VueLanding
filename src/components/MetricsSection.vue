@@ -41,35 +41,14 @@
 
 <script setup lang="ts">
 import CTAButton from '@/commons/CTAButton.vue'
-import type { ThemeColor } from '@/utils/types'
+import type { MetricsSectionType } from '@/types/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { computed } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    topSection?: {
-      title?: string
-      subtitle?: string
-      bgColor?: `#${string}`
-      color?: `#${string}`
-      themeColor?: ThemeColor
-    }
-    bottomSection?: {
-      bgColor?: `#${string}`
-      color?: `#${string}`
-      themeColor?: ThemeColor
-      metrics?: {
-        value?: string
-        object?: string
-        ctaButton?: { name: string; label: string; color?: `#${string}` }
-      }[]
-    }
-  }>(),
-  {
-    topSection: undefined,
-    bottomSection: undefined
-  }
-)
+const props = withDefaults(defineProps<MetricsSectionType>(), {
+  topSection: undefined,
+  bottomSection: undefined
+})
 
 const emits = defineEmits(['clickMetric'])
 

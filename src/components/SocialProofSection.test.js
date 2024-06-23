@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
-import SocialProof from './SocialProof.vue'
+import SocialProofSection from './SocialProofSection.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar as fasStar, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
@@ -31,12 +31,12 @@ describe('when component is mounted', () => {
       }
     ]
   }
-  const wrapper = mount(SocialProof, {
+  const wrapper = mount(SocialProofSection, {
     props: props
   })
 
   test('component should be mounted', () => {
-    expect(SocialProof).toBeTruthy()
+    expect(SocialProofSection).toBeTruthy()
     expect(wrapper.find('.socialProof').exists()).toBeTruthy()
   })
 

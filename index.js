@@ -6,7 +6,7 @@ import HeroSection from '@/components/HeroSection.vue'
 import MetricsSection from '@/components/MetricsSection.vue'
 import NewsletterSection from '@/components/NewsletterSection.vue'
 import PricingSection from '@/components/PricingSection.vue'
-import SocialProof from '@/components/SocialProof.vue'
+import SocialProofSection from '@/components/SocialProofSection.vue'
 import TeamSection from '@/components/TeamSection.vue'
 
 export {
@@ -18,6 +18,6 @@ export {
   MetricsSection,
   NewsletterSection,
   PricingSection,
-  SocialProof,
+  SocialProofSection,
   TeamSection
 }

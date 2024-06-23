@@ -31,32 +31,16 @@
 </template>
 
 <script setup lang="ts">
-import type { ThemeColor, CTAButtonType } from '@/utils/types'
+import type { FAQSectionType } from '@/types/types'
 import CTASection from '@/components/CTASection.vue'
 import AccordionComponent from '@/commons/AccordionComponent.vue'
 import { computed } from 'vue'
 import { hexToRgb } from '@/utils/utils'
 
-const props = withDefaults(
-  defineProps<{
-    topSection?: {
-      title?: string
-      subtitle?: string
-      ctaButtons?: CTAButtonType[]
-      bgColor?: `#${string}`
-      color?: `#${string}`
-      themeColor?: ThemeColor
-    }
-    bottomSection?: {
-      color?: `#${string}`
-      faqQuestions?: { question: string; answer: string }[]
-    }
-  }>(),
-  {
-    topSection: undefined,
-    bottomSection: undefined
-  }
-)
+const props = withDefaults(defineProps<FAQSectionType>(), {
+  topSection: undefined,
+  bottomSection: undefined
+})
 
 const emits = defineEmits(['clickTopSectionCtaButton'])
 

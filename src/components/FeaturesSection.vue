@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ThemeColor } from '@/utils/types'
+import type { FeaturesSectionType, ThemeColor } from '@/types/types'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VideoComponent from '@/commons/VideoComponent.vue'
 import ScrollTransitionContainer from '@/commons/ScrollTransitionContainer.vue'
@@ -89,24 +89,14 @@ type FeatureType = {
   color?: `#${string}`
   themeColor?: ThemeColor
 }
-const props = withDefaults(
-  defineProps<{
-    title?: string
-    subtitle?: string
-    features?: FeatureType[]
-    bgColor?: `#${string}`
-    color?: `#${string}`
-    themeColor?: ThemeColor
-  }>(),
-  {
-    title: undefined,
-    subtitle: undefined,
-    features: () => [],
-    bgColor: undefined,
-    color: undefined,
-    themeColor: undefined
-  }
-)
+const props = withDefaults(defineProps<FeaturesSectionType>(), {
+  title: undefined,
+  subtitle: undefined,
+  features: () => [],
+  bgColor: undefined,
+  color: undefined,
+  themeColor: undefined
+})
 
 /** COMPUTED */
 const sectionStyle = computed(() => ({

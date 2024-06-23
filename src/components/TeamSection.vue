@@ -44,33 +44,20 @@
 
 <script setup lang="ts">
 import ScrollTransitionContainer from '@/commons/ScrollTransitionContainer.vue'
-import type { ThemeColor } from '@/utils/types'
+import type { TeamMember, TeamSectionType } from '@/types/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { computed, h } from 'vue'
 
-type TeamMember = { img?: string; name?: string; description?: string }
-const props = withDefaults(
-  defineProps<{
-    title?: string
-    subtitle?: string
-    teamMembers?: TeamMember[]
-    bgColor?: `#${string}`
-    color?: `#${string}`
-    themeColor?: ThemeColor
-    animated?: boolean
-    membersClickable?: boolean
-  }>(),
-  {
-    title: undefined,
-    subtitle: undefined,
-    teamMembers: () => [],
-    bgColor: undefined,
-    color: undefined,
-    themeColor: undefined,
-    animated: true,
-    membersClickable: true
-  }
-)
+const props = withDefaults(defineProps<TeamSectionType>(), {
+  title: undefined,
+  subtitle: undefined,
+  teamMembers: () => [],
+  bgColor: undefined,
+  color: undefined,
+  themeColor: undefined,
+  animated: true,
+  membersClickable: true
+})
 
 const emits = defineEmits(['clickMember'])
 

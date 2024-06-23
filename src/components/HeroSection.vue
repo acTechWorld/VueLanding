@@ -76,41 +76,25 @@
 <script setup lang="ts">
 import CTAButton from '@/commons/CTAButton.vue'
 import VideoComponent from '@/commons/VideoComponent.vue'
-import type { CTAButtonType, ThemeColor } from '@/utils/types'
+import type { HeroSectionType } from '@/types/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { computed, ref } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    type?: 'default' | 'vertical'
-    title?: string
-    subtitle?: string
-    img?: string
-    video?: string
-    placeholderInput?: string
-    ctaButtons?: CTAButtonType[]
-    bgColor?: `#${string}`
-    color?: `#${string}`
-    themeColor?: ThemeColor
-    autoplayVideoOnScroll?: boolean
-    overlayVideoPlayer?: boolean
-  }>(),
-  {
-    type: 'default',
-    title: undefined,
-    subtitle: undefined,
-    img: undefined,
-    video: undefined,
-    placeholderInput: undefined,
-    ctaButtons: () => [],
-    bgColor: undefined,
-    color: undefined,
-    themeColor: undefined,
-    autoplayVideoOnScroll: true,
-    overlayVideoPlayer: true
-  }
-)
+const props = withDefaults(defineProps<HeroSectionType>(), {
+  type: 'default',
+  title: undefined,
+  subtitle: undefined,
+  img: undefined,
+  video: undefined,
+  placeholderInput: undefined,
+  ctaButtons: () => [],
+  bgColor: undefined,
+  color: undefined,
+  themeColor: undefined,
+  autoplayVideoOnScroll: true,
+  overlayVideoPlayer: true
+})
 
 const displayPlayer = ref(false)
 const emits = defineEmits(['clickCtaButton'])

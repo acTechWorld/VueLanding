@@ -76,38 +76,15 @@
 </template>
 
 <script setup lang="ts">
-import type { SocialLinkType, ThemeColor } from '@/utils/types'
+import type { FooterSectionType, SocialLinkType } from '@/types/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { computed } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    topSection?: {
-      pages?: { [category: string]: string[] }
-      companyLogo?: string
-      companyName?: string
-      text?: string
-      bgColor?: `#${string}`
-      color?: `#${string}`
-      themeColor?: ThemeColor
-    }
-    bottomSection?: {
-      socialLinks?: {
-        type: SocialLinkType
-        url: string
-      }[]
-      copyrights?: string
-      bgColor?: `#${string}`
-      color?: `#${string}`
-      themeColor?: ThemeColor
-    }
-  }>(),
-  {
-    topSection: undefined,
-    bottomSection: undefined
-  }
-)
+const props = withDefaults(defineProps<FooterSectionType>(), {
+  topSection: undefined,
+  bottomSection: undefined
+})
 
 const emits = defineEmits(['clickPage'])
 

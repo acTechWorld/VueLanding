@@ -70,30 +70,13 @@
 import CTASection from '@/components/CTASection.vue'
 import CTAButton from '@/commons/CTAButton.vue'
 import { computed } from 'vue'
-import type { ThemeColor, Pricing, CTAButtonType } from '@/utils/types'
+import type { Pricing, PricingSectionType } from '@/types/types'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { getBgColor, getTxtColor, hexToRgb } from '@/utils/utils'
-const props = withDefaults(
-  defineProps<{
-    topSection?: {
-      title?: string
-      subtitle?: string
-      ctaButtons?: CTAButtonType[]
-      bgColor?: `#${string}`
-      color?: `#${string}`
-      themeColor?: ThemeColor
-    }
-    bottomSection?: {
-      bgColor?: `#${string}`
-      themeColor?: ThemeColor
-      pricings?: Pricing[]
-    }
-  }>(),
-  {
-    topSection: undefined,
-    bottomSection: undefined
-  }
-)
+const props = withDefaults(defineProps<PricingSectionType>(), {
+  topSection: undefined,
+  bottomSection: undefined
+})
 
 const emits = defineEmits(['clickTopSectionCtaButton', 'clickPricingCtaButton', 'clickPricing'])
 

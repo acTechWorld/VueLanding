@@ -25,26 +25,16 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { getTxtColor, getBgColor } from '@/utils/utils'
-import type { ThemeColor, CTAButtonType } from '@/utils/types'
+import type { CTASectionType } from '@/types/types'
 import CTAButton from '@/commons/CTAButton.vue'
-const props = withDefaults(
-  defineProps<{
-    title?: string
-    subtitle?: string
-    ctaButtons?: CTAButtonType[]
-    bgColor?: `#${string}`
-    color?: `#${string}`
-    themeColor?: ThemeColor
-  }>(),
-  {
-    title: undefined,
-    subtitle: undefined,
-    ctaButtons: () => [],
-    bgColor: undefined,
-    color: undefined,
-    themeColor: undefined
-  }
-)
+const props = withDefaults(defineProps<CTASectionType>(), {
+  title: undefined,
+  subtitle: undefined,
+  ctaButtons: () => [],
+  bgColor: undefined,
+  color: undefined,
+  themeColor: undefined
+})
 
 const emits = defineEmits(['clickCtaButton'])
 /** COMPUTED */

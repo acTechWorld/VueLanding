@@ -30,34 +30,22 @@
 
 <script setup lang="ts">
 import CTAButton from '@/commons/CTAButton.vue'
-import type { ThemeColor, CTAButtonType } from '@/utils/types'
+import type { NewsletterSectionType } from '@/types/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { ref, computed } from 'vue'
-const props = withDefaults(
-  defineProps<{
-    title?: string
-    subtitle?: string
-    img?: string
-    placeholderInput?: string
-    ctaButton?: CTAButtonType
-    bgColor?: `#${string}`
-    color?: `#${string}`
-    themeColor?: ThemeColor
-  }>(),
-  {
-    title: undefined,
-    subtitle: undefined,
-    img: undefined,
-    placeholderInput: undefined,
-    ctaButton: () => ({
-      name: 'subscribe',
-      label: 'Subscribe'
-    }),
-    bgColor: undefined,
-    color: undefined,
-    themeColor: undefined
-  }
-)
+const props = withDefaults(defineProps<NewsletterSectionType>(), {
+  title: undefined,
+  subtitle: undefined,
+  img: undefined,
+  placeholderInput: undefined,
+  ctaButton: () => ({
+    name: 'subscribe',
+    label: 'Subscribe'
+  }),
+  bgColor: undefined,
+  color: undefined,
+  themeColor: undefined
+})
 
 const email = ref()
 const emits = defineEmits(['submit'])

@@ -1,4 +1,4 @@
-import type { ThemeColor } from './types'
+import type { ThemeColor } from '../types/types'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../tailwind.config.js'
 

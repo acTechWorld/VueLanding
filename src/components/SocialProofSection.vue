@@ -44,34 +44,17 @@
 import { computed } from 'vue'
 import SwiperComponent from '@/commons/SwiperComponent.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { AnimationType, ThemeColor } from '@/utils/types'
+import type { SocialProofSectionType } from '@/types/types'
 import { getTxtColor, getBgColor } from '@/utils/utils'
 
-type SocialProof = {
-  testimony?: string
-  name?: string
-  title?: string
-  imgProfile?: string
-  stars?: number
-}
-const props = withDefaults(
-  defineProps<{
-    datas: SocialProof[]
-    bgColor?: `#${string}`
-    color?: `#${string}`
-    themeColor?: ThemeColor
-    animationType?: AnimationType
-    infinite?: boolean
-  }>(),
-  {
-    datas: () => [],
-    bgColor: undefined,
-    color: undefined,
-    themeColor: undefined,
-    animationType: 'appear',
-    infinite: true
-  }
-)
+const props = withDefaults(defineProps<SocialProofSectionType>(), {
+  datas: () => [],
+  bgColor: undefined,
+  color: undefined,
+  themeColor: undefined,
+  animationType: 'appear',
+  infinite: true
+})
 /** COMPUTED */
 const style = computed(() => ({
   color: getTxtColor(props.color, props.themeColor),

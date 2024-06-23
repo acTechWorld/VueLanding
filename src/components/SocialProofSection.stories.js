@@ -1,8 +1,8 @@
-import SocialProof from './SocialProof.vue'
+import SocialProofSection from './SocialProofSection.vue'
 
 export default {
   title: 'Components/Social Proof',
-  component: SocialProof,
+  component: SocialProofSection,
   argTypes: {
     datas: {
       control: {
