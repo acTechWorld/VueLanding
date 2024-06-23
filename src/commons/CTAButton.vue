@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { getTxtColor, getBgColor } from '@/utils/utils'
-import type { ThemeColor } from '@/utils/types'
+import type { ThemeColor } from '@/types/types'
 import type { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 const props = withDefaults(

@@ -1,9 +1,15 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true
+    })
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src') // Alias '@' to your src directory
@@ -11,9 +17,10 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'index.js'), // Adjust path to index.js if needed
-      name: 'MyLibrary',
-      fileName: (format) => `vue-landing.${format}.js`
+      entry: path.resolve(__dirname, 'src/index.ts'), // Adjust path to index.js if needed
+      name: 'VueLanding',
+      fileName: (format) => `vue-landing.${format}.js`,
+      formats: ['es', 'umd']
     },
     rollupOptions: {
       // Ensure external dependencies are not bundled into your library

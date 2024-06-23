@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import type { AnimationType } from '@/utils/types'
+import type { AnimationType } from '@/types/types'
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
