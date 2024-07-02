@@ -9,6 +9,8 @@ import PricingSection from '@/components/PricingSection.vue'
 import SocialProofSection from '@/components/SocialProofSection.vue'
 import TeamSection from '@/components/TeamSection.vue'
 
+import './assets/tailwind.css'
+
 export {
   CTASection,
   FAQSection,
