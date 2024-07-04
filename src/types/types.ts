@@ -69,6 +69,7 @@ export type FeatureType = {
   bgColor?: `#${string}`
   color?: `#${string}`
   themeColor?: ThemeColor
+  ctaButtons?: CTAButtonType[]
 }
 
 export type FeaturesSectionType = {

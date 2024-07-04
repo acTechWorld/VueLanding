@@ -2,9 +2,9 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, test, beforeEach } from 'vitest'
 import FeaturesSection from './FeaturesSection.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faGlobe } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheck)
+library.add(faCheck, faGlobe)
 
 // Mock components
 const MockVideoComponent = {
@@ -31,7 +31,20 @@ describe('FeaturesSection.vue', () => {
         featurePoints: ['Point 1', 'Point 2'],
         img: 'image1.jpg',
         bgColor: '#ffffff',
-        color: '#000000'
+        color: '#000000',
+        ctaButtons: [
+          {
+            name: 'demo',
+            label: 'Demo',
+            themeColor: 'secondary',
+            icon: 'globe'
+          },
+          {
+            name: 'signUp',
+            label: 'Sign up',
+            themeColor: 'tertiary'
+          }
+        ]
       },
       {
         label: 'Feature 2',
@@ -91,10 +104,26 @@ describe('FeaturesSection.vue', () => {
   test('renders the correct feature points', () => {
     const featureWrappers = wrapper.findAll('.featuresSection_feature')
     props.features.forEach((feature, featureIndex) => {
-      const points = featureWrappers.at(featureIndex).findAll('.featuresSection_feature_point')
-      feature.featurePoints.forEach((point, pointIndex) => {
-        expect(points.at(pointIndex).text()).toContain(point)
-      })
+      if (feature.featurePoints && feature.featurePoints.length > 0) {
+        const points = featureWrappers.at(featureIndex).findAll('.featuresSection_feature_point')
+        feature.featurePoints.forEach((point, pointIndex) => {
+          expect(points.at(pointIndex).text()).toContain(point)
+        })
+      }
+    })
+  })
+
+  test('renders the correct feature points', () => {
+    const featureWrappers = wrapper.findAll('.featuresSection_feature')
+    props.features.forEach((feature, featureIndex) => {
+      if (feature.ctaButtons && feature.ctaButtons.length > 0) {
+        const ctaButtons = featureWrappers
+          .at(featureIndex)
+          .findAll('.featuresSection_feature_ctaButton')
+        feature.ctaButtons.forEach((ctaButton, ctaButtonIndex) => {
+          expect(ctaButtons.at(ctaButtonIndex).text()).toContain(ctaButton.label)
+        })
+      }
     })
   })
 

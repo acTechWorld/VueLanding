@@ -46,9 +46,9 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { SocialProof },
+  components: { SocialProofSection },
   setup: () => ({ args }),
-  template: '<SocialProof v-bind="args"/>'
+  template: '<SocialProofSection v-bind="args"/>'
 })
 
 export const Banner = Template.bind({})

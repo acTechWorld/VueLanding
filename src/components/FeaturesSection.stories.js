@@ -1,8 +1,10 @@
 import FeaturesSection from './FeaturesSection.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Components/Features Section',
   component: FeaturesSection,
+  args: { onClickCtaButton: fn() },
   argTypes: {
     title: {
       control: 'text',
@@ -27,6 +29,13 @@ export default {
         bgColor?: \`#\${string}\`
         color?: \`#\${string}\`
         themeColor?: 'primary' | 'secondary' | 'tertiary'
+        ctaButtons?: {
+          name: string
+          label: string
+          bgColor?: \`#\${string}\`
+          color?: \`#\${string}\`
+          themeColor?: 'primary' | 'secondary' | 'tertiary'
+        }[],
       }[]
       `
     },
@@ -72,7 +81,20 @@ Default.args = {
       ],
       img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
       bgColor: '#fff',
-      color: '#000'
+      color: '#000',
+      ctaButtons: [
+        {
+          name: 'demo',
+          label: 'Demo',
+          themeColor: 'secondary',
+          icon: 'globe'
+        },
+        {
+          name: 'signUp',
+          label: 'Sign up',
+          themeColor: 'tertiary'
+        }
+      ]
     },
     {
       label: 'Share team imboxes',
@@ -92,10 +114,18 @@ Default.args = {
       label: 'Share team imboxes',
       description:
         'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
+      ctaButtons: [
+        {
+          name: 'demo',
+          label: 'Demo',
+          themeColor: 'secondary',
+          icon: 'globe'
+        },
+        {
+          name: 'signUp',
+          label: 'Sign up',
+          themeColor: 'tertiary'
+        }
       ],
       img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
       bgColor: '#fff',

@@ -37,6 +37,7 @@
             {{ feature.description }}
           </div>
           <div
+            v-if="feature.featurePoints && feature.featurePoints?.length > 0"
             class="featuresSection_feature_points pl-5 flex flex-col gap-2 text-left"
             :class="{ 'mx-auto': !(feature.img || feature.video) }"
           >
@@ -49,6 +50,21 @@
                 <FontAwesomeIcon icon="check" size="xl" class="mr-2" /> {{ point }}
               </ScrollTransitionContainer>
             </div>
+          </div>
+          <div
+            v-if="feature.ctaButtons && feature.ctaButtons?.length > 0"
+            class="featuresSection_feature_ctaButtons flex gap-4"
+          >
+            <ScrollTransitionContainer
+              v-for="(ctaButton, idxCTA) in feature.ctaButtons"
+              :key="`ctaButton_${idxCTA}`"
+            >
+              <CTAButton
+                v-bind="ctaButton"
+                class="featuresSection_feature_ctaButton"
+                @click="(buttonName: string) => handleClickCTA(buttonName, feature)"
+              />
+            </ScrollTransitionContainer>
           </div>
         </div>
         <ScrollTransitionContainer
@@ -72,23 +88,15 @@
 </template>
 
 <script setup lang="ts">
-import type { FeaturesSectionType, ThemeColor } from '@/types/types'
+import type { FeatureType, FeaturesSectionType, ThemeColor } from '@/types/types'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VideoComponent from '@/commons/VideoComponent.vue'
+import CTAButton from '@/commons/CTAButton.vue'
 import ScrollTransitionContainer from '@/commons/ScrollTransitionContainer.vue'
 import { computed } from 'vue'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 
-type FeatureType = {
-  label?: string
-  description?: string
-  featurePoints?: string[]
-  img?: string
-  video?: string
-  bgColor?: `#${string}`
-  color?: `#${string}`
-  themeColor?: ThemeColor
-}
+const emits = defineEmits(['clickCtaButton'])
 const props = withDefaults(defineProps<FeaturesSectionType>(), {
   title: undefined,
   subtitle: undefined,
@@ -109,4 +117,7 @@ const featureStyle = (feature: FeatureType) => ({
   color: getTxtColor(feature.color, feature.themeColor),
   backgroundColor: getBgColor(feature.bgColor, feature.themeColor)
 })
+
+const handleClickCTA = (buttonName: string, feature: FeatureType) =>
+  emits('clickCtaButton', { buttonName: buttonName, feature: feature })
 </script>
