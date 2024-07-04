@@ -1,6 +1,6 @@
 {
   "name": "@oncekiller/vue-landing",
-  "version": "0.0.2-beta.28",
+  "version": "0.0.2-beta.30",
   "private": false,
   "type": "module",
   "main": "./dist/vue-landing.umd.js",

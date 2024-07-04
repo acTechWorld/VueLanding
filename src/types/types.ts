@@ -1,4 +1,4 @@
-import { Icon } from '@fortawesome/fontawesome-svg-core'
+import type { IconName } from '@fortawesome/fontawesome-svg-core'
 
 export type AnimationType = 'off' | 'slide' | 'appear'
 
@@ -7,7 +7,7 @@ export type ThemeColor = 'primary' | 'secondary' | 'tertiary'
 export type CTAButtonType = {
   name: string
   label: string
-  icon?: Icon
+  icon?: IconName
   bgColor?: `#${string}`
   color?: `#${string}`
   themeColor?: ThemeColor

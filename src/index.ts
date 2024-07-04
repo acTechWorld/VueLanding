@@ -11,8 +11,24 @@ import TeamSection from '@/components/TeamSection.vue'
 import FontAwesomePlugin from '@/plugins/fontawesome'
 import './assets/tailwind.css'
 
+const components = {
+  CTASection,
+  FAQSection,
+  FeaturesSection,
+  FooterSection,
+  HeroSection,
+  MetricsSection,
+  NewsletterSection,
+  PricingSection,
+  SocialProofSection,
+  TeamSection
+}
 const install = (app) => {
   app.use(FontAwesomePlugin)
+  // Register all components globally
+  Object.keys(components).forEach((name) => {
+    app.component(name, components[name])
+  })
 }
 
 export default { install }
