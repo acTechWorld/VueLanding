@@ -43,7 +43,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import SwiperComponent from '@/commons/SwiperComponent.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import type { SocialProofSectionType } from '@/types/types'
 import { getTxtColor, getBgColor } from '@/utils/utils'
 

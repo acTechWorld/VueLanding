@@ -21,7 +21,6 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue'
 import type { IconName } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 const props = withDefaults(
   defineProps<{
     icon?: IconName

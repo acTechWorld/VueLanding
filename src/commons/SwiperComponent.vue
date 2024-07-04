@@ -44,7 +44,6 @@
 <script setup lang="ts">
 import type { AnimationType } from '@/types/types'
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const currentSlideIndex = ref(0)
 const slideWidth = ref(0)

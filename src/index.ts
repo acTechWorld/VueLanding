@@ -8,8 +8,14 @@ import NewsletterSection from '@/components/NewsletterSection.vue'
 import PricingSection from '@/components/PricingSection.vue'
 import SocialProofSection from '@/components/SocialProofSection.vue'
 import TeamSection from '@/components/TeamSection.vue'
-
+import FontAwesomePlugin from '@/plugins/fontawesome'
 import './assets/tailwind.css'
+
+const install = (app) => {
+  app.use(FontAwesomePlugin)
+}
+
+export default { install }
 
 export {
   CTASection,

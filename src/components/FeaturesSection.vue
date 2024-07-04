@@ -88,8 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FeatureType, FeaturesSectionType, ThemeColor } from '@/types/types'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { FeatureType, FeaturesSectionType } from '@/types/types'
 import VideoComponent from '@/commons/VideoComponent.vue'
 import CTAButton from '@/commons/CTAButton.vue'
 import ScrollTransitionContainer from '@/commons/ScrollTransitionContainer.vue'

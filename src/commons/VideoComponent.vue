@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
 
 let observer: IntersectionObserver

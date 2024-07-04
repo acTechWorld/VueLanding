@@ -78,7 +78,6 @@ import CTAButton from '@/commons/CTAButton.vue'
 import VideoComponent from '@/commons/VideoComponent.vue'
 import type { HeroSectionType } from '@/types/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { computed, ref } from 'vue'
 
 const props = withDefaults(defineProps<HeroSectionType>(), {

@@ -78,7 +78,6 @@
 <script setup lang="ts">
 import type { FooterSectionType, SocialLinkType } from '@/types/types'
 import { getBgColor, getTxtColor } from '@/utils/utils'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<FooterSectionType>(), {

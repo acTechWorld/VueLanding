@@ -71,7 +71,6 @@ import CTASection from '@/components/CTASection.vue'
 import CTAButton from '@/commons/CTAButton.vue'
 import { computed } from 'vue'
 import type { Pricing, PricingSectionType } from '@/types/types'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { getBgColor, getTxtColor, hexToRgb } from '@/utils/utils'
 const props = withDefaults(defineProps<PricingSectionType>(), {
   topSection: undefined,
