@@ -1,13 +1,13 @@
 <template>
   <div class="flex justify-center items-center">
     <div
-      class="w-10 flex justify-center cursor-pointer group items-center self-stretch"
+      class="w-12 flex justify-center cursor-pointer group items-center self-stretch"
       @click="prevSlide"
     >
       <FontAwesomeIcon
         v-if="displayLeftArrow"
         icon="arrow-left"
-        class="text-[#98a2b3] group-hover:text-[#4b5563] group-hover:-translate-x-5 transition-all duration-300"
+        class="text-[#98a2b3] group-hover:text-[#4b5563] group-hover:-translate-x-4 transition-all duration-300"
       />
     </div>
     <div class="swiper w-full overflow-hidden">
@@ -18,7 +18,7 @@
       >
         <slot></slot>
       </div>
-      <div class="flex gap-2 w-full justify-center mt-5">
+      <div class="flex gap-2 w-full justify-center mt-5 mb-3">
         <div
           v-for="i in totalSlides"
           :key="i"
@@ -29,13 +29,13 @@
       </div>
     </div>
     <div
-      class="w-10 flex justify-center cursor-pointer group items-center self-stretch"
+      class="w-12 flex justify-center cursor-pointer group items-center self-stretch"
       @click="nextSlide"
     >
       <FontAwesomeIcon
         v-if="displayRightArrow"
         icon="arrow-right"
-        class="text-[#98a2b3] group-hover:text-[#4b5563] group-hover:translate-x-5 transition-all duration-300"
+        class="text-[#98a2b3] group-hover:text-[#4b5563] group-hover:translate-x-4 transition-all duration-300"
       />
     </div>
   </div>

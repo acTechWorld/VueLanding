@@ -2,19 +2,19 @@
   <div class="featuresSection text-center gap-5 flex flex-col py-10" :style="sectionStyle">
     <div
       v-if="props.title"
-      class="featuresSection_title text-3xl md:text-4xl font-semibold max-w-[800px] mx-auto"
+      class="featuresSection_title text-4xl lg:text-[44px] font-semibold max-w-[800px] mx-auto"
     >
       {{ props.title }}
     </div>
     <div
       v-if="props.subtitle"
-      class="featuresSection_subtitle max-w-[800px] mx-auto text-lg md:text-xl"
+      class="featuresSection_subtitle max-w-[800px] mx-auto text-lg lg:text-xl"
     >
       {{ props.subtitle }}
     </div>
     <div
       v-if="props.features && props.features.length > 0"
-      class="featuresSection_features mt-10 flex flex-col gap-[100px]"
+      class="featuresSection_features mt-[100px] flex flex-col gap-[100px]"
     >
       <div
         v-for="(feature, idx) in props.features"
@@ -29,7 +29,7 @@
         >
           <div
             v-if="feature.label"
-            class="featuresSection_feature_label text-2xl md:text-3xl font-semibold"
+            class="featuresSection_feature_label text-3xl md:text-4xl font-semibold"
           >
             {{ feature.label }}
           </div>
@@ -47,7 +47,7 @@
               class="featuresSection_feature_point font-semibold"
             >
               <ScrollTransitionContainer>
-                <FontAwesomeIcon icon="check" size="xl" class="mr-2" /> {{ point }}
+                <FontAwesomeIcon icon="check" size="lg" class="mr-2" /> {{ point }}
               </ScrollTransitionContainer>
             </div>
           </div>

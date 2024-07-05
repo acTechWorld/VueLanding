@@ -2,7 +2,7 @@
   <SwiperComponent
     :animation-type="props.animationType"
     :infinite="props.infinite"
-    class="socialProof"
+    class="socialProof pt-12"
   >
     <div
       v-for="(data, key) in props.datas"

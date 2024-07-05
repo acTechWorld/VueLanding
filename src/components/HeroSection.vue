@@ -1,26 +1,31 @@
 <template>
   <div
-    class="heroSection md:flex flex-col mx-auto"
+    class="heroSection lg:flex flex-col mx-auto"
     :class="{
-      'md:flex-row max-w-full': isHalfSized,
-      'md:pb-[100px]': props.type === 'vertical' && hasMediaContent
+      'lg:flex-row max-w-full': isHalfSized,
+      'lg:pb-[100px]': props.type === 'vertical' && hasMediaContent
     }"
     :style="sectionStyle"
   >
     <div
       :class="{
-        'md:w-1/2 md:gap-10 md:py-10 md:text-left max-w-[1400px]': isHalfSized
+        'lg:w-1/2 lg:gap-10 lg:py-10 lg:text-left lg:items-start': isHalfSized
       }"
-      class="heroSection_first h-[100vh] flex flex-col gap-10 justify-center px-12 py-20 text-center w-full"
+      class="heroSection_first h-[100vh] flex flex-col gap-10 justify-center px-12 py-20 text-center items-center w-full"
     >
-      <div v-if="props.title" class="heroSection_title text-5xl font-semibold">
+      <div
+        v-if="props.title"
+        class="heroSection_title text-4xl md:text-[44px] lg:text-5xl font-semibold max-w-[640px]"
+      >
         {{ props.title }}
       </div>
-      <div v-if="props.subtitle" class="heroSection_subtitle text-lg">{{ props.subtitle }}</div>
+      <div v-if="props.subtitle" class="heroSection_subtitle text-lg max-w-[640px]">
+        {{ props.subtitle }}
+      </div>
       <div
         v-if="props.ctaButtons && props.ctaButtons?.length > 0"
-        class="heroSection_ctaButtons flex gap-4 justify-center"
-        :class="{ 'md:justify-start': isHalfSized }"
+        class="heroSection_ctaButtons flex gap-4 justify-center max-w-[640px]"
+        :class="{ 'lg:justify-start': isHalfSized }"
       >
         <CTAButton
           v-for="(ctaButton, idx) in props.ctaButtons"
@@ -34,17 +39,17 @@
     <div
       v-if="hasMediaContent"
       class="heroSection_second w-full mx-auto -mt-[20vh] relative"
-      :class="[isDefaultType ? 'md:w-1/2 md:mt-0 md:mx-0' : 'md:w-4/5 max-w-[1400px]']"
+      :class="[isDefaultType ? 'lg:w-1/2 lg:mt-0 lg:mx-0' : 'lg:w-4/5']"
     >
       <img
         v-if="props.img"
         :src="props.img"
         class="heroSection_img object-cover w-full"
-        :class="{ 'md:h-full': isHalfSized }"
+        :class="{ 'lg:h-full': isHalfSized }"
       />
       <VideoComponent
         v-else-if="props.video"
-        :class="{ 'md:h-full': isHalfSized }"
+        :class="{ 'lg:h-full': isHalfSized }"
         :video="props.video"
         :play-button="props.overlayVideoPlayer"
         class="heroSection_video"
