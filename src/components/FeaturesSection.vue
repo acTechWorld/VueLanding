@@ -14,20 +14,18 @@
     </div>
     <div
       v-if="props.features && props.features.length > 0"
-      class="featuresSection_features mt-[100px] flex flex-col"
+      class="featuresSection_features mt-[50px] flex flex-col"
     >
       <div
         v-for="(feature, idx) in props.features"
         :key="`feature_${idx}`"
-        class="featuresSection_feature py-[50px]"
+        class="featuresSection_feature py-[50px] md:py-[75px] lg:py-[100px]"
         :style="featureStyle(feature)"
       >
         <div
           class="featuresSection_feature_container flex flex-col items-center gap-10"
-          :class="[
-            idx % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row',
-            props.contentWidth ? `max-w-[${props.contentWidth}px] mx-auto` : ''
-          ]"
+          :class="[idx % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row']"
+          :style="contentWidthStyle"
         >
           <div
             :class="[feature.img || feature.video ? 'lg:w-1/2 text-left' : 'w-full']"
@@ -118,6 +116,14 @@ const sectionStyle = computed(() => ({
   color: getTxtColor(props.color, props.themeColor),
   backgroundColor: getBgColor(props.bgColor, props.themeColor)
 }))
+
+const contentWidthStyle = computed(() => {
+  if (props.contentWidth) {
+    return { margin: '0 auto', maxWidth: `${props.contentWidth}px` }
+  } else {
+    return ''
+  }
+})
 
 /** METHODS */
 const featureStyle = (feature: FeatureType) => ({

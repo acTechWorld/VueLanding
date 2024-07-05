@@ -11,7 +11,7 @@
     />
     <div
       v-if="hasPricings"
-      class="pricingSection_pricings flex flex-col sm:flex-row gap-4 justify-center p-4"
+      class="pricingSection_pricings flex flex-col sm:flex-row gap-4 justify-center p-6"
       :style="bottomStyle"
     >
       <div
@@ -96,7 +96,7 @@ const bottomStyle = computed(() => ({
 
 /** METHODS */
 const getPricing = (amount: number, currency?: string, frequency?: string) => {
-  return `${amount}${currency || '$'}/${frequency || 'year'}`
+  return `${amount}${currency || '$'}${frequency ? '/' + frequency : ''}`
 }
 const pricingStyle = (pricing: Pricing) => {
   const color = getTxtColor(pricing.color, pricing.themeColor)
