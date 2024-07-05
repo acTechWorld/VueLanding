@@ -82,6 +82,7 @@ export type FeaturesSectionType = {
   bgColor?: `#${string}`
   color?: `#${string}`
   themeColor?: ThemeColor
+  contentWidth?: number
 }
 
 export type FooterSectionType = {

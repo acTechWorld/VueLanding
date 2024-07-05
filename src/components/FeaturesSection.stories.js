@@ -29,6 +29,7 @@ export default {
         bgColor?: \`#\${string}\`
         color?: \`#\${string}\`
         themeColor?: 'primary' | 'secondary' | 'tertiary'
+        contentWidth?: 'number'
         ctaButtons?: {
           name: string
           label: string
@@ -58,7 +59,7 @@ export default {
 const Template = (args) => ({
   components: { FeaturesSection },
   setup: () => ({ args }),
-  template: '<FeaturesSection v-bind="args" class="max-w-[1300px] mx-auto"/>'
+  template: '<FeaturesSection v-bind="args"/>'
 })
 
 export const Default = Template.bind({})
@@ -69,6 +70,7 @@ Default.args = {
   bgColor: '#ffffff',
   color: '#000000',
   themeColor: 'primary',
+  contentWidth: 1300,
   features: [
     {
       label: 'Share team imboxes',
