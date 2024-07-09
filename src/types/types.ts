@@ -107,6 +107,33 @@ export type FooterSectionType = {
   }
 }
 
+export type HeaderSubMenuItemType = {
+  name: string
+  label: string
+  subtitle?: string
+  icon?: IconName
+  img?: string
+  bgColor?: `#${string}`
+  color?: `#${string}`
+  themeColor?: ThemeColor
+}
+
+export type HeaderSectionType = {
+  companyLogo?: string
+  companyName?: string
+  sticky?: boolean
+  menuItems?: {
+    name?: string
+    label?: string
+    category?: string
+    large?: boolean
+    bgColor?: `#${string}`
+    color?: `#${string}`
+    themeColor?: ThemeColor
+    subMenuItems?: HeaderSubMenuItemType[]
+  }[]
+}
+
 export type HeroSectionType = {
   type?: 'default' | 'vertical'
   title?: string
