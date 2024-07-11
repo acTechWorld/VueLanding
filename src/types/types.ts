@@ -122,6 +122,7 @@ export type HeaderSectionType = {
   companyLogo?: string
   companyName?: string
   sticky?: boolean
+  transparent?: boolean
   menuItems?: {
     name?: string
     label?: string
@@ -132,6 +133,9 @@ export type HeaderSectionType = {
     themeColor?: ThemeColor
     subMenuItems?: HeaderSubMenuItemType[]
   }[]
+  bgColor?: `#${string}`
+  color?: `#${string}`
+  themeColor?: ThemeColor
 }
 
 export type HeroSectionType = {

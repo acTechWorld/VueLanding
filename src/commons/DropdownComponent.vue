@@ -7,7 +7,7 @@
     <div class="h-full flex items-center"><slot name="header" /></div>
     <div
       :style="styleDropdownList"
-      class="hidden group-hover:block group-hover:translate-y-0 transition-all duration-300 absolute rounded-lg -translate-x-1/2 overflow-hidden border-[linear-gradient(rgb(0_0_0/5%)_0_0)] border"
+      class="hidden group-hover:block group-hover:translate-y-0 transition-all duration-300 absolute rounded-lg -translate-x-1/2 overflow-hidden border"
     >
       <slot name="content" />
     </div>

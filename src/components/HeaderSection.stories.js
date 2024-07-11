@@ -40,9 +40,16 @@ Default.args = {
           label: 'Overview',
           icon: 'arrow-right',
           subtitle: 'See the overview of our biggest project, go to the overview page',
-          img: 'logo_transparent.png'
+          img: 'logo_transparent.png',
+          themeColor: 'tertiary'
         },
-        { name: 'features', label: 'Features', icon: 'arrow-right', img: 'logo_transparent.png' },
+        {
+          name: 'features',
+          label: 'Features',
+          icon: 'arrow-right',
+          img: 'logo_transparent.png',
+          themeColor: 'primary'
+        },
         { name: 'solutions', label: 'Solutions', icon: 'arrow-right' },
         { name: 'tutorials', label: 'Tutorials', icon: 'arrow-right' },
         { name: 'pricing', label: 'Pricing', icon: 'arrow-right' },
@@ -73,5 +80,6 @@ Default.args = {
     }
   ],
   companyName: 'VueLanding',
-  companyLogo: 'logo_transparent.png'
+  companyLogo: 'logo_transparent.png',
+  themeColor: 'secondary'
 }

@@ -1,12 +1,12 @@
 <template>
   <div
     class="duration-300 transition-all flex flex-col"
-    :class="[displayMobileDropdown ? 'h-[100vh] max-h-[100vh]' : 'h-14 max-h-14']"
+    :class="[displayMobileDropdown ? 'h-[100vh] max-h-[100vh] overflow-scroll' : 'h-14 max-h-14']"
   >
     <div
       class="flex gap-10 font-semibold h-14 px-4"
       :style="sectionStyle"
-      :class="{ 'sticky top-0': props.sticky }"
+      :class="{ 'sticky top-0': props.sticky, '!bg-[transparent]': props.transparent }"
     >
       <div
         v-if="props.companyLogo || props.companyName"
@@ -98,13 +98,50 @@
     <div
       class="flex-1 md:hidden bg-bg-secondary transition-all duration-300"
       :class="[displayMobileDropdown ? 'opacity-100' : 'opacity-0']"
-    ></div>
+      :style="sectionStyle"
+    >
+      <div
+        v-for="(menuItem, idx) in props.menuItems"
+        :key="`menuItem_${idx}_mobile`"
+        class="font-semibold border-b"
+      >
+        <AccordionComponent v-if="menuItem.category" class="[&_svg]:mr-5">
+          <template #header>
+            <div class="px-5">{{ menuItem.category }}</div>
+          </template>
+          <template #content>
+            <div class="flex flex-col pb-4">
+              <div
+                v-for="(subMenuItem, idxSubMenu) in menuItem.subMenuItems"
+                :key="`menuItem_${idx}_${idxSubMenu}_mobile`"
+                class="font-medium cursor-pointer py-2 flex gap-2 px-7 items-center"
+                :style="subMenuItemStyle(subMenuItem)"
+              >
+                <img v-if="subMenuItem.img" :src="subMenuItem.img" class="h-8" />
+                <div class="flex flex-col gap-1">
+                  <div class="font-medium group-hover/sub:font-semibold">
+                    {{ subMenuItem.label }}
+                  </div>
+                  <div v-if="subMenuItem.subtitle" class="text-sm line-clamp-2">
+                    {{ subMenuItem.subtitle }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </AccordionComponent>
+        <div v-else class="py-4 px-5">
+          {{ menuItem.label }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { HeaderSectionType, HeaderSubMenuItemType } from '@/types/types'
 import DropdownComponent from '@/commons/DropdownComponent.vue'
+import AccordionComponent from '@/commons/AccordionComponent.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { getBgColor, getTxtColor } from '@/utils/utils'
 import { computed, ref } from 'vue'
@@ -115,7 +152,8 @@ const props = withDefaults(defineProps<HeaderSectionType>(), {
   color: undefined,
   themeColor: undefined,
   bgColor: undefined,
-  sticky: false
+  sticky: false,
+  transparent: false
 })
 
 const displayMobileDropdown = ref(false)
@@ -128,7 +166,13 @@ const sectionStyle = computed(() => ({
 
 /** METHODS **/
 const subMenuItemStyle = (subMenuItem: HeaderSubMenuItemType) => ({
-  color: getTxtColor(subMenuItem.color, subMenuItem.themeColor),
-  backgroundColor: getBgColor(subMenuItem.bgColor, subMenuItem.themeColor)
+  color: getTxtColor(
+    subMenuItem.color || (subMenuItem.themeColor ? undefined : props.color),
+    subMenuItem.themeColor || props.themeColor
+  ),
+  backgroundColor: getBgColor(
+    subMenuItem.bgColor || (subMenuItem.themeColor ? undefined : props.bgColor),
+    subMenuItem.themeColor || props.themeColor
+  )
 })
 </script>
