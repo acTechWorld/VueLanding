@@ -46,6 +46,7 @@
                     menuItem.large ? 'w-[250px]' : 'w-[200px]'
                   ]"
                   :style="subMenuItemStyle(subMenuItem)"
+                  @click="handleClickPage({ category: menuItem.category, page: subMenuItem.name })"
                 >
                   <img
                     v-if="subMenuItem.img && menuItem.large"
@@ -69,7 +70,7 @@
               </template>
             </DropdownComponent>
           </div>
-          <div v-else class="cursor-pointer">
+          <div v-else class="cursor-pointer" @click="handleClickPage({ page: menuItem.name })">
             {{ menuItem.label }}
           </div>
         </div>
@@ -85,7 +86,7 @@
           @click="displayMobileDropdown = true"
         />
         <FontAwesomeIcon
-          size="lg"
+          size="xl"
           icon="xmark"
           class="transition-all duration-300 col-start-1 row-start-1"
           :class="
@@ -116,6 +117,7 @@
                 :key="`menuItem_${idx}_${idxSubMenu}_mobile`"
                 class="font-medium cursor-pointer py-2 flex gap-2 px-7 items-center"
                 :style="subMenuItemStyle(subMenuItem)"
+                @click="handleClickPage({ category: menuItem.category, page: subMenuItem.name })"
               >
                 <img v-if="subMenuItem.img" :src="subMenuItem.img" class="h-8" />
                 <div class="flex flex-col gap-1">
@@ -130,7 +132,11 @@
             </div>
           </template>
         </AccordionComponent>
-        <div v-else class="py-4 px-5">
+        <div
+          v-else
+          class="py-4 px-5 cursor-pointer"
+          @click="handleClickPage({ page: menuItem.name })"
+        >
           {{ menuItem.label }}
         </div>
       </div>
@@ -144,7 +150,9 @@ import DropdownComponent from '@/commons/DropdownComponent.vue'
 import AccordionComponent from '@/commons/AccordionComponent.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { getBgColor, getTxtColor } from '@/utils/utils'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useWindowSize } from '@vueuse/core'
+
 const props = withDefaults(defineProps<HeaderSectionType>(), {
   companyLogo: undefined,
   companyName: undefined,
@@ -157,12 +165,16 @@ const props = withDefaults(defineProps<HeaderSectionType>(), {
 })
 
 const displayMobileDropdown = ref(false)
+const emits = defineEmits(['clickPage'])
+const { width } = useWindowSize()
 
 /** COMPUTED **/
 const sectionStyle = computed(() => ({
   color: getTxtColor(props.color, props.themeColor),
   backgroundColor: getBgColor(props.bgColor, props.themeColor)
 }))
+
+const isMobileScreenSize = computed(() => width.value < 768)
 
 /** METHODS **/
 const subMenuItemStyle = (subMenuItem: HeaderSubMenuItemType) => ({
@@ -174,5 +186,14 @@ const subMenuItemStyle = (subMenuItem: HeaderSubMenuItemType) => ({
     subMenuItem.bgColor || (subMenuItem.themeColor ? undefined : props.bgColor),
     subMenuItem.themeColor || props.themeColor
   )
+})
+
+const handleClickPage = ({ category, page }: { category?: string; page: string }) => {
+  emits('clickPage', category ? { category: category, page: page } : { page: page })
+}
+
+/** WATCH */
+watch(isMobileScreenSize, (newValue) => {
+  if (!newValue) displayMobileDropdown.value = false
 })
 </script>
