@@ -8,6 +8,7 @@ import NewsletterSection from '@/components/NewsletterSection.vue'
 import PricingSection from '@/components/PricingSection.vue'
 import SocialProofSection from '@/components/SocialProofSection.vue'
 import TeamSection from '@/components/TeamSection.vue'
+import HeaderSection from './components/HeaderSection.vue'
 import FontAwesomePlugin from '@/plugins/fontawesome'
 import './assets/tailwind.css'
 
@@ -21,7 +22,8 @@ const components = {
   NewsletterSection,
   PricingSection,
   SocialProofSection,
-  TeamSection
+  TeamSection,
+  HeaderSection
 }
 const install = (app) => {
   app.use(FontAwesomePlugin)
@@ -43,5 +45,6 @@ export {
   NewsletterSection,
   PricingSection,
   SocialProofSection,
-  TeamSection
+  TeamSection,
+  HeaderSection
 }

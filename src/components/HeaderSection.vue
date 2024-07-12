@@ -1,12 +1,9 @@
 <template>
-  <div
-    class="duration-300 transition-all flex flex-col"
-    :class="[displayMobileDropdown ? 'h-[100vh] max-h-[100vh] overflow-scroll' : 'h-14 max-h-14']"
-  >
+  <div class="flex flex-col h-14 max-h-14" :class="[props.sticky ? 'sticky top-0' : 'relative']">
     <div
-      class="flex gap-10 font-semibold h-14 px-4"
+      class="flex gap-10 font-semibold h-14 px-4 z-10"
       :style="sectionStyle"
-      :class="{ 'sticky top-0': props.sticky, '!bg-[transparent]': props.transparent }"
+      :class="{ '!bg-[transparent]': props.transparent }"
     >
       <div
         v-if="props.companyLogo || props.companyName"
@@ -97,8 +94,8 @@
       </div>
     </div>
     <div
-      class="flex-1 md:hidden bg-bg-secondary transition-all duration-300"
-      :class="[displayMobileDropdown ? 'opacity-100' : 'opacity-0']"
+      class="md:hidden bg-bg-secondary transition-all duration-300 absolute pt-14 h-[100vh] overflow-scroll w-full"
+      :class="[displayMobileDropdown ? 'opacity-100 h-[100vh]' : 'opacity-0 h-0']"
       :style="sectionStyle"
     >
       <div
