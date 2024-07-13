@@ -17,9 +17,37 @@ export default {
       control: 'text',
       description: 'URL of the image to display'
     },
-    submitButtonName: {
-      control: 'text',
-      description: 'Label of the submit button'
+    submitButton: {
+      control: 'object',
+      description: `Content of the submit button:
+      
+      {
+        name: string
+        label: string
+        bgColor?: \`#\${string}\`
+        color?: \`#\${string}\`
+        themeColor?: 'primary' | 'secondary' | 'tertiary'
+      }`
+    },
+    options: {
+      control: 'object',
+      description: `List of fields displayed:
+        
+        - firstName
+        - lastName
+        - email
+        - phoneNumber
+        - companyName
+        - message
+        
+        type of each fields: 
+          {
+            displayed: boolean (is the field displayed)
+            required: boolean (is the field mandatory)
+            title: string (title of the field)
+            placeholder: (placeholder in the field)
+          }
+      `
     },
     bgColor: {
       control: 'color',
@@ -27,12 +55,12 @@ export default {
     },
     color: {
       control: 'color',
-      description: 'Text color of the hero section | type hexadecimal'
+      description: 'Text color of the contact section | type hexadecimal'
     },
     themeColor: {
       options: [null, 'primary', 'secondary', 'tertiary'],
       control: { type: 'radio' },
-      description: 'Theme color for the hero section'
+      description: 'Theme color for the contact section'
     }
   },
   args: { onSubmit: fn() }
@@ -49,7 +77,12 @@ Default.args = {
   title: 'Get in touch',
   subtitle: 'Our friendly team would love to hear from you',
   img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-  submitButtonName: 'Send',
+  submitButton: {
+    name: 'submit',
+    label: 'Send',
+    icon: 'envelope',
+    themeColor: 'tertiary'
+  },
   options: {
     firstName: { displayed: true, required: true, title: 'First name', placeholder: 'First name' },
     lastName: { displayed: true, required: true, title: 'Last name', placeholder: 'Last name' },
@@ -72,5 +105,7 @@ Default.args = {
       title: 'Message',
       placeholder: 'Leave us a message...'
     }
-  }
+  },
+  bgColor: '#fff',
+  color: '#000'
 }

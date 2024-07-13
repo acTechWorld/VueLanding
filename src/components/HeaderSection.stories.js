@@ -6,6 +6,14 @@ export default {
   component: HeaderSection,
   args: { onClickPage: fn() },
   argTypes: {
+    companyLogo: {
+      control: 'string',
+      description: 'logo of the company'
+    },
+    companyName: {
+      control: 'string',
+      description: 'name of the company'
+    },
     menuItems: {
       control: 'object',
       description: `Menu items (simple menu item or with sub-menu items)
@@ -13,10 +21,51 @@ export default {
       menuItems type description:
 
       (
-        | { [category: string]: { name: string; label: string }[] }
-        | { name: string; label: string }
+          { 
+            name?: string
+            label?: string
+            category?: string
+            large?: boolean
+            subMenuItems: {
+              name: string
+              label: string
+              subtitle?: string
+              icon?: IconName
+              img?: string
+              bgColor?: \`#\${string}\`
+              color?: \`#\${string}\`
+              themeColor?: 'primary' | 'secondary' | 'tertiary'
+            }
+            bgColor?: \`#\${string}\`
+            color?: \`#\${string}\`
+            themeColor?: 'primary' | 'secondary' | 'tertiary'
+          }
       )[]
+
+      - simple menu item: name + label
+      - menu item with sub-menu: category + subMenuItems
       `
+    },
+    sticky: {
+      control: 'boolean',
+      description: 'is nav bar sticky ?'
+    },
+    transparent: {
+      control: 'boolean',
+      description: 'is background transparent ?'
+    },
+    bgColor: {
+      control: 'color',
+      description: 'Background color of the section | type hexadecimal'
+    },
+    color: {
+      control: 'color',
+      description: 'Text color of the section | type hexadecimal'
+    },
+    themeColor: {
+      options: [null, 'primary', 'secondary', 'tertiary'],
+      control: { type: 'radio' },
+      description: 'Theme color for the section'
     }
   }
 }

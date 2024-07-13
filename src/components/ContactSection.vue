@@ -1,5 +1,5 @@
 <template>
-  <div class="contactSection flex flex-col lg:flex-row gap-5">
+  <div class="contactSection flex flex-col lg:flex-row gap-5" :style="sectionStyle">
     <div class="contactSection_left w-full lg:w-1/2 p-10">
       <div class="contactSection_left_container max-w-[600px] mx-auto flex flex-col gap-10">
         <div v-if="props.title || props.subtitle" class="contactSection_top flex flex-col gap-5">
@@ -72,10 +72,8 @@
           />
         </div>
         <CTAButton
-          name="submit"
-          :label="props.submitButtonName"
+          v-bind="props.submitButton"
           :disabled="!sendAvailable"
-          icon="envelope"
           class="contactSection_submitButton min-w-[120px]"
           @click="handleSubmit"
         />
@@ -93,12 +91,18 @@
 import CTAButton from '@/commons/CTAButton.vue'
 import FormInputText from '@/commons/FormInputText.vue'
 import { ContactSectionType } from '@/types/types'
+import { getBgColor, getTxtColor } from '@/utils/utils'
 import { computed, ref } from 'vue'
 const props = withDefaults(defineProps<ContactSectionType>(), {
   title: undefined,
   subtitle: undefined,
   img: undefined,
-  submitButtonName: 'Send',
+  submitButton: () => ({
+    name: 'submit',
+    label: 'Send',
+    icon: 'envelope',
+    themeColor: 'tertiary'
+  }),
   options: () => ({
     firstName: { displayed: true, required: true, title: 'First name', placeholder: 'First name' },
     lastName: { displayed: true, required: true, title: 'Last name', placeholder: 'Last name' },
@@ -170,6 +174,11 @@ const sendAvailable = computed(
     phoneNumberValid.value &&
     messageValid.value
 )
+
+const sectionStyle = computed(() => ({
+  color: getTxtColor(props.color, props.themeColor),
+  backgroundColor: getBgColor(props.bgColor, props.themeColor)
+}))
 
 /** METHODS */
 const handleSubmit = () => {

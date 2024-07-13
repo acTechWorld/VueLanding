@@ -232,7 +232,7 @@ export type ContactSectionType = {
   title?: string
   subtitle?: string
   img?: string
-  submitButtonName?: string
+  submitButton?: CTAButtonType
   options?: {
     firstName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
     lastName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
