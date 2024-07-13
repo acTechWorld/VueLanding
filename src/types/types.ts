@@ -227,3 +227,21 @@ export type TeamSectionType = {
   animated?: boolean
   membersClickable?: boolean
 }
+
+export type ContactSectionType = {
+  title?: string
+  subtitle?: string
+  img?: string
+  submitButtonName?: string
+  options?: {
+    firstName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
+    lastName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
+    email?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
+    companyName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
+    phoneNumber?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
+    message?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
+  }
+  bgColor?: `#${string}`
+  color?: `#${string}`
+  themeColor?: ThemeColor
+}

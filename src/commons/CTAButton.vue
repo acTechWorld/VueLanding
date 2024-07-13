@@ -1,17 +1,22 @@
 <template>
   <div
     :style="ctaButtonStyle"
-    class="cursor-pointer w-fit flex gap-2 items-center justify-center group"
-    :class="{
-      'rounded-lg px-4 py-2 hover:bg-[linear-gradient(rgb(0_0_0/20%)_0_0);] text-center':
-        !isTransparent
-    }"
+    class="w-fit flex gap-2 items-center justify-center group"
+    :class="[
+      {
+        'rounded-lg px-4 py-2 text-center': !isTransparent
+      },
+      props.disabled
+        ? 'opacity-50'
+        : 'cursor-pointer hover:bg-[linear-gradient(rgb(0_0_0/20%)_0_0);]'
+    ]"
     @click.stop="handleClick"
   >
     {{ props.label }}
     <FontAwesomeIcon
       v-if="props.icon"
-      class="group-hover:translate-x-2 transition-all"
+      class="transition-all"
+      :class="{ 'group-hover:translate-x-2': !props.disabled }"
       :icon="props.icon"
     />
   </div>
@@ -31,13 +36,15 @@ const props = withDefaults(
     themeColor?: ThemeColor
     icon?: IconName
     type?: 'default' | 'transparent'
+    disabled?: boolean
   }>(),
   {
     bgColor: undefined,
     color: undefined,
     themeColor: undefined,
     icon: undefined,
-    type: 'default'
+    type: 'default',
+    disabled: false
   }
 )
 
