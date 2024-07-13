@@ -80,6 +80,6 @@ Default.args = {
     }
   ],
   companyName: 'VueLanding',
-  companyLogo: 'logo_transparent.png',
+  companyLogo: 'logo_icon.png',
   themeColor: 'secondary'
 }

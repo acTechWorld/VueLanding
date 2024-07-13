@@ -1,7 +1,10 @@
 <template>
-  <div class="flex flex-col h-14 max-h-14" :class="[props.sticky ? 'sticky top-0' : 'relative']">
+  <div
+    class="flex flex-col h-14 max-h-14 z-200"
+    :class="[props.sticky ? 'sticky top-0' : 'relative']"
+  >
     <div
-      class="flex gap-10 font-semibold h-14 px-4 z-10"
+      class="flex gap-[50px] font-semibold h-14 px-10 z-200"
       :style="sectionStyle"
       :class="{ '!bg-[transparent]': props.transparent }"
     >
@@ -9,7 +12,7 @@
         v-if="props.companyLogo || props.companyName"
         class="flex gap-2 items-center cursor-pointer"
       >
-        <img v-if="props.companyLogo" :src="props.companyLogo" class="h-full" />
+        <img v-if="props.companyLogo" :src="props.companyLogo" class="h-8" />
         <div v-if="props.companyName">
           {{ props.companyName }}
         </div>
@@ -18,7 +21,7 @@
         <div
           v-for="(menuItem, idx) in props.menuItems"
           :key="`menuItem_${idx}`"
-          class="px-2 items-center hidden md:flex"
+          class="px-3 items-center hidden md:flex"
         >
           <div v-if="menuItem.category" class="items-center flex h-full">
             <DropdownComponent
@@ -80,7 +83,7 @@
           :class="
             displayMobileDropdown ? 'opacity-0 scale-50 invisible' : 'opacity-100 scale-100 visible'
           "
-          @click="displayMobileDropdown = true"
+          @click="toggleMobileDropdown"
         />
         <FontAwesomeIcon
           size="xl"
@@ -89,7 +92,7 @@
           :class="
             displayMobileDropdown ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-50 invisible'
           "
-          @click="displayMobileDropdown = false"
+          @click="toggleMobileDropdown"
         />
       </div>
     </div>
@@ -162,7 +165,7 @@ const props = withDefaults(defineProps<HeaderSectionType>(), {
 })
 
 const displayMobileDropdown = ref(false)
-const emits = defineEmits(['clickPage'])
+const emits = defineEmits(['clickPage', 'toggleMobileDropdown'])
 const { width } = useWindowSize()
 
 /** COMPUTED **/
@@ -187,6 +190,11 @@ const subMenuItemStyle = (subMenuItem: HeaderSubMenuItemType) => ({
 
 const handleClickPage = ({ category, page }: { category?: string; page: string }) => {
   emits('clickPage', category ? { category: category, page: page } : { page: page })
+}
+
+const toggleMobileDropdown = () => {
+  displayMobileDropdown.value = !displayMobileDropdown.value
+  emits('toggleMobileDropdown', displayMobileDropdown)
 }
 
 /** WATCH */
