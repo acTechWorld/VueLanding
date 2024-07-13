@@ -54,21 +54,50 @@ export const Default = Template.bind({})
 Default.args = {
   topSection: {
     pages: {
-      Product: ['Overview', 'Features', 'Solutions', 'Tutorials', 'Pricing', 'Releases'],
-      Company: ['About us', 'Careers', 'Press', 'News', 'Media kit', 'Contact'],
-      Resources: ['Blog', 'Newsletter', 'Events', 'Help centre', 'Tutorials', 'Support'],
-      'Use cases': [
-        'Startups',
-        'Enterprise',
-        'Government',
-        'SaaS centre',
-        'Marketplaces',
-        'Ecommerce'
+      Product: [
+        { label: 'Overview', name: 'overview' },
+        { label: 'Features', name: 'features' },
+        { label: 'Solutions', name: 'solutions' },
+        { label: 'Tutorials', name: 'tutorials' },
+        { label: 'Pricing', name: 'pricing' },
+        { label: 'Releases', name: 'releases' }
       ],
-      Social: ['Twitter', 'LinkedIn', 'Facebook', 'Github', 'AngelList', 'Dribbble']
+      Company: [
+        { label: 'About us', name: 'aboutUs' },
+        { label: 'Careers', name: 'careers' },
+        { label: 'Press', name: 'press' },
+        { label: 'News', name: 'news' },
+        { label: 'Media kit', name: 'mediaKit' },
+        { label: 'Contact', name: 'contact' }
+      ],
+      Resources: [
+        { label: 'Blog', name: 'blog' },
+        { label: 'Newsletter', name: 'newsletter' },
+        { label: 'Events', name: 'events' },
+        { label: 'Help centre', name: 'helpCentre' },
+        { label: 'Tutorials', name: 'tutorials' },
+        { label: 'Support', name: 'support' }
+      ],
+      'Use cases': [
+        { label: 'Startups', name: 'startups' },
+        { label: 'Enterprise', name: 'enterprise' },
+        { label: 'Government', name: 'government' },
+        { label: 'SaaS centre', name: 'saasCentre' },
+        { label: 'Marketplaces', name: 'marketplaces' },
+        { label: 'Ecommerce', name: 'ecommerce' }
+      ],
+      Social: [
+        { label: 'Twitter', name: 'twitter' },
+        { label: 'LinkedIn', name: 'linkedIn' },
+        { label: 'Facebook', name: 'facebook' },
+        { label: 'Github', name: 'github' },
+        { label: 'AngelList', name: 'angelList' },
+        { label: 'Dribbble', name: 'dribbble' }
+      ]
     },
     text: 'Design amazing digital experiences that create more happy in the word',
     companyName: 'My landing page',
+    companyLogo: 'logo_icon.png',
     color: '#475467',
     bgColor: '#fff'
   },

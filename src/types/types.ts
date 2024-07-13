@@ -86,8 +86,9 @@ export type FeaturesSectionType = {
 }
 
 export type FooterSectionType = {
+  innerWidth?: number
   topSection?: {
-    pages?: { [category: string]: string[] }
+    pages?: { [category: string]: { name: string; label: string }[] }
     companyLogo?: string
     companyName?: string
     text?: string

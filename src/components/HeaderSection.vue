@@ -1,10 +1,10 @@
 <template>
   <div
-    class="flex flex-col h-14 max-h-14 z-200"
+    class="flex flex-col h-14 max-h-14 z-[200]"
     :class="[props.sticky ? 'sticky top-0' : 'relative']"
   >
     <div
-      class="flex gap-[50px] font-semibold h-14 px-10 z-200"
+      class="flex gap-[50px] font-semibold h-14 px-4 md:px-10 z-[200]"
       :style="sectionStyle"
       :class="{ '!bg-[transparent]': props.transparent }"
     >
