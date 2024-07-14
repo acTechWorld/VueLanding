@@ -137,7 +137,7 @@ Default.args = {
         }
       },
       {
-        id: 'entreprise',
+        id: 'enterprise',
         type: 'Enterprise plan',
         amount: 40,
         currency: '$',
@@ -155,47 +155,47 @@ Default.args = {
       {
         name: 'time',
         label: 'Access Time',
-        pricingValues: { basic: '7 days', business: 'Unlimited', entreprise: 'Unlimited' }
+        pricingValues: { basic: '7 days', business: 'Unlimited', enterprise: 'Unlimited' }
       },
       {
         name: 'users',
         label: 'Users',
-        pricingValues: { basic: '1', business: '1', entreprise: 'Unlimited' }
+        pricingValues: { basic: '1', business: '1', enterprise: 'Unlimited' }
       },
       {
         name: 'data',
         label: 'Data',
-        pricingValues: { basic: '1GB', business: '100GB', entreprise: 'Unlimited' }
+        pricingValues: { basic: '1GB', business: '100GB', enterprise: 'Unlimited' }
       },
-      { name: 'headerSection', label: 'Header Section', pricingValues: { entreprise: true } },
+      { name: 'headerSection', label: 'Header Section', pricingValues: { enterprise: true } },
       {
         name: 'pricingSection',
         label: 'Pricing Section',
-        pricingValues: { basic: true, business: true, entreprise: true }
+        pricingValues: { basic: true, business: true, enterprise: true }
       },
       {
         name: 'footerSection',
         label: 'Footer Section',
-        pricingValues: { business: true, entreprise: true }
+        pricingValues: { business: true, enterprise: true }
       },
       {
         name: 'socialProofSection',
         label: 'Social Proof Section',
-        pricingValues: { business: true, entreprise: true }
+        pricingValues: { business: true, enterprise: true }
       },
       {
         name: 'teamSection',
         label: 'Team Section',
-        pricingValues: { business: true, entreprise: true }
+        pricingValues: { business: true, enterprise: true }
       },
       {
         name: 'newsletterSection',
         label: 'Newsletter Section',
-        pricingValues: { basic: true, business: true, entreprise: true }
+        pricingValues: { basic: true, business: true, enterprise: true }
       },
-      { name: 'metricSection', label: 'Metric Section', pricingValues: { entreprise: true } },
-      { name: 'heroSection', label: 'Hero Section', pricingValues: { entreprise: true } },
-      { name: 'faqSection', label: 'FAQ Section', pricingValues: { entreprise: true } }
+      { name: 'metricSection', label: 'Metric Section', pricingValues: { enterprise: true } },
+      { name: 'heroSection', label: 'Hero Section', pricingValues: { enterprise: true } },
+      { name: 'faqSection', label: 'FAQ Section', pricingValues: { enterprise: true } }
     ]
   }
 }

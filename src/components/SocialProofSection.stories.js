@@ -1,7 +1,7 @@
 import SocialProofSection from './SocialProofSection.vue'
 
 export default {
-  title: 'Components/Social Proof',
+  title: 'Components/Social Proof Section',
   component: SocialProofSection,
   argTypes: {
     datas: {

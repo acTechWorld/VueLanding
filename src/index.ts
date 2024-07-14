@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection.vue'
 import MetricsSection from '@/components/MetricsSection.vue'
 import NewsletterSection from '@/components/NewsletterSection.vue'
 import PricingSectionCards from '@/components/PricingSectionCards.vue'
+import PricingSectionTable from '@/components/PricingSectionTable.vue'
 import SocialProofSection from '@/components/SocialProofSection.vue'
 import TeamSection from '@/components/TeamSection.vue'
 import HeaderSection from './components/HeaderSection.vue'
@@ -22,6 +23,7 @@ const components = {
   MetricsSection,
   NewsletterSection,
   PricingSectionCards,
+  PricingSectionTable,
   SocialProofSection,
   TeamSection,
   HeaderSection,
@@ -46,6 +48,7 @@ export {
   MetricsSection,
   NewsletterSection,
   PricingSectionCards,
+  PricingSectionTable,
   SocialProofSection,
   TeamSection,
   HeaderSection,
