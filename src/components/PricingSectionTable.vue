@@ -64,7 +64,10 @@
             :class="[
               {
                 'rounded-tl-lg': idx === 0,
-                'rounded-b-lg': idx === displayedFeaturesValues.length - 1
+                'rounded-bl-lg': idx === displayedFeaturesValues.length - 1,
+                'rounded-br-lg':
+                  idx === displayedFeaturesValues.length - 1 &&
+                  props.bottomSection.hideBottomPricingCTA
               }
             ]"
             :style="[styleTableColsNb, getFeatureStyle(idx)]"
@@ -118,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div class="pricingSection_pricings_mobile md:hidden flex flex-col items-center gap-10 pt-10">
+      <div class="pricingSection_pricings_mobile md:hidden flex flex-col items-center gap-10 py-10">
         <div
           v-for="pricing in props.bottomSection?.pricings"
           :key="`pricing_${pricing.id}`"
@@ -146,23 +149,25 @@
               @click="handleClickPricing(pricing.id)"
             />
           </div>
-          <div
-            v-for="(feature, idxFeature) in displayedFeaturesValues"
-            :key="`pricing_${pricing.id}_feature_${idxFeature}`"
-            class="pricingSection_pricingFeature_mobile flex h-[60px] cursor-pointer justify-between px-5 items-center"
-            :style="getFeatureStyle(idxFeature)"
-          >
-            <div class="pricingSection_pricingFeature_label_mobile">{{ feature.label }}</div>
-            <div class="pricingSection_pricingFeature_value_mobile">
-              <FontAwesomeIcon
-                v-if="feature.pricingValues.find((pv) => pv.id === pricing.id)?.value === true"
-                class="text-[#269126]"
-                icon="fa-regular fa-circle-check"
-                size="lg"
-              />
-              <span v-else>{{
-                feature.pricingValues.find((pv) => pv.id === pricing.id)?.value
-              }}</span>
+          <div class="pricingSection_pricingFeatures_mobile rounded-lg overflow-hidden">
+            <div
+              v-for="(feature, idxFeature) in displayedFeaturesValues"
+              :key="`pricing_${pricing.id}_feature_${idxFeature}`"
+              class="pricingSection_pricingFeature_mobile flex h-[60px] cursor-pointer justify-between px-5 items-center"
+              :style="getFeatureStyle(idxFeature)"
+            >
+              <div class="pricingSection_pricingFeature_label_mobile">{{ feature.label }}</div>
+              <div class="pricingSection_pricingFeature_value_mobile">
+                <FontAwesomeIcon
+                  v-if="feature.pricingValues.find((pv) => pv.id === pricing.id)?.value === true"
+                  class="text-[#269126]"
+                  icon="fa-regular fa-circle-check"
+                  size="lg"
+                />
+                <span v-else>{{
+                  feature.pricingValues.find((pv) => pv.id === pricing.id)?.value
+                }}</span>
+              </div>
             </div>
           </div>
           <div

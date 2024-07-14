@@ -45,23 +45,35 @@ export default {
         bgColor?: \`#\${string}\`
         themeColor?: 'primary' | 'secondary' | 'tertiary'
         pricings?: {
-          type?: string;
-          amount: number;
-          currency?: string;
-          frequency?: string;
-          description?: string;
-          ctaButtons?: {
+          id: string | number
+          amount: number
+          currency?: string
+          frequency?: string
+          type?: string
+          description?: string
+          ctaButton?: {
             name: string
             label: string
             bgColor?: \`#\${string}\`
             color?: \`#\${string}\`
             themeColor?: 'primary' | 'secondary' | 'tertiary'
-          }[];
-          features?: string[];
+          }
           bgColor?: \`#\${string}\`;
           color?: \`#\${string}\`;
           themeColor?: 'primary' | 'secondary' | 'tertiary';
         }[]
+        features?: {
+          name: string
+          label: string
+          pricingValues: { 
+            [princingId: string]: boolean | string
+          }[]
+        }[]
+        hideBottomPricingCTA?: boolean
+        oddFeatureColor?: \`#\${string}\`;
+        oddFeatureBgColor?: \`#\${string}\`;
+        evenFeatureColor?: \`#\${string}\`;
+        evenFeatureBgColor?: \`#\${string}\`;
       }
       `
     }
@@ -128,48 +140,6 @@ Default.args = {
         id: 'entreprise',
         type: 'Enterprise plan',
         amount: 40,
-        currency: '$',
-        frequency: 'mth',
-        color: '#222',
-        bgColor: '#fff',
-        ctaButton: {
-          name: 'getStarted',
-          label: 'Get started',
-          themeColor: 'tertiary'
-        }
-      },
-      {
-        id: 'basic',
-        type: 'Basic plan',
-        amount: 10,
-        currency: '$',
-        frequency: 'mth',
-        color: '#222',
-        bgColor: '#fff',
-        ctaButton: {
-          name: 'getStarted',
-          label: 'Get started',
-          themeColor: 'tertiary'
-        }
-      },
-      {
-        id: 'basic',
-        type: 'Basic plan',
-        amount: 10,
-        currency: '$',
-        frequency: 'mth',
-        color: '#222',
-        bgColor: '#fff',
-        ctaButton: {
-          name: 'getStarted',
-          label: 'Get started',
-          themeColor: 'tertiary'
-        }
-      },
-      {
-        id: 'basic',
-        type: 'Basic plan',
-        amount: 10,
         currency: '$',
         frequency: 'mth',
         color: '#222',
