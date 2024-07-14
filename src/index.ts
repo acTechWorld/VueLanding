@@ -5,11 +5,12 @@ import FooterSection from '@/components/FooterSection.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import MetricsSection from '@/components/MetricsSection.vue'
 import NewsletterSection from '@/components/NewsletterSection.vue'
-import PricingSection from '@/components/PricingSection.vue'
+import PricingSectionCards from '@/components/PricingSectionCards.vue'
 import SocialProofSection from '@/components/SocialProofSection.vue'
 import TeamSection from '@/components/TeamSection.vue'
 import HeaderSection from './components/HeaderSection.vue'
 import FontAwesomePlugin from '@/plugins/fontawesome'
+import ContactSection from './components/ContactSection.vue'
 import './assets/tailwind.css'
 
 const components = {
@@ -20,10 +21,11 @@ const components = {
   HeroSection,
   MetricsSection,
   NewsletterSection,
-  PricingSection,
+  PricingSectionCards,
   SocialProofSection,
   TeamSection,
-  HeaderSection
+  HeaderSection,
+  ContactSection
 }
 const install = (app) => {
   app.use(FontAwesomePlugin)
@@ -43,8 +45,9 @@ export {
   HeroSection,
   MetricsSection,
   NewsletterSection,
-  PricingSection,
+  PricingSectionCards,
   SocialProofSection,
   TeamSection,
-  HeaderSection
+  HeaderSection,
+  ContactSection
 }

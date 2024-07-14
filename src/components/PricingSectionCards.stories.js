@@ -1,9 +1,9 @@
-import PricingSection from './PricingSection.vue'
+import PricingSectionCards from './PricingSectionCards.vue'
 import { fn } from '@storybook/test'
 
 export default {
-  title: 'Components/Pricing Section',
-  component: PricingSection,
+  title: 'Components/Pricing Section/Cards',
+  component: PricingSectionCards,
   args: {
     onClickTopSectionCtaButton: fn(),
     onClickPricingCtaButton: fn(),
@@ -70,9 +70,9 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { PricingSection },
+  components: { PricingSectionCards },
   setup: () => ({ args }),
-  template: '<PricingSection v-bind="args"/>'
+  template: '<PricingSectionCards v-bind="args"/>'
 })
 
 export const Default = Template.bind({})

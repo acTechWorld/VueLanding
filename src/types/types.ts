@@ -13,7 +13,7 @@ export type CTAButtonType = {
   themeColor?: ThemeColor
 }
 
-export type Pricing = {
+export type CardPricing = {
   amount: number
   currency?: string
   frequency?: string
@@ -21,6 +21,19 @@ export type Pricing = {
   description?: string
   ctaButtons?: CTAButtonType[]
   features?: string[]
+  bgColor?: `#${string}`
+  color?: `#${string}`
+  themeColor?: ThemeColor
+}
+
+export type TablePricing = {
+  id: string | number
+  amount: number
+  currency?: string
+  frequency?: string
+  type?: string
+  description?: string
+  ctaButton?: CTAButtonType
   bgColor?: `#${string}`
   color?: `#${string}`
   themeColor?: ThemeColor
@@ -185,7 +198,7 @@ export type NewsletterSectionType = {
   themeColor?: ThemeColor
 }
 
-export type PricingSectionType = {
+export type PricingSectionCardsType = {
   topSection?: {
     title?: string
     subtitle?: string
@@ -197,7 +210,33 @@ export type PricingSectionType = {
   bottomSection?: {
     bgColor?: `#${string}`
     themeColor?: ThemeColor
-    pricings?: Pricing[]
+    pricings?: CardPricing[]
+  }
+}
+
+export type PricingSectionTableType = {
+  topSection?: {
+    title?: string
+    subtitle?: string
+    ctaButtons?: CTAButtonType[]
+    bgColor?: `#${string}`
+    color?: `#${string}`
+    themeColor?: ThemeColor
+  }
+  bottomSection?: {
+    bgColor?: `#${string}`
+    themeColor?: ThemeColor
+    pricings?: TablePricing[]
+    features?: {
+      name: string
+      label: string
+      pricingValues: { [princingId: string]: boolean | string }[]
+    }[]
+    hideBottomPricingCTA?: boolean
+    oddFeatureColor?: `#${string}`
+    oddFeatureBgColor?: `#${string}`
+    evenFeatureColor?: `#${string}`
+    evenFeatureBgColor?: `#${string}`
   }
 }
 

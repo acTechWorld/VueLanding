@@ -1,6 +1,6 @@
 <template>
   <div class="contactSection flex flex-col lg:flex-row gap-5" :style="sectionStyle">
-    <div class="contactSection_left w-full lg:w-1/2 p-10">
+    <div class="contactSection_left w-full p-10" :class="{ 'lg:w-1/2': props.img }">
       <div class="contactSection_left_container max-w-[600px] mx-auto flex flex-col gap-10">
         <div v-if="props.title || props.subtitle" class="contactSection_top flex flex-col gap-5">
           <div v-if="props.title" class="contactSection_title text-3xl md:text-4xl font-semibold">

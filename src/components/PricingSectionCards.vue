@@ -70,9 +70,9 @@
 import CTASection from '@/components/CTASection.vue'
 import CTAButton from '@/commons/CTAButton.vue'
 import { computed } from 'vue'
-import type { Pricing, PricingSectionType } from '@/types/types'
+import type { CardPricing, PricingSectionCardsType } from '@/types/types'
 import { getBgColor, getTxtColor, hexToRgb } from '@/utils/utils'
-const props = withDefaults(defineProps<PricingSectionType>(), {
+const props = withDefaults(defineProps<PricingSectionCardsType>(), {
   topSection: undefined,
   bottomSection: undefined
 })
@@ -98,7 +98,7 @@ const bottomStyle = computed(() => ({
 const getPricing = (amount: number, currency?: string, frequency?: string) => {
   return `${amount}${currency || '$'}${frequency ? '/' + frequency : ''}`
 }
-const pricingStyle = (pricing: Pricing) => {
+const pricingStyle = (pricing: CardPricing) => {
   const color = getTxtColor(pricing.color, pricing.themeColor)
   return {
     color: color,
@@ -109,8 +109,8 @@ const pricingStyle = (pricing: Pricing) => {
 const handleClickTopSectionCTAButton = (buttonName: string) =>
   emits('clickTopSectionCtaButton', buttonName)
 
-const handleClickPricingCTAButton = (pricing: Pricing, buttonName: string) =>
+const handleClickPricingCTAButton = (pricing: CardPricing, buttonName: string) =>
   emits('clickPricingCtaButton', { pricing: pricing, buttonName: buttonName })
 
-const handleClickPricing = (pricing: Pricing) => emits('clickPricing', pricing)
+const handleClickPricing = (pricing: CardPricing) => emits('clickPricing', pricing)
 </script>
