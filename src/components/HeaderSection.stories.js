@@ -99,10 +99,10 @@ Default.args = {
           img: 'logo_transparent.png',
           themeColor: 'primary'
         },
-        { name: 'solutions', label: 'Solutions', icon: 'arrow-right' },
-        { name: 'tutorials', label: 'Tutorials', icon: 'arrow-right' },
-        { name: 'pricing', label: 'Pricing', icon: 'arrow-right' },
-        { name: 'releases', label: 'Releases', icon: 'arrow-right' }
+        { name: 'solutions', label: 'Solutions', icon: 'arrow-right', img: 'logo_transparent.png' },
+        { name: 'tutorials', label: 'Tutorials', icon: 'arrow-right', img: 'logo_transparent.png' },
+        { name: 'pricing', label: 'Pricing', icon: 'arrow-right', img: 'logo_transparent.png' },
+        { name: 'releases', label: 'Releases', icon: 'arrow-right', img: 'logo_transparent.png' }
       ]
     },
     {
@@ -128,7 +128,6 @@ Default.args = {
       ]
     }
   ],
-  companyName: 'VueLanding',
-  companyLogo: 'logo_icon.png',
-  themeColor: 'secondary'
+  companyName: 'Finaceo',
+  companyLogo: 'logo_icon.png'
 }

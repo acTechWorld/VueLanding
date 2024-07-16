@@ -76,11 +76,9 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
-  title: 'People who care about your growth',
-  subtitle: 'Be the first to know about releases and industry news and insights',
-  img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-  video:
-    'https://assets-global.website-files.com/636496d3f0ebfdaba9784655/65288f5440e92ae64d88aa65_Untitled UI promo placeholder v2 (compressed)-transcode.mp4',
+  title: 'The App dedicated to your progress',
+  subtitle: 'Stay informed about the latest releases, industry news, and insights',
+  video: 'hero_section_video.mp4',
   ctaButtons: [
     {
       name: 'demo',

@@ -76,7 +76,7 @@ export const Default = Template.bind({})
 Default.args = {
   title: 'Get in touch',
   subtitle: 'Our friendly team would love to hear from you',
-  img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
+  img: 'contact_img.jpg',
   submitButton: {
     name: 'submit',
     label: 'Send',

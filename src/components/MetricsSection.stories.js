@@ -61,43 +61,47 @@ export const Primary = Template.bind({})
 Primary.args = {
   topSection: {
     title: 'Build something great',
-    subtitle: 'Everything you need to build modern UI and great products',
+    subtitle: 'Everything you need',
     bgColor: '#fff',
     color: '#000'
   },
   bottomSection: {
     metrics: [
       {
-        value: '400+',
-        object: 'Project completed',
+        value: '10,000+',
+        object: 'Satisfied Clients',
+        color: '#000',
         ctaButton: {
-          name: 'projects',
-          label: 'View projects',
-          color: '#000'
+          name: 'clients',
+          label: 'View Testimonials'
         }
       },
       {
-        value: '600%',
-        object: 'Return on investment',
+        value: '$500M+',
+        object: 'Assets Managed',
+        color: '#000',
         ctaButton: {
-          name: 'inverstments',
-          label: 'Learn more',
-          color: '#000'
+          name: 'assets',
+          label: 'Learn More'
         }
       },
       {
-        value: '10K',
-        object: 'Global downloads',
+        value: '5',
+        object: 'Industry Awards',
+        color: '#000',
         ctaButton: {
-          name: 'downloads',
-          label: 'Downloads now',
-          color: '#000'
+          name: 'awards',
+          label: 'See Awards'
         }
       },
       {
-        value: '200+',
-        object: '5-star reviews',
-        color: '#000'
+        value: '24/7',
+        object: 'Customer Support',
+        color: '#000',
+        ctaButton: {
+          name: 'support',
+          label: 'Contact Us'
+        }
       }
     ]
   }

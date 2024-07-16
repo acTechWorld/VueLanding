@@ -53,17 +53,17 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
-  title: 'Start your free trial',
-  subtitle: 'Join over 4000 statups already growing up with us',
+  title: 'Take Control of Your Financial Future',
+  subtitle: 'Join our platform today and start making smarter financial decisions.',
   ctaButtons: [
     {
-      name: 'learnMore',
-      label: 'Learn more',
+      name: 'signUp',
+      label: 'Sign Up Now',
       themeColor: 'secondary'
     },
     {
-      name: 'getStarted',
-      label: 'Get started',
+      name: 'learnMore',
+      label: 'Learn More',
       themeColor: 'tertiary'
     }
   ]

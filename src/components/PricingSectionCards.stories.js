@@ -97,11 +97,11 @@ Default.args = {
     bgColor: '#fff',
     pricings: [
       {
-        type: 'Basic plan',
-        amount: 10,
+        type: 'Starter Plan',
+        amount: 15,
         currency: '$',
         frequency: 'mth',
-        color: '#222',
+        color: '#555',
         bgColor: '#fff',
         ctaButtons: [
           {
@@ -116,19 +116,19 @@ Default.args = {
           }
         ],
         features: [
-          'Access to all bacic features',
-          'Basic reporting and analytics',
-          'Up to 10 individual users',
-          '20GB individual data each user',
-          'Basic chat and email support'
+          'Access to basic financial tools',
+          'Personalized budget tracking',
+          'Up to 5 investment portfolios',
+          '10GB secure storage',
+          'Email support'
         ]
       },
       {
-        type: 'Business plan',
-        amount: 20,
+        type: 'Growth Plan',
+        amount: 30,
         currency: '$',
         frequency: 'mth',
-        color: '#222',
+        color: '#555',
         bgColor: '#fff',
         ctaButtons: [
           {
@@ -143,19 +143,20 @@ Default.args = {
           }
         ],
         features: [
-          '200+ integrations',
-          'Advanced reporting and analytics',
-          'Up to 20 individual users',
-          '40GB individual data each user',
-          'Priority chat and email support'
+          'All Starter Plan features',
+          'Advanced financial planning',
+          'Custom investment strategies',
+          'Up to 15 investment portfolios',
+          '50GB secure storage',
+          'Priority email and chat support'
         ]
       },
       {
-        type: 'Enterprise plan',
-        amount: 40,
+        type: 'Enterprise Plan',
+        amount: 60,
         currency: '$',
         frequency: 'mth',
-        color: '#222',
+        color: '#555',
         bgColor: '#fff',
         ctaButtons: [
           {
@@ -170,11 +171,12 @@ Default.args = {
           }
         ],
         features: [
-          'Advanced custom fields',
-          'Audit log and data history',
-          'Unlimited individual users',
-          'Unlimited individual data',
-          'Priority chat and email support'
+          'All Growth Plan features',
+          'Dedicated financial advisor',
+          'Comprehensive tax planning',
+          'Unlimited investment portfolios',
+          'Unlimited secure storage',
+          '24/7 premium support'
         ]
       }
     ]

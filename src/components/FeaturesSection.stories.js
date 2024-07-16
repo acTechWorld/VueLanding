@@ -73,17 +73,16 @@ Default.args = {
   contentWidth: 1300,
   features: [
     {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
+      label: 'Personalized Financial Advisory',
+      description: 'Tailored advice to help you meet your unique financial goals.',
+      bgColor: '#f9fafb',
+      color: '#475467',
+      img: 'feature_section_img2.jpg',
       featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
+        'Comprehensive financial assessments',
+        'Customized financial plans',
+        'Ongoing support and adjustments'
       ],
-      img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-      bgColor: '#fff',
-      color: '#000',
       ctaButtons: [
         {
           name: 'demo',
@@ -99,173 +98,64 @@ Default.args = {
       ]
     },
     {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      video:
-        'https://assets-global.website-files.com/636496d3f0ebfdaba9784655/65288f5440e92ae64d88aa65_Untitled UI promo placeholder v2 (compressed)-transcode.mp4',
+      label: 'Advanced Investment Management',
+      description: 'Maximize your returns with our data-driven investment strategies.',
+      video: 'feature_section_video1.mp4',
       bgColor: '#fff',
-      color: '#000'
+      color: '#475467',
+      featurePoints: [
+        'Algorithm-based portfolio optimization',
+        'Continuous monitoring and adjustments',
+        'Risk management tailored to your profile'
+      ]
     },
     {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      ctaButtons: [
-        {
-          name: 'demo',
-          label: 'Demo',
-          themeColor: 'secondary',
-          icon: 'globe'
-        },
-        {
-          name: 'signUp',
-          label: 'Sign up',
-          themeColor: 'tertiary'
-        }
-      ],
-      img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-      bgColor: '#fff',
-      color: '#000'
+      label: 'Automated Savings Solutions',
+      description: 'Effortlessly grow your savings with our secure, automated tools.',
+      bgColor: '#f9fafb',
+      color: '#475467',
+      video: 'feature_section_video2.mp4',
+      featurePoints: [
+        'Bank-level encryption for security',
+        'Multi-factor authentication',
+        'Regular security audits'
+      ]
     },
     {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      video:
-        'https://assets-global.website-files.com/636496d3f0ebfdaba9784655/65288f5440e92ae64d88aa65_Untitled UI promo placeholder v2 (compressed)-transcode.mp4',
+      label: 'Mobile Accessibility',
+      description: 'Manage your finances anytime, anywhere with our mobile-friendly platform.',
       bgColor: '#fff',
-      color: '#000'
+      color: '#475467',
+      img: 'feature_section_img1.jpg',
+      featurePoints: [
+        'User-friendly mobile app',
+        'Real-time updates and insights',
+        'Full functionality on mobile devices'
+      ]
     },
     {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
+      label: 'Exceptional Customer Support',
+      description: 'Get the help you need, whenever you need it.',
+      bgColor: '#f9fafb',
+      color: '#475467',
+      img: 'feature_section_img4.jpg',
       featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-      bgColor: '#fff',
-      color: '#000'
+        '24/7 dedicated support team',
+        'Assistance with platform navigation',
+        'Help with understanding investment strategies'
+      ]
     },
     {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      video:
-        'https://assets-global.website-files.com/636496d3f0ebfdaba9784655/65288f5440e92ae64d88aa65_Untitled UI promo placeholder v2 (compressed)-transcode.mp4',
+      label: 'Transparency and No Hidden Fees',
+      description: 'Clear and straightforward pricing with no surprises.',
       bgColor: '#fff',
-      color: '#000'
-    },
-    {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
+      color: '#475467',
+      img: 'feature_section_img3.jpg',
       featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-      bgColor: '#fff',
-      color: '#000'
-    },
-    {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      video:
-        'https://assets-global.website-files.com/636496d3f0ebfdaba9784655/65288f5440e92ae64d88aa65_Untitled UI promo placeholder v2 (compressed)-transcode.mp4',
-      bgColor: '#fff',
-      color: '#000'
-    },
-    {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-      bgColor: '#fff',
-      color: '#000'
-    },
-    {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      video:
-        'https://assets-global.website-files.com/636496d3f0ebfdaba9784655/65288f5440e92ae64d88aa65_Untitled UI promo placeholder v2 (compressed)-transcode.mp4',
-      bgColor: '#fff',
-      color: '#000'
-    },
-    {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      img: 'https://creatoom.com/wp-content/uploads/2023/12/scene-with-box-paper-mockups-v4-top-view-1024x683.jpg',
-      bgColor: '#fff',
-      color: '#000'
-    },
-    {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      video:
-        'https://assets-global.website-files.com/636496d3f0ebfdaba9784655/65288f5440e92ae64d88aa65_Untitled UI promo placeholder v2 (compressed)-transcode.mp4',
-      bgColor: '#fff',
-      color: '#000'
-    },
-    {
-      label: 'Share team imboxes',
-      description:
-        'Whether you have a team of 2 or 200n our shared team imboxes keep everyone on the same page and in the loop',
-      featurePoints: [
-        'Leverage autimation to move fast',
-        'Always give customers a human to chat to',
-        'Automate customer support and close leads faster'
-      ],
-      bgColor: '#fff',
-      color: '#000'
+        'Detailed fee reports',
+        'Transparent performance metrics',
+        'Flat fee structure'
+      ]
     }
   ]
 }

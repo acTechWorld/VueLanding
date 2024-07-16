@@ -95,11 +95,9 @@ Default.args = {
         { label: 'Dribbble', name: 'dribbble' }
       ]
     },
-    text: 'Design amazing digital experiences that create more happy in the word',
-    companyName: 'My landing page',
-    companyLogo: 'logo_icon.png',
-    color: '#475467',
-    bgColor: '#fff'
+    text: 'Join our platform today and start making smarter financial decisions.',
+    companyName: 'Finecea',
+    companyLogo: 'logo_icon.png'
   },
   bottomSection: {
     copyrights: '2077 My landing page. All rights reserved',
@@ -148,8 +146,6 @@ Default.args = {
         type: 'reddit',
         url: 'https://reddit.com'
       }
-    ],
-    color: '#667085',
-    bgColor: '#fff'
+    ]
   }
 }
