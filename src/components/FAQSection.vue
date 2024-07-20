@@ -8,13 +8,13 @@
     />
     <div
       v-if="props.bottomSection?.faqQuestions && props.bottomSection.faqQuestions.length > 0"
-      class="faqSection_accordionContainer max-w-[800px] mx-auto text-left"
+      class="faqSection_accordionContainer w-full text-left pb-10"
+      :style="bottomSectionStyle"
     >
       <AccordionComponent
         v-for="(faqQuestion, idx) in props.bottomSection.faqQuestions"
         :key="`faqQuestion_${idx}`"
-        class="faqSection_accordion border-b py-4"
-        :style="bottomSectionStyle"
+        class="faqSection_accordion border-b py-4 max-w-[800px] mx-auto"
       >
         <template #header>
           <p
@@ -23,7 +23,7 @@
           ></p>
         </template>
         <template #content>
-          <p v-safe-html="faqQuestion.answer" class="faqSection_accordionAnswer"></p>
+          <p v-safe-html="faqQuestion.answer" class="faqSection_accordionAnswer px-4"></p>
         </template>
       </AccordionComponent>
     </div>
@@ -35,7 +35,7 @@ import type { FAQSectionType } from '@/types/types'
 import CTASection from '@/components/CTASection.vue'
 import AccordionComponent from '@/commons/AccordionComponent.vue'
 import { computed } from 'vue'
-import { hexToRgb } from '@/utils/utils'
+import { getBgColor, getTxtColor, hexToRgb } from '@/utils/utils'
 
 const props = withDefaults(defineProps<FAQSectionType>(), {
   topSection: undefined,
@@ -52,7 +52,8 @@ const hasCTASection = computed(
 )
 
 const bottomSectionStyle = computed(() => ({
-  color: props.bottomSection?.color || 'unset',
+  color: getTxtColor(props.bottomSection?.color, props.bottomSection?.themeColor),
+  backgroundColor: getBgColor(props.bottomSection?.bgColor, props.bottomSection?.themeColor),
   borderColor: props.bottomSection?.color
     ? `rgba(${hexToRgb(props.bottomSection?.color)}, .3)`
     : `rgba(0,0,0,.3)`

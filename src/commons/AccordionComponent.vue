@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex gap-2 items-center py-4 cursor-pointer group" @click="handleToggle">
+    <div class="flex gap-2 items-center py-4 cursor-pointer group px-4" @click="handleToggle">
       <slot name="header"></slot>
       <FontAwesomeIcon
         :icon="props.icon"

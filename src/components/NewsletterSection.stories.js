@@ -73,3 +73,18 @@ Default.args = {
   color: undefined,
   themeColor: undefined
 }
+
+export const Night = Template.bind({})
+Night.args = {
+  title: 'Sign up for our newsletter',
+  subtitle: 'Be the first to know about releases and industry news and insights',
+  img: 'newsletter_section_img.jpg',
+  placeholderInput: 'Enter your email',
+  ctaButton: {
+    name: 'subscribe',
+    label: 'Subscribe',
+    themeColor: 'tertiary'
+  },
+  bgColor: '#333a44',
+  color: '#e6eaef'
+}

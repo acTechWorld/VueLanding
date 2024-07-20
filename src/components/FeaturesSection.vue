@@ -2,13 +2,13 @@
   <div class="featuresSection text-center gap-5 flex flex-col py-10" :style="sectionStyle">
     <div
       v-if="props.title"
-      class="featuresSection_title text-4xl lg:text-[44px] font-semibold max-w-[800px] mx-auto"
+      class="featuresSection_title text-4xl lg:text-[44px] font-semibold max-w-[800px] mx-auto px-4"
     >
       {{ props.title }}
     </div>
     <div
       v-if="props.subtitle"
-      class="featuresSection_subtitle max-w-[800px] mx-auto text-lg lg:text-xl"
+      class="featuresSection_subtitle max-w-[800px] mx-auto text-lg lg:text-xl px-4"
     >
       {{ props.subtitle }}
     </div>
@@ -29,7 +29,7 @@
         >
           <div
             :class="[feature.img || feature.video ? 'lg:w-1/2 text-left' : 'w-full']"
-            class="featuresSection_feature_first lg:p-8 gap-5 flex flex-col"
+            class="featuresSection_feature_first px-4 lg:p-8 gap-5 flex flex-col"
           >
             <div
               v-if="feature.label"

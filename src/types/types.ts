@@ -71,7 +71,9 @@ export type FAQSectionType = {
     themeColor?: ThemeColor
   }
   bottomSection?: {
+    bgColor?: `#${string}`
     color?: `#${string}`
+    themeColor?: ThemeColor
     faqQuestions?: { question: string; answer: string }[]
   }
 }
@@ -282,5 +284,7 @@ export type ContactSectionType = {
   }
   bgColor?: `#${string}`
   color?: `#${string}`
+  bgColorFields?: `#${string}`
+  colorFields?: `#${string}`
   themeColor?: ThemeColor
 }

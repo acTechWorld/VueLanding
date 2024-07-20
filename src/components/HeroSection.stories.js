@@ -96,3 +96,25 @@ Default.args = {
   color: '#333',
   themeColor: null
 }
+
+export const Night = Template.bind({})
+Night.args = {
+  title: 'The App dedicated to your progress',
+  subtitle: 'Stay informed about the latest releases, industry news, and insights',
+  video: 'hero_section_video.mp4',
+  ctaButtons: [
+    {
+      name: 'demo',
+      label: 'Demo',
+      themeColor: 'secondary',
+      icon: 'globe'
+    },
+    {
+      name: 'signUp',
+      label: 'Sign up',
+      themeColor: 'tertiary'
+    }
+  ],
+  bgColor: '#1f2123',
+  color: '#e6eaef'
+}

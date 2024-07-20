@@ -182,3 +182,111 @@ Default.args = {
     ]
   }
 }
+
+export const Night = Template.bind({})
+Night.args = {
+  topSection: {
+    bgColor: '#1f2123',
+    color: '#e6eaef',
+    title: 'Simple, transparent pricing',
+    subtitle: 'We believe our product should be accessible to all companies, no matter the size',
+    ctaButtons: [
+      {
+        name: 'learnMore',
+        label: 'Learn more',
+        themeColor: 'secondary'
+      },
+      {
+        name: 'getStarted',
+        label: 'Get started',
+        themeColor: 'tertiary'
+      }
+    ]
+  },
+  bottomSection: {
+    bgColor: '#1f2123',
+    color: '#e6eaef',
+    pricings: [
+      {
+        type: 'Starter Plan',
+        amount: 15,
+        currency: '$',
+        frequency: 'mth',
+        bgColor: '#160e1a',
+        ctaButtons: [
+          {
+            name: 'learnMore',
+            label: 'Learn more',
+            themeColor: 'secondary'
+          },
+          {
+            name: 'getStarted',
+            label: 'Get started',
+            themeColor: 'tertiary'
+          }
+        ],
+        features: [
+          'Access to basic financial tools',
+          'Personalized budget tracking',
+          'Up to 5 investment portfolios',
+          '10GB secure storage',
+          'Email support'
+        ]
+      },
+      {
+        type: 'Growth Plan',
+        amount: 30,
+        currency: '$',
+        frequency: 'mth',
+        bgColor: '#160e1a',
+        ctaButtons: [
+          {
+            name: 'learnMore',
+            label: 'Learn more',
+            themeColor: 'secondary'
+          },
+          {
+            name: 'getStarted',
+            label: 'Get started',
+            themeColor: 'tertiary'
+          }
+        ],
+        features: [
+          'All Starter Plan features',
+          'Advanced financial planning',
+          'Custom investment strategies',
+          'Up to 15 investment portfolios',
+          '50GB secure storage',
+          'Priority email and chat support'
+        ]
+      },
+      {
+        type: 'Enterprise Plan',
+        amount: 60,
+        currency: '$',
+        frequency: 'mth',
+        bgColor: '#160e1a',
+        ctaButtons: [
+          {
+            name: 'learnMore',
+            label: 'Learn more',
+            themeColor: 'secondary'
+          },
+          {
+            name: 'getStarted',
+            label: 'Get started',
+            themeColor: 'tertiary'
+          }
+        ],
+        features: [
+          'All Growth Plan features',
+          'Dedicated financial advisor',
+          'Comprehensive tax planning',
+          'Unlimited investment portfolios',
+          'Unlimited secure storage',
+          '24/7 premium support'
+        ]
+      }
+    ]
+  }
+}

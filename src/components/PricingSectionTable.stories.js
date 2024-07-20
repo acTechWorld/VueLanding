@@ -199,3 +199,121 @@ Default.args = {
     ]
   }
 }
+
+export const Night = Template.bind({})
+Night.args = {
+  topSection: {
+    bgColor: '#160e1a',
+    color: '#e6eaef',
+    title: 'Simple, transparent pricing',
+    subtitle: 'We believe our product should be accessible to all companies, no matter the size',
+    ctaButtons: [
+      {
+        name: 'learnMore',
+        label: 'Learn more',
+        themeColor: 'secondary'
+      },
+      {
+        name: 'getStarted',
+        label: 'Get started',
+        themeColor: 'tertiary'
+      }
+    ]
+  },
+  bottomSection: {
+    bgColor: '#1f2123',
+    oddFeatureColor: '#fff',
+    oddFeatureBgColor: '#333a44',
+    evenFeatureBgColor: '#160e1a',
+    evenFeatureColor: '#fff',
+    hideBottomPricingCTA: false,
+    pricings: [
+      {
+        id: 'basic',
+        type: 'Basic plan',
+        amount: 10,
+        currency: '$',
+        frequency: 'mth',
+        bgColor: '#160e1a',
+        ctaButton: {
+          name: 'getStarted',
+          label: 'Get started',
+          themeColor: 'tertiary'
+        }
+      },
+      {
+        id: 'business',
+        type: 'Business plan',
+        bgColor: '#160e1a',
+        amount: 20,
+        currency: '$',
+        frequency: 'mth',
+        ctaButton: {
+          name: 'getStarted',
+          label: 'Get started',
+          themeColor: 'tertiary'
+        }
+      },
+      {
+        id: 'enterprise',
+        type: 'Enterprise plan',
+        bgColor: '#160e1a',
+        amount: 40,
+        currency: '$',
+        frequency: 'mth',
+
+        ctaButton: {
+          name: 'getStarted',
+          label: 'Get started',
+          themeColor: 'tertiary'
+        }
+      }
+    ],
+    features: [
+      {
+        name: 'time',
+        label: 'Access Time',
+        pricingValues: { basic: '7 days', business: 'Unlimited', enterprise: 'Unlimited' }
+      },
+      {
+        name: 'users',
+        label: 'Users',
+        pricingValues: { basic: '1', business: '1', enterprise: 'Unlimited' }
+      },
+      {
+        name: 'data',
+        label: 'Data',
+        pricingValues: { basic: '1GB', business: '100GB', enterprise: 'Unlimited' }
+      },
+      { name: 'headerSection', label: 'Header Section', pricingValues: { enterprise: true } },
+      {
+        name: 'pricingSection',
+        label: 'Pricing Section',
+        pricingValues: { basic: true, business: true, enterprise: true }
+      },
+      {
+        name: 'footerSection',
+        label: 'Footer Section',
+        pricingValues: { business: true, enterprise: true }
+      },
+      {
+        name: 'socialProofSection',
+        label: 'Social Proof Section',
+        pricingValues: { business: true, enterprise: true }
+      },
+      {
+        name: 'teamSection',
+        label: 'Team Section',
+        pricingValues: { business: true, enterprise: true }
+      },
+      {
+        name: 'newsletterSection',
+        label: 'Newsletter Section',
+        pricingValues: { basic: true, business: true, enterprise: true }
+      },
+      { name: 'metricSection', label: 'Metric Section', pricingValues: { enterprise: true } },
+      { name: 'heroSection', label: 'Hero Section', pricingValues: { enterprise: true } },
+      { name: 'faqSection', label: 'FAQ Section', pricingValues: { enterprise: true } }
+    ]
+  }
+}

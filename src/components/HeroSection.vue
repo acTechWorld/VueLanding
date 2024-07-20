@@ -49,7 +49,7 @@
       />
       <VideoComponent
         v-else-if="props.video"
-        :class="{ 'lg:h-full': isHalfSized }"
+        :class="{ 'lg:h-full lg:w-full': isHalfSized }"
         :video="props.video"
         :play-button="props.overlayVideoPlayer"
         class="heroSection_video"

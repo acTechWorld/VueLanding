@@ -68,3 +68,22 @@ Default.args = {
     }
   ]
 }
+export const Night = Template.bind({})
+Night.args = {
+  bgColor: '#1f2123',
+  color: '#e6eaef',
+  title: 'Take Control of Your Financial Future',
+  subtitle: 'Join our platform today and start making smarter financial decisions.',
+  ctaButtons: [
+    {
+      name: 'signUp',
+      label: 'Sign Up Now',
+      themeColor: 'secondary'
+    },
+    {
+      name: 'learnMore',
+      label: 'Learn More',
+      themeColor: 'tertiary'
+    }
+  ]
+}

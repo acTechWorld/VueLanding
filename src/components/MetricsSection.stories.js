@@ -106,3 +106,51 @@ Primary.args = {
     ]
   }
 }
+
+export const Night = Template.bind({})
+Night.args = {
+  topSection: {
+    title: 'Build something great',
+    subtitle: 'Everything you need',
+    bgColor: '#1f2123',
+    color: '#e6eaef'
+  },
+  bottomSection: {
+    bgColor: '#333a44',
+    color: '#e6eaef',
+    metrics: [
+      {
+        value: '10,000+',
+        object: 'Satisfied Clients',
+        ctaButton: {
+          name: 'clients',
+          label: 'View Testimonials'
+        }
+      },
+      {
+        value: '$500M+',
+        object: 'Assets Managed',
+        ctaButton: {
+          name: 'assets',
+          label: 'Learn More'
+        }
+      },
+      {
+        value: '5',
+        object: 'Industry Awards',
+        ctaButton: {
+          name: 'awards',
+          label: 'See Awards'
+        }
+      },
+      {
+        value: '24/7',
+        object: 'Customer Support',
+        ctaButton: {
+          name: 'support',
+          label: 'Contact Us'
+        }
+      }
+    ]
+  }
+}
