@@ -23,14 +23,28 @@
           <div
             v-for="pricing in props.bottomSection?.pricings"
             :key="`pricing_${pricing.id}`"
-            class="pricingSection_pricing sm:w-[300px] p-5 text-center cursor-pointer rounded-t-lg"
-            :class="{ 'bg-[linear-gradient(rgb(0_0_0/10%)_0_0);]': princingHoverId === pricing.id }"
+            class="pricingSection_pricing sm:w-[300px] p-5 text-center rounded-t-lg relative"
+            :class="[
+              {
+                'bg-[linear-gradient(rgb(0_0_0/10%)_0_0);]':
+                  princingHoverId === pricing.id && !pricing.disabled
+              }
+            ]"
             :style="pricingStyle(pricing)"
             @click="handleClickPricing(pricing.id)"
             @mouseenter="princingHoverId = pricing.id"
             @mouseleave="princingHoverId = null"
           >
-            <div class="pricingSection_pricingTop mb-4 flex flex-col gap-3">
+            <div
+              v-if="pricing.disabled && pricing.disabledText"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full font-bold px-2 text-lg"
+            >
+              {{ pricing.disabledText }}
+            </div>
+            <div
+              class="pricingSection_pricingTop mb-4 flex flex-col gap-3"
+              :class="pricing.disabled ? 'opacity-20' : 'cursor-pointer'"
+            >
               <div
                 v-if="pricing.type"
                 class="pricingSection_pricingType border rounded-full w-fit px-3 self-center mb-2"
@@ -46,6 +60,7 @@
               <CTAButton
                 v-if="pricing.ctaButton"
                 v-bind="pricing.ctaButton"
+                :disabled="pricing.disabled"
                 class="pricingSection_pricingCtaButton w-full"
                 @click="handleClickPricing(pricing.id)"
               />
@@ -78,10 +93,14 @@
             <div
               v-for="pricingValue in feature.pricingValues"
               :key="`feature_${idx}_pricing_${pricingValue.id}`"
-              class="pricingSection_pricingFeature_value sm:w-[300px] border-l border-[#000] h-full justify-center flex items-center cursor-pointer"
-              :class="{
-                'bg-[linear-gradient(rgb(0_0_0/10%)_0_0);]': princingHoverId === pricingValue.id
-              }"
+              class="pricingSection_pricingFeature_value sm:w-[300px] border-l border-[#000] h-full justify-center flex items-center"
+              :class="[
+                {
+                  'bg-[linear-gradient(rgb(0_0_0/10%)_0_0);]':
+                    princingHoverId === pricingValue.id && !isPricingDisabled(pricingValue.id)
+                },
+                isPricingDisabled(pricingValue.id) ? 'opacity-20' : 'cursor-pointer'
+              ]"
               @click="handleClickPricing(pricingValue.id)"
               @mouseenter="princingHoverId = pricingValue.id"
               @mouseleave="princingHoverId = null"
@@ -105,8 +124,14 @@
           <div
             v-for="pricing in props.bottomSection?.pricings"
             :key="`bottom_pricing_${pricing.id}`"
-            class="pricingSection_pricingBottom_ctaButton sm:w-[300px] cursor-pointer rounded-b-lg p-5"
-            :class="{ 'bg-[linear-gradient(rgb(0_0_0/10%)_0_0);]': princingHoverId === pricing.id }"
+            class="pricingSection_pricingBottom_ctaButton sm:w-[300px] rounded-b-lg p-5"
+            :class="[
+              {
+                'bg-[linear-gradient(rgb(0_0_0/10%)_0_0);]':
+                  princingHoverId === pricing.id && !pricing.disabled
+              },
+              pricing.disabled ? 'opacity-20' : 'cursor-pointer'
+            ]"
             :style="pricingStyle(pricing)"
             @click="handleClickPricing(pricing.id)"
             @mouseenter="princingHoverId = pricing.id"
@@ -115,6 +140,7 @@
             <CTAButton
               v-if="pricing.ctaButton"
               v-bind="pricing.ctaButton"
+              :disabled="pricing.disabled"
               class="pricingSection_pricingCtaButton w-full"
               @click="handleClickPricing(pricing.id)"
             />
@@ -125,61 +151,72 @@
         <div
           v-for="pricing in props.bottomSection?.pricings"
           :key="`pricing_${pricing.id}`"
-          class="pricingSection_pricing_mobile w-full sm:w-[500px] p-5 cursor-pointer rounded-lg flex flex-col shadow-lg"
+          class="pricingSection_pricing_mobile w-full sm:w-[500px] p-5 rounded-lg flex flex-col shadow-lg relative"
           :style="pricingStyle(pricing)"
           @click="handleClickPricing(pricing.id)"
         >
-          <div class="pricingSection_pricingTop_mobile mb-4 flex flex-col gap-3 text-center">
-            <div
-              v-if="pricing.type"
-              class="pricingSection_pricingType_mobile border rounded-full w-fit px-3 self-center mb-2"
-            >
-              {{ pricing.type }}
-            </div>
-            <div class="pricingSection_pricingAmount_mobile text-4xl font-semibold">
-              {{ getPricing(pricing.amount, pricing.currency, pricing.frequency) }}
-            </div>
-            <div v-if="pricing.description" class="pricingSection_pricingDescription_mobile">
-              {{ pricing.description }}
-            </div>
-            <CTAButton
-              v-if="pricing.ctaButton"
-              v-bind="pricing.ctaButton"
-              class="pricingSection_pricingCtaButton_mobile w-full"
-              @click="handleClickPricing(pricing.id)"
-            />
+          <div
+            v-if="pricing.disabled && pricing.disabledText"
+            class="absolute top-[20%] text-center left-1/2 -translate-x-1/2 w-4/5 font-bold px-5 text-lg"
+          >
+            {{ pricing.disabledText }}
           </div>
-          <div class="pricingSection_pricingFeatures_mobile rounded-lg overflow-hidden">
-            <div
-              v-for="(feature, idxFeature) in displayedFeaturesValues"
-              :key="`pricing_${pricing.id}_feature_${idxFeature}`"
-              class="pricingSection_pricingFeature_mobile flex h-[60px] cursor-pointer justify-between px-5 items-center"
-              :style="getFeatureStyle(idxFeature)"
-            >
-              <div class="pricingSection_pricingFeature_label_mobile">{{ feature.label }}</div>
-              <div class="pricingSection_pricingFeature_value_mobile">
-                <FontAwesomeIcon
-                  v-if="feature.pricingValues.find((pv) => pv.id === pricing.id)?.value === true"
-                  class="text-[#269126]"
-                  icon="fa-regular fa-circle-check"
-                  size="lg"
-                />
-                <span v-else>{{
-                  feature.pricingValues.find((pv) => pv.id === pricing.id)?.value
-                }}</span>
+          <div :class="pricing.disabled ? 'opacity-20' : 'cursor-pointer'">
+            <div class="pricingSection_pricingTop_mobile mb-4 flex flex-col gap-3 text-center">
+              <div
+                v-if="pricing.type"
+                class="pricingSection_pricingType_mobile border rounded-full w-fit px-3 self-center mb-2"
+              >
+                {{ pricing.type }}
+              </div>
+              <div class="pricingSection_pricingAmount_mobile text-4xl font-semibold">
+                {{ getPricing(pricing.amount, pricing.currency, pricing.frequency) }}
+              </div>
+              <div v-if="pricing.description" class="pricingSection_pricingDescription_mobile">
+                {{ pricing.description }}
+              </div>
+              <CTAButton
+                v-if="pricing.ctaButton"
+                v-bind="pricing.ctaButton"
+                :disabled="pricing.disabled"
+                class="pricingSection_pricingCtaButton_mobile w-full"
+                @click="handleClickPricing(pricing.id)"
+              />
+            </div>
+            <div class="pricingSection_pricingFeatures_mobile rounded-lg overflow-hidden">
+              <div
+                v-for="(feature, idxFeature) in displayedFeaturesValues"
+                :key="`pricing_${pricing.id}_feature_${idxFeature}`"
+                class="pricingSection_pricingFeature_mobile flex h-[60px] justify-between px-5 items-center"
+                :class="{ 'cursor-pointer': !pricing.disabled }"
+                :style="getFeatureStyle(idxFeature)"
+              >
+                <div class="pricingSection_pricingFeature_label_mobile">{{ feature.label }}</div>
+                <div class="pricingSection_pricingFeature_value_mobile">
+                  <FontAwesomeIcon
+                    v-if="feature.pricingValues.find((pv) => pv.id === pricing.id)?.value === true"
+                    class="text-[#269126]"
+                    icon="fa-regular fa-circle-check"
+                    size="lg"
+                  />
+                  <span v-else>{{
+                    feature.pricingValues.find((pv) => pv.id === pricing.id)?.value
+                  }}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            v-if="!props.bottomSection?.hideBottomPricingCTA"
-            class="pricingSection_pricingBottom_mobile"
-          >
-            <CTAButton
-              v-if="pricing.ctaButton"
-              v-bind="pricing.ctaButton"
-              class="pricingSection_pricingBottom_ctaButton_mobile pricingSection_pricingCtaButton w-full mt-4"
-              @click="handleClickPricing(pricing.id)"
-            />
+            <div
+              v-if="!props.bottomSection?.hideBottomPricingCTA"
+              class="pricingSection_pricingBottom_mobile"
+            >
+              <CTAButton
+                v-if="pricing.ctaButton"
+                v-bind="pricing.ctaButton"
+                :disabled="pricing.disabled"
+                class="pricingSection_pricingBottom_ctaButton_mobile pricingSection_pricingCtaButton w-full mt-4"
+                @click="handleClickPricing(pricing.id)"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -247,7 +284,11 @@ const bottomStyle = computed(() => ({
 const handleClickTopSectionCTAButton = (buttonName: string) =>
   emits('clickTopSectionCtaButton', buttonName)
 
-const handleClickPricing = (pricingId: string | number) => emits('clickPricing', pricingId)
+const handleClickPricing = (pricingId: string | number) => {
+  if (!isPricingDisabled(pricingId)) {
+    emits('clickPricing', pricingId)
+  }
+}
 
 const pricingStyle = (pricing: TablePricing) => {
   const color = getTxtColor(pricing.color, pricing.themeColor)
@@ -270,5 +311,9 @@ const getFeatureStyle = (idx: number) =>
 
 const getPricing = (amount: number, currency?: string, frequency?: string) => {
   return `${amount}${currency || '$'}${frequency ? '/' + frequency : ''}`
+}
+
+const isPricingDisabled = (id) => {
+  return props.bottomSection.pricings?.find((pricing) => pricing.id === id)?.disabled
 }
 </script>

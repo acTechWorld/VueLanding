@@ -27,6 +27,8 @@ export type CardPricing = {
 }
 
 export type TablePricing = {
+  disabled?: boolean
+  disabledText?: string
   id: string | number
   amount: number
   currency?: string
