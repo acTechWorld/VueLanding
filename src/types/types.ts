@@ -24,6 +24,8 @@ export type CardPricing = {
   bgColor?: `#${string}`
   color?: `#${string}`
   themeColor?: ThemeColor
+  disabled?: boolean
+  disabledText?: string
 }
 
 export type TablePricing = {

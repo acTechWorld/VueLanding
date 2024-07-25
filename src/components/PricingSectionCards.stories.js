@@ -238,6 +238,8 @@ Night.args = {
         amount: 30,
         currency: '$',
         frequency: 'mth',
+        disabled: true,
+        disabledText: 'Option not availabled anymore',
         bgColor: '#160e1a',
         ctaButtons: [
           {
