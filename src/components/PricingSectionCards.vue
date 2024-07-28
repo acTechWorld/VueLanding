@@ -119,7 +119,7 @@ const handleClickTopSectionCTAButton = (buttonName: string) =>
   emits('clickTopSectionCtaButton', buttonName)
 
 const handleClickPricingCTAButton = (pricing: CardPricing, buttonName: string) =>
-  emits('clickPricingCtaButton', { pricing: pricing, buttonName: buttonName })
+  emits('clickPricingCtaButton', { pricingId: pricing.id, buttonName: buttonName })
 
-const handleClickPricing = (pricing: CardPricing) => emits('clickPricing', pricing)
+const handleClickPricing = (pricing: CardPricing) => emits('clickPricing', pricing.id)
 </script>

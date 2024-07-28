@@ -13,62 +13,62 @@
         <div class="contactSection_middle flex flex-col gap-4">
           <div class="contactSection_names flex gap-5">
             <FormInputText
-              v-if="props.options?.firstName?.displayed"
+              v-if="usedOptions?.firstName?.displayed"
               v-model="firstName"
               class="contactSection_firtName"
               name="firstName"
-              :title="props.options?.firstName.title"
-              :placeholder="props.options?.firstName.placeholder"
-              :required="props.options?.firstName.required"
+              :title="usedOptions?.firstName.title"
+              :placeholder="usedOptions?.firstName.placeholder"
+              :required="usedOptions?.firstName.required"
             />
             <FormInputText
-              v-if="props.options?.lastName?.displayed"
+              v-if="usedOptions?.lastName?.displayed"
               v-model="lastName"
               name="lastName"
               class="contactSection_lastName"
-              :title="props.options?.lastName.title"
-              :placeholder="props.options?.lastName.placeholder"
-              :required="props.options?.lastName.required"
+              :title="usedOptions?.lastName.title"
+              :placeholder="usedOptions?.lastName.placeholder"
+              :required="usedOptions?.lastName.required"
             />
           </div>
           <FormInputText
-            v-if="props.options?.email?.displayed"
+            v-if="usedOptions?.email?.displayed"
             v-model="email"
             name="email"
             class="contactSection_email"
-            :title="props.options?.email.title"
-            :placeholder="props.options?.email.placeholder"
-            :required="props.options?.email.required"
+            :title="usedOptions?.email.title"
+            :placeholder="usedOptions?.email.placeholder"
+            :required="usedOptions?.email.required"
             :status="email && !emailValid ? 'error' : 'default'"
           />
           <FormInputText
-            v-if="props.options?.companyName?.displayed"
+            v-if="usedOptions?.companyName?.displayed"
             v-model="companyName"
             class="contactSection_companyName"
             name="companyName"
-            :title="props.options?.companyName.title"
-            :placeholder="props.options?.companyName.placeholder"
-            :required="props.options?.companyName.required"
+            :title="usedOptions?.companyName.title"
+            :placeholder="usedOptions?.companyName.placeholder"
+            :required="usedOptions?.companyName.required"
           />
           <FormInputText
-            v-if="props.options?.phoneNumber?.displayed"
+            v-if="usedOptions?.phoneNumber?.displayed"
             v-model="phoneNumber"
             class="contactSection_phoneNumber"
             name="phoneNumber"
-            :title="props.options?.phoneNumber.title"
-            :placeholder="props.options?.phoneNumber.placeholder"
-            :required="props.options?.phoneNumber.required"
+            :title="usedOptions?.phoneNumber.title"
+            :placeholder="usedOptions?.phoneNumber.placeholder"
+            :required="usedOptions?.phoneNumber.required"
             :status="phoneNumber && !phoneNumberValid ? 'error' : 'default'"
           />
           <FormInputText
-            v-if="props.options?.message?.displayed"
+            v-if="usedOptions?.message?.displayed"
             v-model="message"
             class="contactSection_message"
             name="message"
             type="text"
-            :title="props.options?.message.title"
-            :placeholder="props.options?.message.placeholder"
-            :required="props.options?.message.required"
+            :title="usedOptions?.message.title"
+            :placeholder="usedOptions?.message.placeholder"
+            :required="usedOptions?.message.required"
           />
         </div>
         <CTAButton
@@ -103,23 +103,7 @@ const props = withDefaults(defineProps<ContactSectionType>(), {
     icon: 'envelope',
     themeColor: 'tertiary'
   }),
-  options: () => ({
-    firstName: { displayed: true, required: true, title: 'First name', placeholder: 'First name' },
-    lastName: { displayed: true, required: true, title: 'Last name', placeholder: 'Last name' },
-    email: { displayed: true, required: true, title: 'Email', placeholder: 'Email' },
-    companyName: {
-      displayed: true,
-      required: false,
-      title: 'Company name',
-      placeholder: 'Company name'
-    },
-    message: {
-      displayed: true,
-      required: true,
-      title: 'Message',
-      placeholder: 'Leave us a message...'
-    }
-  }),
+  options: undefined,
   bgColor: undefined,
   color: undefined,
   themeColor: undefined
@@ -137,32 +121,62 @@ const message = ref()
 const emits = defineEmits(['submit'])
 
 /** COMPUTED */
+
+const usedOptions = computed(
+  () =>
+    props.options || {
+      firstName: {
+        displayed: true,
+        required: true,
+        title: 'First name',
+        placeholder: 'First name'
+      },
+      lastName: { displayed: true, required: true, title: 'Last name', placeholder: 'Last name' },
+      email: { displayed: true, required: true, title: 'Email', placeholder: 'Email' },
+      companyName: {
+        displayed: true,
+        required: false,
+        title: 'Company name',
+        placeholder: 'Company name'
+      },
+      message: {
+        displayed: true,
+        required: true,
+        title: 'Message',
+        placeholder: 'Leave us a message...'
+      }
+    }
+)
 const firstNameValid = computed(
   () =>
-    !props.options?.firstName?.required || (firstName.value && props.options?.firstName?.required)
+    !usedOptions.value?.firstName?.required ||
+    (firstName.value && usedOptions.value?.firstName?.required)
 )
 const lastNameValid = computed(
-  () => !props.options?.lastName?.required || (lastName.value && props.options?.lastName?.required)
+  () =>
+    !usedOptions.value?.lastName?.required ||
+    (lastName.value && usedOptions.value?.lastName?.required)
 )
 const emailValid = computed(
   () =>
-    !props.options?.email?.required ||
-    (email.value && regexEmail.test(email.value) && props.options?.email?.required)
+    !usedOptions.value?.email?.required ||
+    (email.value && regexEmail.test(email.value) && usedOptions.value?.email?.required)
 )
 const companyNameValid = computed(
   () =>
-    !props.options?.companyName?.required ||
-    (companyName.value && props.options?.companyName?.required)
+    !usedOptions.value?.companyName?.required ||
+    (companyName.value && usedOptions.value?.companyName?.required)
 )
 const phoneNumberValid = computed(
   () =>
-    !props.options?.phoneNumber?.required ||
+    !usedOptions.value?.phoneNumber?.required ||
     (phoneNumber.value &&
       regexPhoneNumber.test(phoneNumber.value) &&
-      props.options?.phoneNumber?.required)
+      usedOptions.value?.phoneNumber?.required)
 )
 const messageValid = computed(
-  () => !props.options?.message?.required || (message.value && props.options?.message?.required)
+  () =>
+    !usedOptions.value?.message?.required || (message.value && usedOptions.value?.message?.required)
 )
 
 const sendAvailable = computed(
@@ -184,12 +198,12 @@ const sectionStyle = computed(() => ({
 const handleSubmit = () => {
   if (sendAvailable.value) {
     const datas = {}
-    if (props.options?.firstName?.displayed) datas['firstName'] = firstName.value
-    if (props.options?.lastName?.displayed) datas['lastName'] = lastName.value
-    if (props.options?.email?.displayed) datas['email'] = email.value
-    if (props.options?.companyName?.displayed) datas['companyName'] = companyName.value
-    if (props.options?.phoneNumber?.displayed) datas['phoneNumber'] = phoneNumber.value
-    if (props.options?.message?.displayed) datas['message'] = message.value
+    if (usedOptions.value?.firstName?.displayed) datas['firstName'] = firstName.value
+    if (usedOptions.value?.lastName?.displayed) datas['lastName'] = lastName.value
+    if (usedOptions.value?.email?.displayed) datas['email'] = email.value
+    if (usedOptions.value?.companyName?.displayed) datas['companyName'] = companyName.value
+    if (usedOptions.value?.phoneNumber?.displayed) datas['phoneNumber'] = phoneNumber.value
+    if (usedOptions.value?.message?.displayed) datas['message'] = message.value
     emits('submit', datas)
   }
 }
