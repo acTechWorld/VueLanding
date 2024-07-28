@@ -1,6 +1,6 @@
 {
-  "name": "@oncekiller/vue-landing",
-  "version": "0.0.2-beta.54",
+  "name": "@vue-landing/vue-landing",
+  "version": "0.0.3-beta.2",
   "private": false,
   "type": "module",
   "main": "./dist/vue-landing.umd.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/oncekiller/VueLanding"
+    "url": "https://github.com/vue-landing/VueLanding"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

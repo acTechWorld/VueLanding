@@ -14,6 +14,7 @@ export type CTAButtonType = {
 }
 
 export type CardPricing = {
+  id: string | number
   amount: number
   currency?: string
   frequency?: string

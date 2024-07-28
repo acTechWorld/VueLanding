@@ -97,6 +97,7 @@ Default.args = {
     bgColor: '#fff',
     pricings: [
       {
+        id: 'starter',
         type: 'Starter Plan',
         amount: 15,
         currency: '$',
@@ -124,6 +125,7 @@ Default.args = {
         ]
       },
       {
+        id: 'growth',
         type: 'Growth Plan',
         amount: 30,
         currency: '$',
@@ -152,6 +154,7 @@ Default.args = {
         ]
       },
       {
+        id: 'enterprise',
         type: 'Enterprise Plan',
         amount: 60,
         currency: '$',
@@ -208,6 +211,7 @@ Night.args = {
     color: '#e6eaef',
     pricings: [
       {
+        id: 'starter',
         type: 'Starter Plan',
         amount: 15,
         currency: '$',
@@ -234,6 +238,7 @@ Night.args = {
         ]
       },
       {
+        id: 'growth',
         type: 'Growth Plan',
         amount: 30,
         currency: '$',
@@ -263,6 +268,7 @@ Night.args = {
         ]
       },
       {
+        id: 'enterprise',
         type: 'Enterprise Plan',
         amount: 60,
         currency: '$',
