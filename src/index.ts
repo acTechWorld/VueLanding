@@ -15,6 +15,7 @@ import ContactSection from './components/ContactSection.vue'
 import ToastComponent from './commons/ToastComponent.vue'
 import './assets/tailwind.css'
 import { validateLicenseKey } from './services/licencing'
+
 const components = {
   CTASection,
   FAQSection,
@@ -32,21 +33,18 @@ const components = {
   ToastComponent
 }
 
-const licenseKey = process.env.VUE_APP_VUE_LANDING_LICENSE_KEY
-
 let isLibraryAccessible = false
-
-const install = async (app) => {
+const initVueLibrary = async (Vue, licenseKey) => {
   isLibraryAccessible = await validateLicenseKey(licenseKey)
   if (isLibraryAccessible) {
-    app.use(FontAwesomePlugin)
+    Vue.use(FontAwesomePlugin)
     // Register all components globally
     Object.keys(components).forEach((name) => {
-      app.component(name, components[name])
+      Vue.component(name, components[name])
     })
   } else {
-    console.warn('Invalid license key. Access to the VueLanding is denied.')
+    console.warn('Invalid license key. Access to the library VueLanding is denied.')
   }
 }
 
-export default { install }
+export { initVueLibrary }
