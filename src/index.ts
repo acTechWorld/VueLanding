@@ -12,6 +12,7 @@ import TeamSection from '@/components/TeamSection.vue'
 import HeaderSection from './components/HeaderSection.vue'
 import FontAwesomePlugin from '@/plugins/fontawesome'
 import ContactSection from './components/ContactSection.vue'
+import ToastComponent from './commons/ToastComponent.vue'
 import './assets/tailwind.css'
 
 const components = {
@@ -27,7 +28,8 @@ const components = {
   SocialProofSection,
   TeamSection,
   HeaderSection,
-  ContactSection
+  ContactSection,
+  ToastComponent
 }
 const install = (app) => {
   app.use(FontAwesomePlugin)
@@ -52,5 +54,6 @@ export {
   SocialProofSection,
   TeamSection,
   HeaderSection,
-  ContactSection
+  ContactSection,
+  ToastComponent
 }

@@ -106,7 +106,8 @@ const props = withDefaults(defineProps<ContactSectionType>(), {
   options: undefined,
   bgColor: undefined,
   color: undefined,
-  themeColor: undefined
+  themeColor: undefined,
+  resetFormOnSubmit: true
 })
 
 const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -205,6 +206,16 @@ const handleSubmit = () => {
     if (usedOptions.value?.phoneNumber?.displayed) datas['phoneNumber'] = phoneNumber.value
     if (usedOptions.value?.message?.displayed) datas['message'] = message.value
     emits('submit', datas)
+    if (props.resetFormOnSubmit) resetForm()
   }
+}
+
+const resetForm = () => {
+  firstName.value = undefined
+  lastName.value = undefined
+  email.value = undefined
+  companyName.value = undefined
+  phoneNumber.value = undefined
+  message.value = undefined
 }
 </script>

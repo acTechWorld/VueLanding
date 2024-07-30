@@ -279,6 +279,7 @@ export type ContactSectionType = {
   subtitle?: string
   img?: string
   submitButton?: CTAButtonType
+  resetFormOnSubmit?: boolean
   options?: {
     firstName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
     lastName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
@@ -292,4 +293,10 @@ export type ContactSectionType = {
   bgColorFields?: `#${string}`
   colorFields?: `#${string}`
   themeColor?: ThemeColor
+}
+
+export type ToastComponentType = {
+  message: string
+  type?: 'success' | 'error' | 'info' | 'warning'
+  duration?: number
 }
