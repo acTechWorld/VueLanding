@@ -14,7 +14,7 @@ import FontAwesomePlugin from '@/plugins/fontawesome'
 import ContactSection from './components/ContactSection.vue'
 import ToastComponent from './commons/ToastComponent.vue'
 import './assets/tailwind.css'
-
+import { validateLicenseKey } from './services/licencing'
 const components = {
   CTASection,
   FAQSection,
@@ -31,29 +31,22 @@ const components = {
   ContactSection,
   ToastComponent
 }
-const install = (app) => {
-  app.use(FontAwesomePlugin)
-  // Register all components globally
-  Object.keys(components).forEach((name) => {
-    app.component(name, components[name])
-  })
+
+const licenseKey = process.env.VUE_APP_VUE_LANDING_LICENSE_KEY
+
+let isLibraryAccessible = false
+
+const install = async (app) => {
+  isLibraryAccessible = await validateLicenseKey(licenseKey)
+  if (isLibraryAccessible) {
+    app.use(FontAwesomePlugin)
+    // Register all components globally
+    Object.keys(components).forEach((name) => {
+      app.component(name, components[name])
+    })
+  } else {
+    console.warn('Invalid license key. Access to the VueLanding is denied.')
+  }
 }
 
 export default { install }
-
-export {
-  CTASection,
-  FAQSection,
-  FeaturesSection,
-  FooterSection,
-  HeroSection,
-  MetricsSection,
-  NewsletterSection,
-  PricingSectionCards,
-  PricingSectionTable,
-  SocialProofSection,
-  TeamSection,
-  HeaderSection,
-  ContactSection,
-  ToastComponent
-}
