@@ -4,7 +4,11 @@
     :class="[typeClass, isVisible ? 'translate-x-[10%]' : '-translate-x-[110%]']"
   >
     <span>{{ message }}</span>
-    <FontAwesomeIcon icon="fa-solid fa-xmark" class="text-white font-bold mt-[2px]" @click="hide" />
+    <FontAwesomeIcon
+      icon="fa-solid fa-xmark"
+      class="text-white font-bold mt-[2px] cursor-pointer"
+      @click="hide"
+    />
   </div>
 </template>
 

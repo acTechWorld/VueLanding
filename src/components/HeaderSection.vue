@@ -11,6 +11,7 @@
       <div
         v-if="props.companyLogo || props.companyName"
         class="headerSection_companyInfos flex gap-2 items-center cursor-pointer"
+        @click="handleClickLogo"
       >
         <img v-if="props.companyLogo" :src="props.companyLogo" class="headerSection_logo h-8" />
         <div v-if="props.companyName" class="headerSection_companyName">
@@ -183,7 +184,7 @@ const props = withDefaults(defineProps<HeaderSectionType>(), {
 })
 
 const displayMobileDropdown = ref(false)
-const emits = defineEmits(['clickPage', 'toggleMobileDropdown'])
+const emits = defineEmits(['clickPage', 'toggleMobileDropdown', 'clickLogo'])
 const { width } = useWindowSize()
 
 /** COMPUTED **/
@@ -212,7 +213,11 @@ const handleClickPage = ({ category, page }: { category?: string; page: string }
 
 const toggleMobileDropdown = () => {
   displayMobileDropdown.value = !displayMobileDropdown.value
-  emits('toggleMobileDropdown', displayMobileDropdown)
+  emits('toggleMobileDropdown', displayMobileDropdown.value)
+}
+
+const handleClickLogo = () => {
+  emits('clickLogo')
 }
 
 /** WATCH */

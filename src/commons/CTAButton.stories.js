@@ -1,4 +1,5 @@
 import CTAButton from './CTAButton.vue'
+import { fn } from '@storybook/test'
 
 export default {
   title: 'Commons/Buttons/CTA',
@@ -10,7 +11,8 @@ export default {
       options: [null, 'primary', 'secondary', 'tertiary'],
       control: { type: 'radio' }
     }
-  }
+  },
+  args: { onClick: fn() }
 }
 
 const Template = (args) => ({

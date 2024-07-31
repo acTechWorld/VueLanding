@@ -4,7 +4,11 @@ import { fn } from '@storybook/test'
 export default {
   title: 'Components/Header Section',
   component: HeaderSection,
-  args: { onClickPage: fn() },
+  args: {
+    onClickPage: fn(),
+    onToggleMobileDropdown: fn(),
+    onClickLogo: fn()
+  },
   argTypes: {
     companyLogo: {
       control: 'string',
