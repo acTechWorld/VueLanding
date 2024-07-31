@@ -280,6 +280,7 @@ export type ContactSectionType = {
   img?: string
   submitButton?: CTAButtonType
   resetFormOnSubmit?: boolean
+  loading?: boolean
   options?: {
     firstName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
     lastName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }

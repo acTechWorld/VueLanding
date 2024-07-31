@@ -74,6 +74,7 @@
         <CTAButton
           v-bind="props.submitButton"
           :disabled="!sendAvailable"
+          :loading="props.loading"
           class="contactSection_submitButton min-w-[120px]"
           @click="handleSubmit"
         />
@@ -107,7 +108,8 @@ const props = withDefaults(defineProps<ContactSectionType>(), {
   bgColor: undefined,
   color: undefined,
   themeColor: undefined,
-  resetFormOnSubmit: true
+  resetFormOnSubmit: true,
+  loading: false
 })
 
 const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
