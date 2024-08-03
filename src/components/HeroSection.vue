@@ -58,7 +58,7 @@
     </div>
     <div
       v-if="displayPlayer"
-      class="heroSection_videoPlayer fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[rgba(0,0,0,.8)] p-10"
+      class="heroSection_videoPlayer z-10 fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[rgba(0,0,0,.8)] p-10"
       @click="displayPlayer = false"
     >
       <FontAwesomeIcon

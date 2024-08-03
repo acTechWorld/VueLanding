@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center items-center">
     <div
-      class="w-12 flex justify-center cursor-pointer group items-center self-stretch"
+      class="w-6 md:w-12 flex justify-center cursor-pointer group items-center self-stretch"
       @click="prevSlide"
     >
       <FontAwesomeIcon
@@ -18,7 +18,7 @@
       >
         <slot></slot>
       </div>
-      <div class="flex gap-2 w-full justify-center mt-5 mb-3">
+      <div class="flex gap-2 w-full justify-center md:mt-5 mb-3">
         <div
           v-for="i in totalSlides"
           :key="i"
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div
-      class="w-12 flex justify-center cursor-pointer group items-center self-stretch"
+      class="w-6 md:w-12 flex justify-center cursor-pointer group items-center self-stretch"
       @click="nextSlide"
     >
       <FontAwesomeIcon

@@ -107,7 +107,7 @@
       </div>
     </div>
     <div
-      class="headerSection_mobileDropdown md:hidden bg-bg-secondary transition-all duration-300 absolute pt-14 h-[100vh] overflow-scroll w-full"
+      class="headerSection_mobileDropdown md:hidden bg-bg-secondary transition-all duration-300 absolute pt-14 overflow-scroll w-full"
       :class="[displayMobileDropdown ? 'opacity-100 h-[100vh]' : 'opacity-0 h-0']"
       :style="sectionStyle"
     >
@@ -118,7 +118,7 @@
       >
         <AccordionComponent v-if="menuItem.category" class="[&_svg]:mr-5">
           <template #header>
-            <div class="headerSection_mobile_item px-5">{{ menuItem.category }}</div>
+            <div class="headerSection_mobile_item">{{ menuItem.category }}</div>
           </template>
           <template #content>
             <div class="headerSection_mobile_subItems flex flex-col pb-4">
@@ -209,6 +209,7 @@ const subMenuItemStyle = (subMenuItem: HeaderSubMenuItemType) => ({
 
 const handleClickPage = ({ category, page }: { category?: string; page: string }) => {
   emits('clickPage', category ? { category: category, page: page } : { page: page })
+  if (isMobileScreenSize.value) displayMobileDropdown.value = false
 }
 
 const toggleMobileDropdown = () => {
@@ -218,6 +219,7 @@ const toggleMobileDropdown = () => {
 
 const handleClickLogo = () => {
   emits('clickLogo')
+  if (isMobileScreenSize.value) displayMobileDropdown.value = false
 }
 
 /** WATCH */
