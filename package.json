@@ -1,6 +1,6 @@
 {
-  "name": "@vue-landing/vue-landing",
-  "version": "0.0.3-beta.23",
+  "name": "@actechworld/vue-landing",
+  "version": "0.0.3-beta.24",
   "private": false,
   "type": "module",
   "main": "./dist/vue-landing.umd.js",
