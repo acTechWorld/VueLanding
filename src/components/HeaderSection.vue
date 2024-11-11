@@ -11,6 +11,7 @@
       <div
         v-if="props.companyLogo || props.companyName"
         class="headerSection_companyInfos flex gap-2 items-center cursor-pointer"
+        @click="handleClickLogo"
       >
         <img v-if="props.companyLogo" :src="props.companyLogo" class="headerSection_logo h-8" />
         <div v-if="props.companyName" class="headerSection_companyName">
@@ -106,7 +107,7 @@
       </div>
     </div>
     <div
-      class="headerSection_mobileDropdown md:hidden bg-bg-secondary transition-all duration-300 absolute pt-14 h-[100vh] overflow-scroll w-full"
+      class="headerSection_mobileDropdown md:hidden bg-bg-secondary transition-all duration-300 absolute pt-14 overflow-scroll w-full"
       :class="[displayMobileDropdown ? 'opacity-100 h-[100vh]' : 'opacity-0 h-0']"
       :style="sectionStyle"
     >
@@ -117,7 +118,7 @@
       >
         <AccordionComponent v-if="menuItem.category" class="[&_svg]:mr-5">
           <template #header>
-            <div class="headerSection_mobile_item px-5">{{ menuItem.category }}</div>
+            <div class="headerSection_mobile_item">{{ menuItem.category }}</div>
           </template>
           <template #content>
             <div class="headerSection_mobile_subItems flex flex-col pb-4">
@@ -183,7 +184,7 @@ const props = withDefaults(defineProps<HeaderSectionType>(), {
 })
 
 const displayMobileDropdown = ref(false)
-const emits = defineEmits(['clickPage', 'toggleMobileDropdown'])
+const emits = defineEmits(['clickPage', 'toggleMobileDropdown', 'clickLogo'])
 const { width } = useWindowSize()
 
 /** COMPUTED **/
@@ -208,11 +209,17 @@ const subMenuItemStyle = (subMenuItem: HeaderSubMenuItemType) => ({
 
 const handleClickPage = ({ category, page }: { category?: string; page: string }) => {
   emits('clickPage', category ? { category: category, page: page } : { page: page })
+  if (isMobileScreenSize.value) displayMobileDropdown.value = false
 }
 
 const toggleMobileDropdown = () => {
   displayMobileDropdown.value = !displayMobileDropdown.value
-  emits('toggleMobileDropdown', displayMobileDropdown)
+  emits('toggleMobileDropdown', displayMobileDropdown.value)
+}
+
+const handleClickLogo = () => {
+  emits('clickLogo')
+  if (isMobileScreenSize.value) displayMobileDropdown.value = false
 }
 
 /** WATCH */

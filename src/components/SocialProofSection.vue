@@ -8,9 +8,12 @@
       v-for="(data, key) in props.datas"
       :key="`proof_${key}`"
       :style="style"
-      class="socialProof_item px-20 py-5 text-center gap-8 flex flex-col rounded-lg"
+      class="socialProof_item px-5 md:px-10 lg:px-20 py-5 text-center gap-8 flex flex-col rounded-lg"
     >
-      <div v-if="data.testimony" class="socialProof_testimony text-4xl font-semibold">
+      <div
+        v-if="data.testimony"
+        class="socialProof_testimony lg:text-4xl md:text-3xl text-2xl font-semibold"
+      >
         {{ data.testimony }}
       </div>
       <div
@@ -23,10 +26,10 @@
           alt="Profile Image"
           class="socialProof_imgProfile w-16 h-16 rounded-full mb-2 object-cover"
         />
-        <p v-if="data.name" class="text-lg font-semibold socialProof_name">
+        <p v-if="data.name" class="md:text-lg font-semibold socialProof_name">
           {{ data.name }}
         </p>
-        <p v-if="data.title" class="socialProof_title">{{ data.title }}</p>
+        <p v-if="data.title" class="socialProof_title md:text-base text-sm">{{ data.title }}</p>
         <div v-if="data.stars" class="socialProof_stars mt-2">
           <FontAwesomeIcon
             v-for="(icon, idx) in calculateStarsIcon(data.stars)"

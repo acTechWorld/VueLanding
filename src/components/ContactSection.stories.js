@@ -121,29 +121,6 @@ Night.args = {
     icon: 'envelope',
     themeColor: 'tertiary'
   },
-  options: {
-    firstName: { displayed: true, required: true, title: 'First name', placeholder: 'First name' },
-    lastName: { displayed: true, required: true, title: 'Last name', placeholder: 'Last name' },
-    email: { displayed: true, required: true, title: 'Email', placeholder: 'Email' },
-    phoneNumber: {
-      displayed: true,
-      required: true,
-      title: 'Phone number',
-      placeholder: 'Phone number (ex: +3360234567)'
-    },
-    companyName: {
-      displayed: true,
-      required: false,
-      title: 'Company name',
-      placeholder: 'Company name'
-    },
-    message: {
-      displayed: true,
-      required: true,
-      title: 'Message',
-      placeholder: 'Leave us a message...'
-    }
-  },
   bgColor: '#1f2123',
   color: '#e6eaef'
 }

@@ -1,6 +1,6 @@
 <template>
   <div ref="videoContainer" class="group">
-    <video ref="videoElement" class="video object-cover h-full" :muted="props.muted">
+    <video ref="videoElement" class="video object-cover h-full w-full" :muted="props.muted">
       <source :src="props.video" type="video/mp4" />
     </video>
     <div

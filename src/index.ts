@@ -12,7 +12,9 @@ import TeamSection from '@/components/TeamSection.vue'
 import HeaderSection from './components/HeaderSection.vue'
 import FontAwesomePlugin from '@/plugins/fontawesome'
 import ContactSection from './components/ContactSection.vue'
+import ToastComponent from './commons/ToastComponent.vue'
 import './assets/tailwind.css'
+import { validateLicenseKey } from './services/licencing'
 
 const components = {
   CTASection,
@@ -27,30 +29,22 @@ const components = {
   SocialProofSection,
   TeamSection,
   HeaderSection,
-  ContactSection
-}
-const install = (app) => {
-  app.use(FontAwesomePlugin)
-  // Register all components globally
-  Object.keys(components).forEach((name) => {
-    app.component(name, components[name])
-  })
+  ContactSection,
+  ToastComponent
 }
 
-export default { install }
-
-export {
-  CTASection,
-  FAQSection,
-  FeaturesSection,
-  FooterSection,
-  HeroSection,
-  MetricsSection,
-  NewsletterSection,
-  PricingSectionCards,
-  PricingSectionTable,
-  SocialProofSection,
-  TeamSection,
-  HeaderSection,
-  ContactSection
+let isLibraryAccessible = false
+const initVueLibrary = async (Vue, licenseKey) => {
+  isLibraryAccessible = await validateLicenseKey(licenseKey)
+  if (isLibraryAccessible) {
+    Vue.use(FontAwesomePlugin)
+    // Register all components globally
+    Object.keys(components).forEach((name) => {
+      Vue.component(name, components[name])
+    })
+  } else {
+    console.warn('Invalid license key. Access to the library VueLanding is denied.')
+  }
 }
+
+export { initVueLibrary }

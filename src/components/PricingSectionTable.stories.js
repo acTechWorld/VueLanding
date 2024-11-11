@@ -235,6 +235,8 @@ Night.args = {
         currency: '$',
         frequency: 'mth',
         bgColor: '#160e1a',
+        disabled: true,
+        disabledText: 'Option not availabled anymore',
         ctaButton: {
           name: 'getStarted',
           label: 'Get started',

@@ -14,6 +14,7 @@ export type CTAButtonType = {
 }
 
 export type CardPricing = {
+  id: string | number
   amount: number
   currency?: string
   frequency?: string
@@ -24,9 +25,13 @@ export type CardPricing = {
   bgColor?: `#${string}`
   color?: `#${string}`
   themeColor?: ThemeColor
+  disabled?: boolean
+  disabledText?: string
 }
 
 export type TablePricing = {
+  disabled?: boolean
+  disabledText?: string
   id: string | number
   amount: number
   currency?: string
@@ -274,6 +279,8 @@ export type ContactSectionType = {
   subtitle?: string
   img?: string
   submitButton?: CTAButtonType
+  resetFormOnSubmit?: boolean
+  loading?: boolean
   options?: {
     firstName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
     lastName?: { displayed: boolean; required: boolean; title?: string; placeholder?: string }
@@ -287,4 +294,10 @@ export type ContactSectionType = {
   bgColorFields?: `#${string}`
   colorFields?: `#${string}`
   themeColor?: ThemeColor
+}
+
+export type ToastComponentType = {
+  message: string
+  type?: 'success' | 'error' | 'info' | 'warning'
+  duration?: number
 }

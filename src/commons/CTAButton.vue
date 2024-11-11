@@ -6,7 +6,7 @@
       {
         'rounded-lg px-4 py-2 text-center': !isTransparent
       },
-      props.disabled
+      isDisailabled
         ? 'opacity-50'
         : 'cursor-pointer hover:bg-[linear-gradient(rgb(0_0_0/20%)_0_0);]'
     ]"
@@ -14,10 +14,11 @@
   >
     {{ props.label }}
     <FontAwesomeIcon
-      v-if="props.icon"
+      v-if="props.icon || props.loading"
       class="transition-all"
-      :class="{ 'group-hover:translate-x-2': !props.disabled }"
-      :icon="props.icon"
+      :class="{ 'group-hover:translate-x-2': !isDisailabled }"
+      :icon="props.loading ? 'fa-solid fa-spinner' : props.icon"
+      :spin="props.loading"
     />
   </div>
 </template>
@@ -27,6 +28,8 @@ import { computed } from 'vue'
 import { getTxtColor, getBgColor } from '@/utils/utils'
 import type { ThemeColor } from '@/types/types'
 import type { IconName } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 const props = withDefaults(
   defineProps<{
     name: string
@@ -37,6 +40,7 @@ const props = withDefaults(
     icon?: IconName
     type?: 'default' | 'transparent'
     disabled?: boolean
+    loading?: boolean
   }>(),
   {
     bgColor: undefined,
@@ -44,7 +48,8 @@ const props = withDefaults(
     themeColor: undefined,
     icon: undefined,
     type: 'default',
-    disabled: false
+    disabled: false,
+    loading: false
   }
 )
 
@@ -62,7 +67,9 @@ const ctaButtonStyle = computed(() => {
 })
 
 const isTransparent = computed(() => props.type === 'transparent')
-
+const isDisailabled = computed(() => props.disabled || props.loading)
 /** METHODS */
-const handleClick = () => emits('click', props.name)
+const handleClick = () => {
+  if (!isDisailabled.value) emits('click', props.name)
+}
 </script>
